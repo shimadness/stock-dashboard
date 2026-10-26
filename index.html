@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Stock Watch</title>
+<meta name="description" content="AIサプライチェーン61社の日次株価ダッシュボード">
+<style>
+:root{
+  --bg:#f6f7f9;--card:#ffffff;--ink:#16181d;--muted:#6b7280;--line:#e5e7eb;
+  --up:#0f9d58;--down:#d93025;--flat:#6b7280;--accent:#2563eb;--chip:#eef2ff;
+  --up-bg:rgba(15,157,88,.12);--down-bg:rgba(217,48,37,.12);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1115;--card:#171a21;--ink:#e6e8ee;--muted:#9aa3b2;--line:#262b36;
+  --up:#3ddc84;--down:#ff6b5e;--flat:#9aa3b2;--accent:#7aa2ff;--chip:#1f2533;
+  --up-bg:rgba(61,220,132,.14);--down-bg:rgba(255,107,94,.14);
+}}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--card:#171a21;--ink:#e6e8ee;--muted:#9aa3b2;--line:#262b36;
+  --up:#3ddc84;--down:#ff6b5e;--flat:#9aa3b2;--accent:#7aa2ff;--chip:#1f2533;
+  --up-bg:rgba(61,220,132,.14);--down-bg:rgba(255,107,94,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+header{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+h1{font-size:20px;margin:0;letter-spacing:.02em}
+h1 small{font-weight:400;color:var(--muted);font-size:12px;margin-left:8px}
+.meta{color:var(--muted);font-size:12px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.seg button{border:0;background:transparent;color:var(--muted);padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
+.seg button.on{background:var(--accent);color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer}
+.card .lbl{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .val{font-size:22px;font-weight:700;margin:2px 0}
+.card .sub{font-size:11px;color:var(--muted)}
+.up{color:var(--up)}.down{color:var(--down)}.flat{color:var(--flat)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:960px){.grid{grid-template-columns:minmax(0,1fr) 360px}.grid>.main{order:0}.grid>.side{order:1}}
+section.sector{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+section.sector h2{font-size:15px;margin:0;padding:10px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+section.sector h2 span.avg{font-size:13px;font-weight:600}
+table{width:100%;border-collapse:collapse}
+th,td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{font-size:11px;color:var(--muted);font-weight:600;cursor:pointer;user-select:none;position:sticky;top:0;background:var(--card)}
+th.sorted{color:var(--accent)}
+td:first-child,th:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+td.name{font-weight:600}
+td.name small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+.badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:999px;background:var(--chip);color:var(--muted);margin-left:4px;vertical-align:middle}
+.star{color:#f59e0b}
+td.pct{font-variant-numeric:tabular-nums}
+td.pct.hi{background:var(--up-bg)}td.pct.lo{background:var(--down-bg)}
+svg.spark{width:84px;height:24px;vertical-align:middle}
+.stale{opacity:.5}
+.side .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.panel h3{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.panel select{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:3px 6px}
+.headline{font-size:16px;font-weight:700;margin:4px 0 8px}
+.panel p{margin:6px 0;font-size:13px}
+.panel ul{margin:6px 0;padding-left:18px;font-size:13px}
+.panel li{margin:4px 0}
+.mover b{font-weight:700}
+.sug{border:1px dashed var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:13px}
+.sug b{display:block}
+.sug .why{color:var(--muted)}
+.empty{color:var(--muted);font-size:13px}
+details summary{cursor:pointer;color:var(--muted);font-size:12px}
+footer{color:var(--muted);font-size:12px;margin:24px 0 8px;text-align:center}
+footer a{color:var(--accent)}
+@media(max-width:640px){
+  th:nth-child(5),td:nth-child(5),th:nth-child(6),td:nth-child(6),th:nth-child(8),td:nth-child(8){display:none}
+  .card .val{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI Stock Watch <small id="count"></small></h1>
+  <div class="meta" id="meta">読み込み中…</div>
+</header>
+
+<div class="controls">
+  <div class="seg" id="period">
+    <button data-p="chg_1d" class="on">1日</button><button data-p="chg_5d">5日</button><button data-p="chg_1m">1ヶ月</button><button data-p="chg_3m">3ヶ月</button><button data-p="chg_ytd">年初来</button>
+  </div>
+  <div class="seg" id="market">
+    <button data-m="ALL" class="on">全市場</button><button data-m="US">米国</button><button data-m="JP">日本</button><button data-m="KR">韓国</button><button data-m="HK">香港</button>
+  </div>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<div class="grid">
+  <div class="main" id="sectors"></div>
+  <aside class="side">
+    <div class="panel" id="report">
+      <h3>デイリーレポート <select id="rsel"></select></h3>
+      <div id="rbody" class="empty">レポートはまだありません。</div>
+    </div>
+    <div class="panel" id="sugpanel">
+      <h3>チェック候補の提案</h3>
+      <div id="sugbody" class="empty">まだ提案はありません。</div>
+    </div>
+  </aside>
+</div>
+
+<footer>データ: Yahoo Finance（終値ベース・約15分遅延）／毎朝7時JSTに自動更新 · <a href="https://github.com/shimadness/stock-dashboard">GitHub</a></footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const fmtPct=v=>v==null?'—':(v>0?'+':'')+v.toFixed(2)+'%';
+const cls=v=>v==null?'flat':v>0.0001?'up':v<-0.0001?'down':'flat';
+const fmtPrice=(v,cur)=>v==null?'—':(cur==='JPY'||cur==='KRW')?Math.round(v).toLocaleString():v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const PERIODS={chg_1d:'1日',chg_5d:'5日',chg_1m:'1ヶ月',chg_3m:'3ヶ月',chg_ytd:'年初来'};
+let WL,LATEST,REPORTS=[],state={period:'chg_1d',market:'ALL',sort:{key:'chg_1d',dir:-1}};
+
+function spark(arr){
+  if(!arr||arr.length<2)return'';
+  const w=84,h=24,min=Math.min(...arr),max=Math.max(...arr),r=max-min||1;
+  const pts=arr.map((v,i)=>[(i/(arr.length-1))*w,h-2-((v-min)/r)*(h-4)]);
+  const d=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const c=arr[arr.length-1]>=arr[0]?'var(--up)':'var(--down)';
+  return`<svg class="spark" viewBox="0 0 ${w} ${h}"><path d="${d}" fill="none" stroke="${c}" stroke-width="1.5"/></svg>`;
+}
+function avg(xs){const v=xs.filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
+function visible(){return LATEST.items.filter(i=>state.market==='ALL'||i.market===state.market);}
+
+function renderCards(){
+  const p=state.period,items=visible();
+  $('#cards').innerHTML=WL.sectors.map(s=>{
+    const xs=items.filter(i=>i.sector===s.id);if(!xs.length)return'';
+    const a=avg(xs.map(i=>i[p]));
+    const best=xs.filter(i=>i[p]!=null).sort((x,y)=>y[p]-x[p]);
+    return`<div class="card" onclick="document.getElementById('sec-${s.id}').scrollIntoView({behavior:'smooth'})">
+      <div class="lbl">${s.label}</div><div class="val ${cls(a)}">${fmtPct(a)}</div>
+      <div class="sub">${xs.length}社${best.length?` · 高 ${best[0].name} ${fmtPct(best[0][p])}`:''}</div></div>`;
+  }).join('');
+}
+function renderSectors(){
+  const p=state.period,{key,dir}=state.sort,items=visible();
+  const cols=[['name','銘柄'],['last','株価'],['chg_1d','1日'],['chg_5d','5日'],['chg_1m','1ヶ月'],['chg_3m','3ヶ月'],['chg_ytd','年初来'],['from_high','52週高値比'],['spark','30日']];
+  $('#sectors').innerHTML=WL.sectors.map(s=>{
+    let xs=items.filter(i=>i.sector===s.id);if(!xs.length)return'';
+    xs=xs.slice().sort((a,b)=>{
+      if(key==='name')return dir*a.name.localeCompare(b.name,'ja');
+      const av=a[key],bv=b[key];if(av==null)return 1;if(bv==null)return -1;return dir*(av-bv);});
+    const a=avg(xs.map(i=>i[p]));
+    const vals=xs.map(i=>i[p]).filter(v=>v!=null);
+    const hi=vals.length>2?[...vals].sort((x,y)=>y-x)[0]:null,lo=vals.length>2?[...vals].sort((x,y)=>x-y)[0]:null;
+    return`<section class="sector" id="sec-${s.id}"><h2>${s.label}<span class="avg ${cls(a)}">${PERIODS[p]}平均 ${fmtPct(a)}</span></h2>
+    <div style="overflow-x:auto"><table><thead><tr>${cols.map(([k,l])=>`<th data-k="${k}" class="${k===key?'sorted':''}">${l}${k===key?(dir<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead><tbody>
+    ${xs.map(i=>`<tr class="${i.stale?'stale':''}" title="${i.stale?'取得失敗・前回値':''}">
+      <td class="name">${i.core?'<span class="star">★</span> ':''}${i.name}<span class="badge">${WL.markets[i.market]}</span><small>${i.ticker}${i.last_date?' · '+i.last_date.slice(5):''}</small></td>
+      <td>${fmtPrice(i.last,i.currency)}<span class="badge">${i.currency||''}</span></td>
+      ${['chg_1d','chg_5d','chg_1m','chg_3m','chg_ytd'].map(k=>`<td class="pct ${cls(i[k])} ${k===p&&i[k]===hi?'hi':''} ${k===p&&i[k]===lo?'lo':''}">${fmtPct(i[k])}</td>`).join('')}
+      <td class="pct ${cls(i.from_high)}">${fmtPct(i.from_high)}</td>
+      <td>${spark(i.spark)}</td></tr>`).join('')}
+    </tbody></table></div></section>`;
+  }).join('');
+  document.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{
+    const k=th.dataset.k;if(k==='spark')return;
+    state.sort=state.sort.key===k?{key:k,dir:-state.sort.dir}:{key:k,dir:k==='name'?1:-1};renderSectors();});
+}
+function renderReport(date){
+  const r=REPORTS.find(x=>x.date===date);
+  if(!r){$('#rbody').innerHTML='<span class="empty">レポートはまだありません。</span>';return;}
+  const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const secLabel=id=>(WL.sectors.find(s=>s.id===id)||{}).label||id;
+  $('#rbody').innerHTML=`
+    <div class="headline">${esc(r.headline)}</div>
+    <p>${esc(r.market_summary)}</p>
+    ${r.movers?.length?`<h4 style="margin:10px 0 4px;font-size:13px">注目の動き</h4><ul>${r.movers.map(m=>`<li class="mover"><b class="${m.direction==='up'?'up':m.direction==='down'?'down':''}">${esc(m.ticker)}</b> ${esc(m.comment)}</li>`).join('')}</ul>`:''}
+    ${r.sector_notes?.length?`<details><summary>業界別メモ（${r.sector_notes.length}）</summary><ul>${r.sector_notes.map(n=>`<li><b>${esc(secLabel(n.sector))}</b>: ${esc(n.note)}</li>`).join('')}</ul></details>`:''}
+    ${r.watch_next?.length?`<h4 style="margin:10px 0 4px;font-size:13px">次に見るべきこと</h4><ul>${r.watch_next.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>`:''}`;
+  const sugs=[];REPORTS.forEach(rep=>(rep.suggestions||[]).forEach(s=>sugs.push({...s,date:rep.date})));
+  $('#sugbody').innerHTML=sugs.length?sugs.slice(0,12).map(s=>`<div class="sug"><b>${esc(s.name)} <span class="badge">${esc(s.ticker)}</span> <span class="badge">${esc(secLabel(s.sector))}</span></b><span class="why">${esc(s.reason)}</span><div class="meta">${s.date} 提案</div></div>`).join('')+'<p class="meta">採用したい企業はチャットで伝えてください。watchlist.json に追加されます。</p>':'<span class="empty">まだ提案はありません。</span>';
+}
+async function load(){
+  const bust='?t='+Date.now();
+  [WL,LATEST]=await Promise.all([fetch('watchlist.json'+bust).then(r=>r.json()),fetch('data/latest.json'+bust).then(r=>r.json())]);
+  const coreMap=Object.fromEntries(WL.companies.map(c=>[c.ticker,c]));
+  LATEST.items.forEach(i=>{i.core=!!coreMap[i.ticker]?.core;});
+  $('#count').textContent=`${LATEST.items.length}社`;
+  const stale=LATEST.items.filter(i=>i.stale).length;
+  $('#meta').textContent=`更新 ${LATEST.generated_at.replace('T',' ').slice(0,16)} JST${stale?` · 取得失敗 ${stale}件`:''}`;
+  try{
+    const idx=await fetch('data/reports/index.json'+bust).then(r=>r.ok?r.json():[]);
+    REPORTS=(await Promise.all(idx.slice(0,30).map(d=>fetch(`data/reports/${d}.json`+bust).then(r=>r.ok?r.json():null).catch(()=>null)))).filter(Boolean);
+  }catch(e){REPORTS=[];}
+  const sel=$('#rsel');sel.innerHTML=REPORTS.map(r=>`<option value="${r.date}">${r.date}</option>`).join('');
+  sel.onchange=()=>renderReport(sel.value);
+  renderCards();renderSectors();renderReport(REPORTS[0]?.date);
+}
+document.querySelectorAll('#period button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#period button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.period=b.dataset.p;state.sort={key:b.dataset.p,dir:-1};renderCards();renderSectors();});
+document.querySelectorAll('#market button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#market button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.market=b.dataset.m;renderCards();renderSectors();});
+load().catch(e=>{$('#meta').textContent='読み込みエラー: '+e.message;});
+</script>
+</body>
+</html>
