@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-03",
+  "kind": "daily",
+  "headline": "Intel急落が半導体全体に波及、AI関連が軒並み下落",
+  "market_summary": "10/30の米国市場はIntelの急落を起点にリスク回避が広がった。同社の10-12月期売上見通しが市場予想を大きく下回り、PC需要の減速懸念が噴出したためで、フィラデルフィア半導体指数も大幅安となった。半導体はAI向けを含め全面安となり、クラウド・ソフトウェア、サーバー、データセンター機器にも売りが波及した。core 3社ではNVIDIAが地合いに連れ安、CloudflareとAkamaiはエッジ・セキュリティ株全体の下げに巻き込まれた。11/2の東京市場では東京エレクトロンが反発した。",
+  "movers": [
+    {"ticker": "INTC", "direction": "down", "comment": "10-12月期売上見通しが予想を大きく下回り、PC市場の縮小懸念が強まった。10月にはイスラエル工場の爆発事故も報じられ、生産面の不安も重なった。"},
+    {"ticker": "NVDA", "direction": "down", "comment": "Intelショックによる半導体全面安に連れた下げ。同社固有の悪材料は確認できず、AI需要への見方が変わったわけではない。"},
+    {"ticker": "AMD", "direction": "down", "comment": "PC向けの比重がIntel同様に意識され、売りが集中した。"},
+    {"ticker": "NET", "direction": "down", "comment": "グロース・ソフトウェア全般の下げに連動。11/5の決算発表予定を前にポジション調整が出たとみられる。"},
+    {"ticker": "AKAM", "direction": "down", "comment": "エッジ・セキュリティ株全体の下落に連れた動きで、個別材料は見当たらない。"},
+    {"ticker": "DDOG", "direction": "down", "comment": "クラウド監視・ソフトウェア株の売りが重なり、業界内でも下げが大きかった。"},
+    {"ticker": "DELL", "direction": "down", "comment": "PC事業への警戒とAIサーバー関連株の下げが同時に効いた。"},
+    {"ticker": "8035.T", "direction": "up", "comment": "米国での急落後も東京市場では製造装置への買いが入り反発した。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "Intelの見通し悪化を発端に全面安。AI向けとPC向けの需要が切り分けて評価されるかが焦点。"},
+    {"sector": "edge", "note": "ソフトウェア株安に連動して下落。Cloudflareの決算が業界の次の方向感を決める。"},
+    {"sector": "dcinfra", "note": "サーバー・ネットワーク機器が半導体安に連れて下落。AI設備投資の勢いは変わらないとの見方も残る。"}
+  ],
+  "suggestions": [
+    {"name": "Celestica", "ticker": "CLS", "sector": "dcinfra", "reason": "DellやSuper MicroなどAIサーバー関連が一斉に売られた局面で、同じAIインフラ需要を受ける周辺の製造受託企業として比較対象になる。"},
+    {"name": "Astera Labs", "ticker": "ALAB", "sector": "semi", "reason": "半導体が全面安となる中、AIサーバー内接続という別の需要軸を持つ銘柄として、Intel発のPC懸念との切り分けを確認できる。"}
+  ],
+  "watch_next": [
+    "Cloudflareの7-9月期決算（11/5引け後の予定との情報、要確認）",
+    "Intelショック後の半導体の反発力とAI向け・PC向けの評価の分かれ方",
+    "Palantir・AMD・Super Microなど今週の決算発表予定と、その日付の確定",
+    "NVIDIA決算（11/17予定との情報）に向けたAI需要コメント"
+  ],
+  "data_quality": "ok"
+}
