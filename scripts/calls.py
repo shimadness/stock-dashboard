@@ -111,6 +111,12 @@ def cmd_add(args):
     }
     book["calls"].append(call)
     save(CALLS, book)
+    # keep today's scorecard snapshot in sync (evaluate runs before add)
+    score = load(SCORE, None)
+    if score and score.get("history") and score["history"][-1]["date"] == d:
+        score["history"][-1]["open"] = len(open_calls) + 1
+        score["summary"]["open"] = len(open_calls) + 1
+        save(SCORE, score)
     print(f"opened {call['id']} {args.stance} {args.horizon}d entry {entry} ({entry_date})")
 
 

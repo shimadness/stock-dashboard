@@ -19,7 +19,7 @@
   "avg_signed_ret": null,
   "avg_excess": null,
   "beat_bench_rate": null,
-  "open": 0,
+  "open": 1,
   "by_stance": {
    "bull": {
     "closed": 0,
@@ -134,7 +134,7 @@
    "strict_hit_rate": null,
    "avg_excess": null,
    "beat_bench_rate": null,
-   "open": 0
+   "open": 1
   }
  ]
 }
