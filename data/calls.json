@@ -1,0 +1,18 @@
+{
+ "calls": [
+  {
+   "id": "2026-11-03-MRVL-001",
+   "date": "2026-11-03",
+   "ticker": "MRVL",
+   "name": "Marvell",
+   "stance": "bull",
+   "horizon": 20,
+   "confidence": 1,
+   "entry": 171.41,
+   "entry_date": "2026-11-02",
+   "thesis": "買収協議の報道で5日間に約27%下げ、希薄化懸念が株価に織り込まれつつある。LumentumやMarvell側から協議打ち切りまたは希薄化を抑えた条件が示されれば、懸念の巻き戻しで反発する。",
+   "invalidation": "全額株式で大幅なプレミアムの買収を正式発表した場合、または今回の安値を終値で更新した場合",
+   "status": "open"
+  }
+ ]
+}

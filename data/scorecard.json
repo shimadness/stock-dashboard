@@ -1,0 +1,140 @@
+{
+ "updated": "2026-11-03T12:47:00+09:00",
+ "rule": {
+  "hit_pct": 1.0,
+  "benchmark": "watchlist equal-weight",
+  "horizons": [
+   10,
+   20,
+   60
+  ]
+ },
+ "summary": {
+  "closed": 0,
+  "hit": 0,
+  "miss": 0,
+  "flat": 0,
+  "hit_rate": null,
+  "strict_hit_rate": null,
+  "avg_signed_ret": null,
+  "avg_excess": null,
+  "beat_bench_rate": null,
+  "open": 0,
+  "by_stance": {
+   "bull": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "bear": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   }
+  },
+  "by_horizon": {
+   "10": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "20": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "60": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   }
+  },
+  "by_confidence": {
+   "1": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "2": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "3": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   }
+  },
+  "last_30d": {
+   "closed": 0,
+   "hit": 0,
+   "miss": 0,
+   "flat": 0,
+   "hit_rate": null,
+   "strict_hit_rate": null,
+   "avg_signed_ret": null,
+   "avg_excess": null,
+   "beat_bench_rate": null
+  }
+ },
+ "history": [
+  {
+   "date": "2026-11-03",
+   "closed": 0,
+   "hit_rate": null,
+   "strict_hit_rate": null,
+   "avg_excess": null,
+   "beat_bench_rate": null,
+   "open": 0
+  }
+ ]
+}
