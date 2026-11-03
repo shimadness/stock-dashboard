@@ -1,6 +1,6 @@
 # デイリー株価ルーティン 手順書（クラウドエージェント用）
 
-このリポジトリは AI サプライチェーン関連 61 社の株価ダッシュボード。
+このリポジトリは AI サプライチェーン関連 73 社の株価ダッシュボード。
 毎朝 7:00 JST にクラウドルーティンがこの手順を実行し、GitHub Pages
 （https://shimadness.github.io/stock-dashboard/）を更新する。
 
@@ -18,7 +18,7 @@ git pull --rebase origin main
 python3 scripts/fetch_prices.py
 ```
 - `data/latest.json` と `data/history.json` が更新される。
-- stderr に `done: 61 items, N errors` と出る。N が 10 を超えたら 1 回だけ再実行する。それでも失敗した銘柄は `stale: true` のまま進めてよい（レポート内で触れる）。
+- stderr に `done: 73 items, N errors` と出る。N が 10 を超えたら 1 回だけ再実行する。それでも失敗した銘柄は `stale: true` のまま進めてよい（レポート内で触れる）。
 
 ## 2. 文脈を読む
 - `watchlist.json` … 業界分類と銘柄。`core: true` はオーナーが最初に指定した 3 社（NVDA / AKAM / NET）。

@@ -1,6 +1,6 @@
 # AI Stock Watch
 
-AI サプライチェーン関連 61 社（米国・日本・韓国・香港）の株価を業界別に追う日次ダッシュボード。
+AI サプライチェーン関連 73 社（米国・日本・韓国・香港）の株価を業界別に追う日次ダッシュボード。
 
 - ダッシュボード: https://shimadness.github.io/stock-dashboard/
 - 更新: 毎朝 7:00 JST、Claude Code のクラウドルーティンが [ROUTINE.md](ROUTINE.md) の手順で自動実行

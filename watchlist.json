@@ -1,83 +1,499 @@
 {
   "sectors": [
-    {"id": "semi",    "label": "半導体・AI計算基盤"},
-    {"id": "equip",   "label": "半導体製造装置・素材"},
-    {"id": "edge",    "label": "CDN・エッジ・セキュリティ"},
-    {"id": "saas",    "label": "クラウドSaaS・AIソフト"},
-    {"id": "dcinfra", "label": "データセンター・インフラ機器"},
-    {"id": "power",   "label": "DC REIT・電力・重電・通信"},
-    {"id": "hyper",   "label": "ハイパースケーラー・AIクラウド"},
-    {"id": "apps",    "label": "AI応用・端末・コンテンツ"}
+    {
+      "id": "semi",
+      "label": "半導体・AI計算基盤"
+    },
+    {
+      "id": "equip",
+      "label": "半導体製造装置・素材"
+    },
+    {
+      "id": "edge",
+      "label": "CDN・エッジ・セキュリティ"
+    },
+    {
+      "id": "saas",
+      "label": "クラウドSaaS・AIソフト"
+    },
+    {
+      "id": "dcinfra",
+      "label": "データセンター・インフラ機器"
+    },
+    {
+      "id": "power",
+      "label": "DC REIT・電力・重電・通信"
+    },
+    {
+      "id": "hyper",
+      "label": "ハイパースケーラー・AIクラウド"
+    },
+    {
+      "id": "apps",
+      "label": "AI応用・端末・コンテンツ"
+    }
   ],
-  "markets": {"US": "米国", "JP": "日本", "KR": "韓国", "HK": "香港"},
+  "markets": {
+    "US": "米国",
+    "JP": "日本",
+    "KR": "韓国",
+    "HK": "香港"
+  },
   "companies": [
-    {"ticker": "NVDA",      "name": "NVIDIA",               "sector": "semi",    "market": "US", "core": true},
-    {"ticker": "AMD",       "name": "AMD",                  "sector": "semi",    "market": "US"},
-    {"ticker": "AVGO",      "name": "Broadcom",             "sector": "semi",    "market": "US"},
-    {"ticker": "TSM",       "name": "TSMC",                 "sector": "semi",    "market": "US"},
-    {"ticker": "MU",        "name": "Micron",               "sector": "semi",    "market": "US"},
-    {"ticker": "MRVL",      "name": "Marvell",              "sector": "semi",    "market": "US"},
-    {"ticker": "ARM",       "name": "Arm",                  "sector": "semi",    "market": "US"},
-    {"ticker": "QCOM",      "name": "Qualcomm",             "sector": "semi",    "market": "US"},
-    {"ticker": "INTC",      "name": "Intel",                "sector": "semi",    "market": "US"},
-    {"ticker": "000660.KS", "name": "SK hynix",             "sector": "semi",    "market": "KR"},
-    {"ticker": "005930.KS", "name": "Samsung Electronics",  "sector": "semi",    "market": "KR"},
-
-    {"ticker": "ASML",      "name": "ASML",                 "sector": "equip",   "market": "US"},
-    {"ticker": "LRCX",      "name": "Lam Research",         "sector": "equip",   "market": "US"},
-    {"ticker": "AMAT",      "name": "Applied Materials",    "sector": "equip",   "market": "US"},
-    {"ticker": "8035.T",    "name": "東京エレクトロン",       "sector": "equip",   "market": "JP"},
-    {"ticker": "6857.T",    "name": "アドバンテスト",         "sector": "equip",   "market": "JP"},
-    {"ticker": "4063.T",    "name": "信越化学",              "sector": "equip",   "market": "JP"},
-
-    {"ticker": "AKAM",      "name": "Akamai",               "sector": "edge",    "market": "US", "core": true},
-    {"ticker": "NET",       "name": "Cloudflare",           "sector": "edge",    "market": "US", "core": true},
-    {"ticker": "FSLY",      "name": "Fastly",               "sector": "edge",    "market": "US"},
-    {"ticker": "ZS",        "name": "Zscaler",              "sector": "edge",    "market": "US"},
-    {"ticker": "PANW",      "name": "Palo Alto Networks",   "sector": "edge",    "market": "US"},
-    {"ticker": "CRWD",      "name": "CrowdStrike",          "sector": "edge",    "market": "US"},
-
-    {"ticker": "DDOG",      "name": "Datadog",              "sector": "saas",    "market": "US"},
-    {"ticker": "SNOW",      "name": "Snowflake",            "sector": "saas",    "market": "US"},
-    {"ticker": "PLTR",      "name": "Palantir",             "sector": "saas",    "market": "US"},
-    {"ticker": "CRM",       "name": "Salesforce",           "sector": "saas",    "market": "US"},
-    {"ticker": "NOW",       "name": "ServiceNow",           "sector": "saas",    "market": "US"},
-    {"ticker": "ADBE",      "name": "Adobe",                "sector": "saas",    "market": "US", "note": "生成AI逆指標"},
-
-    {"ticker": "ANET",      "name": "Arista Networks",      "sector": "dcinfra", "market": "US"},
-    {"ticker": "SMCI",      "name": "Super Micro Computer", "sector": "dcinfra", "market": "US"},
-    {"ticker": "DELL",      "name": "Dell Technologies",    "sector": "dcinfra", "market": "US"},
-    {"ticker": "VRT",       "name": "Vertiv",               "sector": "dcinfra", "market": "US"},
-    {"ticker": "ETN",       "name": "Eaton",                "sector": "dcinfra", "market": "US"},
-
-    {"ticker": "EQIX",      "name": "Equinix",              "sector": "power",   "market": "US"},
-    {"ticker": "DLR",       "name": "Digital Realty",       "sector": "power",   "market": "US"},
-    {"ticker": "CEG",       "name": "Constellation Energy", "sector": "power",   "market": "US"},
-    {"ticker": "GEV",       "name": "GE Vernova",           "sector": "power",   "market": "US"},
-    {"ticker": "6501.T",    "name": "日立製作所",            "sector": "power",   "market": "JP"},
-    {"ticker": "7011.T",    "name": "三菱重工業",            "sector": "power",   "market": "JP"},
-    {"ticker": "9432.T",    "name": "NTT",                  "sector": "power",   "market": "JP"},
-    {"ticker": "9433.T",    "name": "KDDI",                 "sector": "power",   "market": "JP"},
-    {"ticker": "5803.T",    "name": "フジクラ",              "sector": "power",   "market": "JP"},
-
-    {"ticker": "MSFT",      "name": "Microsoft",            "sector": "hyper",   "market": "US"},
-    {"ticker": "GOOGL",     "name": "Alphabet",             "sector": "hyper",   "market": "US"},
-    {"ticker": "AMZN",      "name": "Amazon",               "sector": "hyper",   "market": "US"},
-    {"ticker": "META",      "name": "Meta Platforms",       "sector": "hyper",   "market": "US"},
-    {"ticker": "ORCL",      "name": "Oracle",               "sector": "hyper",   "market": "US"},
-    {"ticker": "CRWV",      "name": "CoreWeave",            "sector": "hyper",   "market": "US"},
-    {"ticker": "NBIS",      "name": "Nebius",               "sector": "hyper",   "market": "US"},
-    {"ticker": "BABA",      "name": "Alibaba",              "sector": "hyper",   "market": "US", "note": "中国・米ADR"},
-    {"ticker": "0700.HK",   "name": "Tencent",              "sector": "hyper",   "market": "HK"},
-    {"ticker": "3778.T",    "name": "さくらインターネット",    "sector": "hyper",   "market": "JP"},
-
-    {"ticker": "AAPL",      "name": "Apple",                "sector": "apps",    "market": "US"},
-    {"ticker": "TSLA",      "name": "Tesla",                "sector": "apps",    "market": "US"},
-    {"ticker": "NFLX",      "name": "Netflix",              "sector": "apps",    "market": "US"},
-    {"ticker": "UBER",      "name": "Uber",                 "sector": "apps",    "market": "US"},
-    {"ticker": "SHOP",      "name": "Shopify",              "sector": "apps",    "market": "US"},
-    {"ticker": "SPOT",      "name": "Spotify",              "sector": "apps",    "market": "US"},
-    {"ticker": "6758.T",    "name": "ソニーグループ",         "sector": "apps",    "market": "JP"},
-    {"ticker": "9984.T",    "name": "ソフトバンクグループ",    "sector": "apps",    "market": "JP"}
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "sector": "semi",
+      "market": "US",
+      "core": true
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "ARM",
+      "name": "Arm",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "sector": "semi",
+      "market": "US"
+    },
+    {
+      "ticker": "000660.KS",
+      "name": "SK hynix",
+      "sector": "semi",
+      "market": "KR"
+    },
+    {
+      "ticker": "005930.KS",
+      "name": "Samsung Electronics",
+      "sector": "semi",
+      "market": "KR"
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML",
+      "sector": "equip",
+      "market": "US"
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "sector": "equip",
+      "market": "US"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "sector": "equip",
+      "market": "US"
+    },
+    {
+      "ticker": "8035.T",
+      "name": "東京エレクトロン",
+      "sector": "equip",
+      "market": "JP"
+    },
+    {
+      "ticker": "6857.T",
+      "name": "アドバンテスト",
+      "sector": "equip",
+      "market": "JP"
+    },
+    {
+      "ticker": "4063.T",
+      "name": "信越化学",
+      "sector": "equip",
+      "market": "JP"
+    },
+    {
+      "ticker": "AKAM",
+      "name": "Akamai",
+      "sector": "edge",
+      "market": "US",
+      "core": true
+    },
+    {
+      "ticker": "NET",
+      "name": "Cloudflare",
+      "sector": "edge",
+      "market": "US",
+      "core": true
+    },
+    {
+      "ticker": "FSLY",
+      "name": "Fastly",
+      "sector": "edge",
+      "market": "US"
+    },
+    {
+      "ticker": "ZS",
+      "name": "Zscaler",
+      "sector": "edge",
+      "market": "US"
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "sector": "edge",
+      "market": "US"
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike",
+      "sector": "edge",
+      "market": "US"
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "sector": "saas",
+      "market": "US"
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake",
+      "sector": "saas",
+      "market": "US"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir",
+      "sector": "saas",
+      "market": "US"
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "sector": "saas",
+      "market": "US"
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "sector": "saas",
+      "market": "US"
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe",
+      "sector": "saas",
+      "market": "US",
+      "note": "生成AI逆指標"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "sector": "dcinfra",
+      "market": "US"
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Super Micro Computer",
+      "sector": "dcinfra",
+      "market": "US"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "sector": "dcinfra",
+      "market": "US"
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "sector": "dcinfra",
+      "market": "US"
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "sector": "dcinfra",
+      "market": "US"
+    },
+    {
+      "ticker": "EQIX",
+      "name": "Equinix",
+      "sector": "power",
+      "market": "US"
+    },
+    {
+      "ticker": "DLR",
+      "name": "Digital Realty",
+      "sector": "power",
+      "market": "US"
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "sector": "power",
+      "market": "US"
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "sector": "power",
+      "market": "US"
+    },
+    {
+      "ticker": "6501.T",
+      "name": "日立製作所",
+      "sector": "power",
+      "market": "JP"
+    },
+    {
+      "ticker": "7011.T",
+      "name": "三菱重工業",
+      "sector": "power",
+      "market": "JP"
+    },
+    {
+      "ticker": "9432.T",
+      "name": "NTT",
+      "sector": "power",
+      "market": "JP"
+    },
+    {
+      "ticker": "9433.T",
+      "name": "KDDI",
+      "sector": "power",
+      "market": "JP"
+    },
+    {
+      "ticker": "5803.T",
+      "name": "フジクラ",
+      "sector": "power",
+      "market": "JP"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "CRWV",
+      "name": "CoreWeave",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "NBIS",
+      "name": "Nebius",
+      "sector": "hyper",
+      "market": "US"
+    },
+    {
+      "ticker": "BABA",
+      "name": "Alibaba",
+      "sector": "hyper",
+      "market": "US",
+      "note": "中国・米ADR"
+    },
+    {
+      "ticker": "0700.HK",
+      "name": "Tencent",
+      "sector": "hyper",
+      "market": "HK"
+    },
+    {
+      "ticker": "3778.T",
+      "name": "さくらインターネット",
+      "sector": "hyper",
+      "market": "JP"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "UBER",
+      "name": "Uber",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "SHOP",
+      "name": "Shopify",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "SPOT",
+      "name": "Spotify",
+      "sector": "apps",
+      "market": "US"
+    },
+    {
+      "ticker": "6758.T",
+      "name": "ソニーグループ",
+      "sector": "apps",
+      "market": "JP"
+    },
+    {
+      "ticker": "9984.T",
+      "name": "ソフトバンクグループ",
+      "sector": "apps",
+      "market": "JP"
+    },
+    {
+      "ticker": "OKTA",
+      "name": "Okta",
+      "sector": "edge",
+      "market": "US",
+      "note": "ID管理。ゼロトラストの入口"
+    },
+    {
+      "ticker": "FTNT",
+      "name": "Fortinet",
+      "sector": "edge",
+      "market": "US",
+      "note": "NW機器＋セキュリティ。PANW/CRWDの比較軸"
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "sector": "semi",
+      "market": "US",
+      "note": "NAND専業（WDCから分離）。AIストレージ需要"
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "sector": "semi",
+      "market": "US",
+      "note": "PCIe/CXLコネクティビティ。AIサーバー内の接続"
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo Technology",
+      "sector": "semi",
+      "market": "US",
+      "note": "AEC/光DSP。DC内高速接続"
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum",
+      "sector": "dcinfra",
+      "market": "US",
+      "note": "光部品・レーザー。DC光インターコネクト"
+    },
+    {
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "sector": "dcinfra",
+      "market": "US",
+      "note": "HDD。ハイパースケーラー向け大容量ストレージ"
+    },
+    {
+      "ticker": "CLS",
+      "name": "Celestica",
+      "sector": "dcinfra",
+      "market": "US",
+      "note": "ODM。ハイパースケーラー向けスイッチ・サーバー製造"
+    },
+    {
+      "ticker": "VST",
+      "name": "Vistra",
+      "sector": "power",
+      "market": "US",
+      "note": "独立系発電。DC向け電力契約"
+    },
+    {
+      "ticker": "BE",
+      "name": "Bloom Energy",
+      "sector": "power",
+      "market": "US",
+      "note": "燃料電池。DCのオンサイト電源"
+    },
+    {
+      "ticker": "WDAY",
+      "name": "Workday",
+      "sector": "saas",
+      "market": "US",
+      "note": "HR/財務SaaS。AI収益化とシート型課金の試金石"
+    },
+    {
+      "ticker": "MDB",
+      "name": "MongoDB",
+      "sector": "saas",
+      "market": "US",
+      "note": "ドキュメントDB。AIアプリの基盤需要"
+    }
   ]
 }
