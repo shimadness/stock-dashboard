@@ -71,16 +71,27 @@ def main():
             prev_latest = {i["ticker"]: i for i in json.load(open(LATEST, encoding="utf-8"))["items"]}
         except Exception:
             pass
-    items, history, errors = [], {}, []
+    old_hist = {}
+    if os.path.exists(HISTORY):
+        try:
+            old_hist = json.load(open(HISTORY, encoding="utf-8"))
+        except Exception:
+            pass
+    items, errors = [], []
     for i, c in enumerate(wl["companies"]):
         t = c["ticker"]
         try:
             meta, points = fetch_chart(t)
             if len(points) < 2:
                 raise RuntimeError("too few points")
+            # merge into history first, then summarize from the merged series so the
+            # dashboard never goes backwards when Yahoo temporarily omits the latest close
+            merged = dict(old_hist.get(t, []))
+            merged.update(dict(points))
+            series = sorted(merged.items())
+            old_hist[t] = series
             item = {"ticker": t, "name": c["name"], "sector": c["sector"], "market": c["market"],
-                    "currency": meta.get("currency"), "stale": False, **summarize(points)}
-            history[t] = points
+                    "currency": meta.get("currency"), "stale": False, **summarize(series[-260:])}
         except Exception as e:
             errors.append(str(e))
             old = prev_latest.get(t)
@@ -93,17 +104,6 @@ def main():
     now = datetime.now(tz=JST)
     json.dump({"generated_at": now.isoformat(timespec="seconds"), "generated_date": now.strftime("%Y-%m-%d"),
                "errors": errors, "items": items}, open(LATEST, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    # merge history so points older than 1y survive across runs
-    old_hist = {}
-    if os.path.exists(HISTORY):
-        try:
-            old_hist = json.load(open(HISTORY, encoding="utf-8"))
-        except Exception:
-            pass
-    for t, pts in history.items():
-        merged = dict(old_hist.get(t, []))
-        merged.update(dict(pts))
-        old_hist[t] = sorted(merged.items())
     json.dump(old_hist, open(HISTORY, "w", encoding="utf-8"), separators=(",", ":"))
     print(f"done: {len(items)} items, {len(errors)} errors", file=sys.stderr)
     for e in errors:

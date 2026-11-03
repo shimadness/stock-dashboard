@@ -70,6 +70,30 @@ svg.spark{width:84px;height:24px;vertical-align:middle}
 .sug .why{color:var(--muted)}
 .empty{color:var(--muted);font-size:13px}
 details summary{cursor:pointer;color:var(--muted);font-size:12px}
+
+/* AI stance panel */
+section.ai{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:18px}
+section.ai h2{font-size:15px;margin:0 0 10px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.disc{font-size:11px;color:var(--muted);font-weight:400}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.tile{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg)}
+.tile .lbl{font-size:11px;color:var(--muted)}.tile .val{font-size:20px;font-weight:700}.tile .sub{font-size:11px;color:var(--muted)}
+.ai2{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:960px){.ai2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.ai h4{margin:8px 0 6px;font-size:13px}
+svg.trend{width:100%;height:120px;display:block}
+.call{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:13px}
+.call .top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.call .top b{font-size:14px}
+.stance{font-size:11px;padding:1px 7px;border-radius:999px;font-weight:600}
+.stance.bull{background:var(--up-bg);color:var(--up)}.stance.bear{background:var(--down-bg);color:var(--down)}
+.bar{height:4px;background:var(--line);border-radius:2px;margin:6px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.call .why{color:var(--muted);font-size:12px;margin-top:4px}
+.call .inv{font-size:12px;margin-top:2px}
+.res{font-size:11px;padding:1px 7px;border-radius:999px;font-weight:600}
+.res.hit{background:var(--up-bg);color:var(--up)}.res.miss{background:var(--down-bg);color:var(--down)}.res.flat{background:var(--chip);color:var(--muted)}
+table.closed th,table.closed td{padding:5px 8px;font-size:12px}
 footer{color:var(--muted);font-size:12px;margin:24px 0 8px;text-align:center}
 footer a{color:var(--accent)}
 @media(max-width:640px){
@@ -95,6 +119,11 @@ footer a{color:var(--accent)}
 </div>
 
 <div class="cards" id="cards"></div>
+
+<section class="ai" id="ai">
+  <h2>AIの見解と的中率 <span class="disc">毎朝AIが銘柄ごとに強気/弱気を宣言し、期限到来時にスクリプトが機械的に採点。投資助言ではなく、AIに売買提案を任せられるかの検証記録。</span></h2>
+  <div id="aibody" class="empty">まだ見解はありません。</div>
+</section>
 
 <div class="grid">
   <div class="main" id="sectors"></div>
@@ -171,16 +200,64 @@ function renderSectors(){
 function renderReport(date){
   const r=REPORTS.find(x=>x.date===date);
   if(!r){$('#rbody').innerHTML='<span class="empty">レポートはまだありません。</span>';return;}
-  const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const secLabel=id=>(WL.sectors.find(s=>s.id===id)||{}).label||id;
   $('#rbody').innerHTML=`
     <div class="headline">${esc(r.headline)}</div>
     <p>${esc(r.market_summary)}</p>
     ${r.movers?.length?`<h4 style="margin:10px 0 4px;font-size:13px">注目の動き</h4><ul>${r.movers.map(m=>`<li class="mover"><b class="${m.direction==='up'?'up':m.direction==='down'?'down':''}">${esc(m.ticker)}</b> ${esc(m.comment)}</li>`).join('')}</ul>`:''}
     ${r.sector_notes?.length?`<details><summary>業界別メモ（${r.sector_notes.length}）</summary><ul>${r.sector_notes.map(n=>`<li><b>${esc(secLabel(n.sector))}</b>: ${esc(n.note)}</li>`).join('')}</ul></details>`:''}
+    ${r.ai_review?`<h4 style="margin:10px 0 4px;font-size:13px">AIの自己振り返り</h4><p>${esc(r.ai_review)}</p>`:''}
     ${r.watch_next?.length?`<h4 style="margin:10px 0 4px;font-size:13px">次に見るべきこと</h4><ul>${r.watch_next.map(w=>`<li>${esc(w)}</li>`).join('')}</ul>`:''}`;
   const sugs=[];REPORTS.forEach(rep=>(rep.suggestions||[]).forEach(s=>sugs.push({...s,date:rep.date})));
   $('#sugbody').innerHTML=sugs.length?sugs.slice(0,12).map(s=>`<div class="sug"><b>${esc(s.name)} <span class="badge">${esc(s.ticker)}</span> <span class="badge">${esc(secLabel(s.sector))}</span></b><span class="why">${esc(s.reason)}</span><div class="meta">${s.date} 提案</div></div>`).join('')+'<p class="meta">採用したい企業はチャットで伝えてください。watchlist.json に追加されます。</p>':'<span class="empty">まだ提案はありません。</span>';
+}
+
+let CALLS=null,SCORE=null;
+const STANCE={bull:'強気',bear:'弱気'},RES={hit:'的中',miss:'外れ',flat:'横ばい'};
+const esc=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function trend(hist){
+  const pts=hist.filter(h=>h.hit_rate!=null);
+  if(pts.length<2)return'<p class="meta">判定が2日分以上たまると推移グラフが出ます。</p>';
+  const w=600,h=120,pl=30,pr=8,pt=8,pb=20,iw=w-pl-pr,ih=h-pt-pb;
+  const x=i=>pl+i/(pts.length-1)*iw,y=v=>pt+ih-(v/100)*ih;
+  const line=k=>pts.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(p[k]).toFixed(1)).join(' ');
+  const grid=[0,25,50,75,100].map(v=>`<line x1="${pl}" x2="${w-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${pl-4}" y="${y(v)+4}" font-size="10" text-anchor="end" fill="var(--muted)">${v}</text>`).join('');
+  const lab=[0,pts.length-1].map(i=>`<text x="${x(i)}" y="${h-4}" font-size="10" text-anchor="${i?'end':'start'}" fill="var(--muted)">${pts[i].date.slice(5)}</text>`).join('');
+  const ex=pts.filter(p=>p.beat_bench_rate!=null).length===pts.length?`<path d="${line('beat_bench_rate')}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3"/>`:'';
+  return`<svg class="trend" viewBox="0 0 ${w} ${h}">${grid}${lab}${ex}<path d="${line('hit_rate')}" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+  <p class="meta">実線: 的中率（横ばい除く） · 点線: 市場（ウォッチリスト平均）に勝った割合</p>`;
+}
+function renderAI(){
+  const el=$('#aibody');
+  if(!CALLS||!CALLS.calls.length){el.innerHTML='<span class="empty">まだ見解はありません。明朝のルーティンから蓄積されます。</span>';return;}
+  const S=SCORE?.summary||{},hist=SCORE?.history||[];
+  const px=Object.fromEntries(LATEST.items.map(i=>[i.ticker,i]));
+  const open=CALLS.calls.filter(c=>c.status==='open'),closed=CALLS.calls.filter(c=>c.status==='closed').sort((a,b)=>b.exit_date.localeCompare(a.exit_date));
+  const f1=v=>v==null?'—':v.toFixed(1)+'%';
+  const tiles=`<div class="tiles">
+    <div class="tile"><div class="lbl">的中率</div><div class="val ${S.hit_rate==null?'':S.hit_rate>=50?'up':'down'}">${f1(S.hit_rate)}</div><div class="sub">的中${S.hit??0} / 外れ${S.miss??0} / 横ばい${S.flat??0}</div></div>
+    <div class="tile"><div class="lbl">市場超過リターン（平均）</div><div class="val ${cls(S.avg_excess)}">${fmtPct(S.avg_excess)}</div><div class="sub">市場に勝った割合 ${f1(S.beat_bench_rate)}</div></div>
+    <div class="tile"><div class="lbl">直近30日の的中率</div><div class="val">${f1(S.last_30d?.hit_rate)}</div><div class="sub">判定 ${S.last_30d?.closed??0}件</div></div>
+    <div class="tile"><div class="lbl">進行中 / 判定済</div><div class="val">${open.length} / ${closed.length}</div><div class="sub">強気 ${f1(S.by_stance?.bull?.hit_rate)} · 弱気 ${f1(S.by_stance?.bear?.hit_rate)}</div></div>
+  </div>`;
+  const openHtml=open.length?open.map(c=>{
+    const cur=px[c.ticker]?.last,u=cur!=null?(cur/c.entry-1)*100:null,su=u==null?null:(c.stance==='bull'?u:-u);
+    const days=c.elapsed??elapsedDays(c);
+    return`<div class="call"><div class="top"><b>${esc(c.name)}</b><span class="badge">${esc(c.ticker)}</span><span class="stance ${c.stance}">${STANCE[c.stance]}</span><span class="badge">${c.horizon}営業日</span><span class="badge">確信度 ${'●'.repeat(c.confidence)}${'○'.repeat(3-c.confidence)}</span><span style="margin-left:auto" class="${cls(su)}">含み ${fmtPct(u)}</span></div>
+    <div class="bar"><i style="width:${Math.min(100,days/c.horizon*100)}%"></i></div><div class="meta">${c.date} 宣言 · ${days}/${c.horizon}日経過 · 基準 ${fmtPrice(c.entry,px[c.ticker]?.currency)}</div>
+    <div class="why">${esc(c.thesis)}</div><div class="inv">撤回条件: ${esc(c.invalidation)}</div></div>`;}).join(''):'<p class="empty">進行中の見解はありません。</p>';
+  const closedHtml=closed.length?`<div style="overflow-x:auto"><table class="closed"><thead><tr><th>宣言</th><th>銘柄</th><th>見解</th><th>期間</th><th>リターン</th><th>市場比</th><th>結果</th></tr></thead><tbody>${closed.slice(0,20).map(c=>`<tr><td>${c.date.slice(2)}</td><td style="text-align:left">${esc(c.name)}<small style="color:var(--muted)"> ${esc(c.ticker)}</small></td><td><span class="stance ${c.stance}">${STANCE[c.stance]}</span></td><td>${c.horizon}日</td><td class="${cls(c.ret_pct)}">${fmtPct(c.ret_pct)}</td><td class="${cls(c.excess_pct)}">${fmtPct(c.excess_pct)}</td><td><span class="res ${c.result}">${RES[c.result]}</span></td></tr>`).join('')}</tbody></table></div>
+    <details style="margin-top:6px"><summary>内訳（期間別・確信度別）</summary><table class="closed"><thead><tr><th style="text-align:left">区分</th><th>判定</th><th>的中率</th><th>市場超過</th></tr></thead><tbody>${[['10日',S.by_horizon?.['10']],['20日',S.by_horizon?.['20']],['60日',S.by_horizon?.['60']],['確信度●○○',S.by_confidence?.['1']],['確信度●●○',S.by_confidence?.['2']],['確信度●●●',S.by_confidence?.['3']]].map(([l,v])=>`<tr><td style="text-align:left">${l}</td><td>${v?.closed??0}</td><td>${f1(v?.hit_rate)}</td><td class="${cls(v?.avg_excess)}">${fmtPct(v?.avg_excess)}</td></tr>`).join('')}</tbody></table></details>`:'<p class="empty">判定済みの見解はまだありません。</p>';
+  el.className='';
+  el.innerHTML=tiles+`<div class="ai2"><div><h4>的中率の推移</h4>${trend(hist)}<h4>判定済み（新しい順）</h4>${closedHtml}</div><div><h4>進行中の見解（${open.length}）</h4>${openHtml}</div></div>
+  <p class="meta">採点ルール: 期限の終値が基準比 ±${SCORE?.rule?.hit_pct??1}% 以上なら方向で的中/外れ、それ未満は横ばい。市場比はウォッチリスト全銘柄の同期間平均との差。</p>`;
+}
+function elapsedDays(c){
+  // approximate trading days since entry using LATEST last_date (weekday count)
+  const ld=LATEST.items.find(i=>i.ticker===c.ticker)?.last_date;if(!ld)return 0;
+  let n=0,d=new Date(c.entry_date+'T00:00:00Z'),e=new Date(ld+'T00:00:00Z');
+  while(d<e){d.setUTCDate(d.getUTCDate()+1);const w=d.getUTCDay();if(w!==0&&w!==6)n++;}
+  return n;
 }
 async function load(){
   const bust='?t='+Date.now();
@@ -194,9 +271,10 @@ async function load(){
     const idx=await fetch('data/reports/index.json'+bust).then(r=>r.ok?r.json():[]);
     REPORTS=(await Promise.all(idx.slice(0,30).map(d=>fetch(`data/reports/${d}.json`+bust).then(r=>r.ok?r.json():null).catch(()=>null)))).filter(Boolean);
   }catch(e){REPORTS=[];}
+  try{[CALLS,SCORE]=await Promise.all([fetch('data/calls.json'+bust).then(r=>r.ok?r.json():null),fetch('data/scorecard.json'+bust).then(r=>r.ok?r.json():null)]);}catch(e){CALLS=null;}
   const sel=$('#rsel');sel.innerHTML=REPORTS.map(r=>`<option value="${r.date}">${r.date}</option>`).join('');
   sel.onchange=()=>renderReport(sel.value);
-  renderCards();renderSectors();renderReport(REPORTS[0]?.date);
+  renderCards();renderSectors();renderReport(REPORTS[0]?.date);renderAI();
 }
 document.querySelectorAll('#period button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#period button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.period=b.dataset.p;state.sort={key:b.dataset.p,dir:-1};renderCards();renderSectors();});
 document.querySelectorAll('#market button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#market button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.market=b.dataset.m;renderCards();renderSectors();});
