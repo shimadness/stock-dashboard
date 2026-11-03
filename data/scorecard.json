@@ -1,19 +1,20 @@
 {
- "updated": "2026-11-03T12:47:00+09:00",
+ "updated": "2026-11-03T13:47:16+09:00",
  "rule": {
   "hit_pct": 1.0,
   "benchmark": "watchlist equal-weight",
-  "horizons": [
-   10,
-   20,
-   60
-  ]
+  "tiers": {
+   "short": 10,
+   "mid": 60,
+   "long": 120
+  }
  },
  "summary": {
   "closed": 0,
   "hit": 0,
   "miss": 0,
   "flat": 0,
+  "withdrawn": 0,
   "hit_rate": null,
   "strict_hit_rate": null,
   "avg_signed_ret": null,
@@ -26,6 +27,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -37,11 +39,53 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
     "avg_excess": null,
     "beat_bench_rate": null
+   }
+  },
+  "by_tier": {
+   "short": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "withdrawn": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null,
+    "open": 0
+   },
+   "mid": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "withdrawn": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null,
+    "open": 1
+   },
+   "long": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "withdrawn": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null,
+    "open": 0
    }
   },
   "by_horizon": {
@@ -50,6 +94,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -61,6 +106,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -72,6 +118,19 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
+    "hit_rate": null,
+    "strict_hit_rate": null,
+    "avg_signed_ret": null,
+    "avg_excess": null,
+    "beat_bench_rate": null
+   },
+   "120": {
+    "closed": 0,
+    "hit": 0,
+    "miss": 0,
+    "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -85,6 +144,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -96,6 +156,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -107,6 +168,7 @@
     "hit": 0,
     "miss": 0,
     "flat": 0,
+    "withdrawn": 0,
     "hit_rate": null,
     "strict_hit_rate": null,
     "avg_signed_ret": null,
@@ -119,6 +181,7 @@
    "hit": 0,
    "miss": 0,
    "flat": 0,
+   "withdrawn": 0,
    "hit_rate": null,
    "strict_hit_rate": null,
    "avg_signed_ret": null,

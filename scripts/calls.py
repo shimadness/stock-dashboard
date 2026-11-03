@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """AI stance tracking ("AIの見解"). Stdlib only.
 
-  calls.py add --ticker NVDA --stance bull --horizon 20 --confidence 2 \
+  calls.py add --ticker NVDA --stance bull --tier short --confidence 2 \
                --thesis "..." --invalidation "..."        # open a new call (entry = latest close)
+  calls.py withdraw --id 2026-11-03-NVDA-001 --reason "..."  # close early (invalidation hit); scored on today's close
+  calls.py none --tier long --reason "..."                 # record "no candidate today" for a tier
   calls.py evaluate                                        # close expired calls, refresh scorecard
   calls.py list                                            # print open calls with unrealized return
+
+Tiers (holding period, trading days): short=10, mid=60, long=120. Legacy horizon 20 is scored as mid.
 
 Files: data/calls.json {"calls":[...]}  data/scorecard.json {summary, history[]}
 Result rule (deterministic, never judged by the agent):
@@ -22,8 +26,13 @@ HISTORY = os.path.join(DATA, "history.json")
 WATCHLIST = os.path.join(ROOT, "watchlist.json")
 JST = timezone(timedelta(hours=9))
 HIT_PCT = 1.0
-HORIZONS = (10, 20, 60)
-MAX_OPEN = 8
+TIERS = {"short": 10, "mid": 60, "long": 120}
+HORIZONS = (10, 20, 60, 120)   # 20 = legacy, still scored
+MAX_OPEN_PER_TIER = 3
+
+
+def tier_of(c):
+    return c.get("tier") or {10: "short", 20: "mid", 60: "mid", 120: "long"}.get(c["horizon"], "mid")
 
 
 def today():
@@ -76,8 +85,9 @@ def cmd_add(args):
     names = {c["ticker"]: c["name"] for c in wl["companies"]}
     if args.ticker not in names:
         sys.exit(f"refused: {args.ticker} is not in watchlist.json")
-    if args.horizon not in HORIZONS:
-        sys.exit(f"refused: horizon must be one of {HORIZONS}")
+    if args.tier not in TIERS:
+        sys.exit(f"refused: tier must be one of {list(TIERS)}")
+    horizon = TIERS[args.tier]
     if not (1 <= args.confidence <= 3):
         sys.exit("refused: confidence must be 1..3")
     if len(args.thesis) < 20:
@@ -90,8 +100,9 @@ def cmd_add(args):
     open_calls = [c for c in book["calls"] if c["status"] == "open"]
     if any(c["ticker"] == args.ticker for c in open_calls):
         sys.exit(f"refused: {args.ticker} already has an open call")
-    if len(open_calls) >= MAX_OPEN:
-        sys.exit(f"refused: already {MAX_OPEN} open calls; wait for some to close")
+    same_tier = [c for c in open_calls if tier_of(c) == args.tier]
+    if len(same_tier) >= MAX_OPEN_PER_TIER:
+        sys.exit(f"refused: already {MAX_OPEN_PER_TIER} open {args.tier} calls; wait for some to close or withdraw one")
     d = today()
     entry_date, entry = close_on_or_before(series, d)
     n = len(book["calls"]) + 1
@@ -101,7 +112,8 @@ def cmd_add(args):
         "ticker": args.ticker,
         "name": names[args.ticker],
         "stance": args.stance,
-        "horizon": args.horizon,
+        "tier": args.tier,
+        "horizon": horizon,
         "confidence": args.confidence,
         "entry": round(entry, 4),
         "entry_date": entry_date,
@@ -117,7 +129,17 @@ def cmd_add(args):
         score["history"][-1]["open"] = len(open_calls) + 1
         score["summary"]["open"] = len(open_calls) + 1
         save(SCORE, score)
-    print(f"opened {call['id']} {args.stance} {args.horizon}d entry {entry} ({entry_date})")
+    print(f"opened {call['id']} {args.tier}/{args.stance} {horizon}d entry {entry} ({entry_date})")
+
+
+def score(c, history, tickers, exit_date, exit_px):
+    ret = pct(exit_px, c["entry"])
+    bench = benchmark(history, tickers, c["entry_date"], exit_date)
+    signed = ret if c["stance"] == "bull" else -ret
+    result = "hit" if signed >= HIT_PCT else "miss" if signed <= -HIT_PCT else "flat"
+    excess = None if bench is None else round((ret - bench) if c["stance"] == "bull" else (bench - ret), 2)
+    c.update({"status": "closed", "exit": round(exit_px, 4), "exit_date": exit_date, "ret_pct": ret,
+              "bench_pct": bench, "excess_pct": excess, "result": result, "closed_on": today()})
 
 
 def evaluate_call(c, history, tickers):
@@ -130,25 +152,57 @@ def evaluate_call(c, history, tickers):
     if j >= len(series):
         return False  # horizon not reached yet
     exit_date, exit_px = series[j]
-    ret = pct(exit_px, c["entry"])
-    bench = benchmark(history, tickers, c["entry_date"], exit_date)
-    signed = ret if c["stance"] == "bull" else -ret
-    result = "hit" if signed >= HIT_PCT else "miss" if signed <= -HIT_PCT else "flat"
-    excess = None if bench is None else round((ret - bench) if c["stance"] == "bull" else (bench - ret), 2)
-    c.update({"status": "closed", "exit": round(exit_px, 4), "exit_date": exit_date, "ret_pct": ret,
-              "bench_pct": bench, "excess_pct": excess, "result": result, "closed_on": today()})
+    score(c, history, tickers, exit_date, exit_px)
     return True
+
+
+def cmd_withdraw(args):
+    history = load(HISTORY, {})
+    wl = load(WATCHLIST, {"companies": []})
+    tickers = [c["ticker"] for c in wl["companies"]]
+    book = load(CALLS, {"calls": []})
+    c = next((x for x in book["calls"] if x["id"] == args.id), None)
+    if not c or c["status"] != "open":
+        sys.exit(f"refused: {args.id} is not an open call")
+    if len(args.reason) < 10:
+        sys.exit("refused: reason too short")
+    series = history.get(c["ticker"], [])
+    if not series:
+        sys.exit("refused: no price history")
+    exit_date, exit_px = series[-1]
+    if exit_date == c["entry_date"]:
+        sys.exit("refused: cannot withdraw on the entry day")
+    score(c, history, tickers, exit_date, exit_px)
+    c["withdrawn"] = True
+    c["withdraw_reason"] = args.reason.strip()
+    save(CALLS, book)
+    print(f"withdrawn {c['id']} at {exit_px} ({exit_date}) -> {c['result']} {c['ret_pct']:+.2f}%")
+    cmd_evaluate(args)
+
+
+def cmd_none(args):
+    if args.tier not in TIERS:
+        sys.exit(f"refused: tier must be one of {list(TIERS)}")
+    if len(args.reason) < 10:
+        sys.exit("refused: reason too short")
+    book = load(CALLS, {"calls": []})
+    passes = [p for p in book.get("passes", []) if not (p["date"] == today() and p["tier"] == args.tier)]
+    passes.append({"date": today(), "tier": args.tier, "reason": args.reason.strip()})
+    book["passes"] = passes[-90:]
+    save(CALLS, book)
+    print(f"recorded: no {args.tier} candidate today")
 
 
 def stats(closed):
     hit = sum(1 for c in closed if c["result"] == "hit")
     miss = sum(1 for c in closed if c["result"] == "miss")
     flat = sum(1 for c in closed if c["result"] == "flat")
+    withdrawn = sum(1 for c in closed if c.get("withdrawn"))
     decided = hit + miss
     excess = [c["excess_pct"] for c in closed if c.get("excess_pct") is not None]
     signed = [(c["ret_pct"] if c["stance"] == "bull" else -c["ret_pct"]) for c in closed]
     return {
-        "closed": len(closed), "hit": hit, "miss": miss, "flat": flat,
+        "closed": len(closed), "hit": hit, "miss": miss, "flat": flat, "withdrawn": withdrawn,
         "hit_rate": round(hit / decided * 100, 1) if decided else None,
         "strict_hit_rate": round(hit / len(closed) * 100, 1) if closed else None,
         "avg_signed_ret": round(sum(signed) / len(signed), 2) if signed else None,
@@ -171,6 +225,8 @@ def cmd_evaluate(args):
         **stats(closed),
         "open": len(opened),
         "by_stance": {s: stats([c for c in closed if c["stance"] == s]) for s in ("bull", "bear")},
+        "by_tier": {t: {**stats([c for c in closed if tier_of(c) == t]),
+                        "open": sum(1 for c in opened if tier_of(c) == t)} for t in TIERS},
         "by_horizon": {str(h): stats([c for c in closed if c["horizon"] == h]) for h in HORIZONS},
         "by_confidence": {str(k): stats([c for c in closed if c["confidence"] == k]) for k in (1, 2, 3)},
         "last_30d": stats([c for c in closed if c["exit_date"] >= cutoff]),
@@ -181,7 +237,7 @@ def cmd_evaluate(args):
             "beat_bench_rate": summary["beat_bench_rate"], "open": summary["open"]}
     hist = [h for h in score.get("history", []) if h["date"] != snap["date"]] + [snap]
     save(SCORE, {"updated": datetime.now(tz=JST).isoformat(timespec="seconds"), "rule": {
-        "hit_pct": HIT_PCT, "benchmark": "watchlist equal-weight", "horizons": list(HORIZONS)},
+        "hit_pct": HIT_PCT, "benchmark": "watchlist equal-weight", "tiers": TIERS},
         "summary": summary, "history": hist})
     for c in newly:
         print(f"closed {c['id']}: {c['stance']} {c['ret_pct']:+.2f}% vs bench {c['bench_pct']} -> {c['result']}")
@@ -193,6 +249,9 @@ def cmd_list(args):
     history = load(HISTORY, {})
     book = load(CALLS, {"calls": []})
     opened = [c for c in book["calls"] if c["status"] == "open"]
+    for t in TIERS:
+        n = sum(1 for c in opened if tier_of(c) == t)
+        print(f"{t:5s} ({TIERS[t]:>3}d): {n}/{MAX_OPEN_PER_TIER} open")
     if not opened:
         print("no open calls")
     for c in opened:
@@ -200,7 +259,7 @@ def cmd_list(args):
         dates = [d for d, _ in series]
         elapsed = len(dates) - 1 - dates.index(c["entry_date"]) if c["entry_date"] in dates else "?"
         cur = series[-1][1] if series else None
-        print(f"{c['id']}  {c['stance']:4s} {c['horizon']:>2}d  day {elapsed}/{c['horizon']}  "
+        print(f"{c['id']}  {tier_of(c):5s} {c['stance']:4s} {c['horizon']:>3}d  day {elapsed}/{c['horizon']}  "
               f"entry {c['entry']} now {cur} ({pct(cur, c['entry']):+.2f}%)  conf {c['confidence']}")
         print(f"    thesis: {c['thesis']}")
         print(f"    invalidation: {c['invalidation']}")
@@ -218,11 +277,19 @@ def main():
     a = sub.add_parser("add")
     a.add_argument("--ticker", required=True)
     a.add_argument("--stance", required=True, choices=["bull", "bear"])
-    a.add_argument("--horizon", required=True, type=int)
+    a.add_argument("--tier", required=True, choices=list(TIERS))
     a.add_argument("--confidence", required=True, type=int)
     a.add_argument("--thesis", required=True)
     a.add_argument("--invalidation", required=True)
     a.set_defaults(fn=cmd_add)
+    w = sub.add_parser("withdraw")
+    w.add_argument("--id", required=True)
+    w.add_argument("--reason", required=True)
+    w.set_defaults(fn=cmd_withdraw)
+    n = sub.add_parser("none")
+    n.add_argument("--tier", required=True)
+    n.add_argument("--reason", required=True)
+    n.set_defaults(fn=cmd_none)
     sub.add_parser("evaluate").set_defaults(fn=cmd_evaluate)
     sub.add_parser("list").set_defaults(fn=cmd_list)
     args = ap.parse_args()

@@ -81,6 +81,15 @@ section.ai h2{font-size:15px;margin:0 0 10px;display:flex;flex-wrap:wrap;gap:6px
 .ai2{display:grid;grid-template-columns:1fr;gap:14px}
 @media(min-width:960px){.ai2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .ai h4{margin:8px 0 6px;font-size:13px}
+.tiers{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+@media(min-width:960px){.tiers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tier{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg)}
+.tier h4{margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.tier h4 small{color:var(--muted);font-weight:400}
+.tier .grp{font-size:11px;color:var(--muted);margin:8px 0 2px;font-weight:600}
+.tier .call{background:var(--card);margin:6px 0}
+.pass{font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:8px;padding:6px 8px;margin:6px 0}
+.res.wd{background:var(--chip);color:var(--muted)}
 svg.trend{width:100%;height:120px;display:block}
 .call{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;font-size:13px}
 .call .top{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -148,7 +157,7 @@ footer a{color:var(--accent)}
 </section>
 
 <section class="ai" id="ai">
-  <h2>AIの見解と的中率 <span class="disc">毎朝AIが銘柄ごとに強気/弱気を宣言し、期限到来時にスクリプトが機械的に採点。投資助言ではなく、AIに売買提案を任せられるかの検証記録。</span></h2>
+  <h2>今のポジション提案と的中率 <span class="disc">毎朝AIが短期・中期・長期ごとに買い候補/売り・回避候補を宣言し、期限か撤回時にスクリプトが機械的に採点。投資助言ではなく、AIに売買提案を任せられるかの検証記録。売買の判断と金額はあなた自身で。</span></h2>
   <div id="aibody" class="empty">まだ見解はありません。</div>
 </section>
 
@@ -256,30 +265,38 @@ function trend(hist){
   return`<svg class="trend" viewBox="0 0 ${w} ${h}">${grid}${lab}${ex}<path d="${line('hit_rate')}" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
   <p class="meta">実線: 的中率（横ばい除く） · 点線: 市場（ウォッチリスト平均）に勝った割合</p>`;
 }
+const TIERS=[['short','短期','10営業日・約2週間'],['mid','中期','60営業日・約3ヶ月'],['long','長期','120営業日・約半年']];
+const tierOf=c=>c.tier||({10:'short',20:'mid',60:'mid',120:'long'}[c.horizon]||'mid');
+function callCard(c,px){
+  const cur=px[c.ticker]?.last,u=cur!=null?(cur/c.entry-1)*100:null,su=u==null?null:(c.stance==='bull'?u:-u);
+  const days=elapsedDays(c);
+  return`<div class="call"><div class="top"><b>${esc(c.name)}</b><span class="badge">${esc(c.ticker)}</span><span class="stance ${c.stance}">${c.stance==='bull'?'買い候補':'売り・回避'}</span><span class="badge">確信度 ${'●'.repeat(c.confidence)}${'○'.repeat(3-c.confidence)}</span><span style="margin-left:auto" class="${cls(su)}">含み ${fmtPct(u)}</span></div>
+    <div class="bar"><i style="width:${Math.min(100,days/c.horizon*100)}%"></i></div><div class="meta">${c.date} 宣言 · ${days}/${c.horizon}日経過 · 基準 ${fmtPrice(c.entry,px[c.ticker]?.currency)}</div>
+    <div class="why">${esc(c.thesis)}</div><div class="inv">撤回条件: ${esc(c.invalidation)}</div></div>`;
+}
 function renderAI(){
   const el=$('#aibody');
-  if(!CALLS||!CALLS.calls.length){el.innerHTML='<span class="empty">まだ見解はありません。明朝のルーティンから蓄積されます。</span>';return;}
+  if(!CALLS||(!CALLS.calls.length&&!(CALLS.passes||[]).length)){el.innerHTML='<span class="empty">まだ提案はありません。明朝のルーティンから蓄積されます。</span>';return;}
   const S=SCORE?.summary||{},hist=SCORE?.history||[];
   const px=Object.fromEntries(LATEST.items.map(i=>[i.ticker,i]));
   const open=CALLS.calls.filter(c=>c.status==='open'),closed=CALLS.calls.filter(c=>c.status==='closed').sort((a,b)=>b.exit_date.localeCompare(a.exit_date));
   const f1=v=>v==null?'—':v.toFixed(1)+'%';
+  const latestPass=t=>(CALLS.passes||[]).filter(p=>p.tier===t).sort((a,b)=>b.date.localeCompare(a.date))[0];
   const tiles=`<div class="tiles">
-    <div class="tile"><div class="lbl">的中率</div><div class="val ${S.hit_rate==null?'':S.hit_rate>=50?'up':'down'}">${f1(S.hit_rate)}</div><div class="sub">的中${S.hit??0} / 外れ${S.miss??0} / 横ばい${S.flat??0}</div></div>
+    <div class="tile"><div class="lbl">的中率（全体）</div><div class="val ${S.hit_rate==null?'':S.hit_rate>=50?'up':'down'}">${f1(S.hit_rate)}</div><div class="sub">的中${S.hit??0} / 外れ${S.miss??0} / 横ばい${S.flat??0}${S.withdrawn?` / 撤回${S.withdrawn}`:''}</div></div>
     <div class="tile"><div class="lbl">市場超過リターン（平均）</div><div class="val ${cls(S.avg_excess)}">${fmtPct(S.avg_excess)}</div><div class="sub">市場に勝った割合 ${f1(S.beat_bench_rate)}</div></div>
-    <div class="tile"><div class="lbl">直近30日の的中率</div><div class="val">${f1(S.last_30d?.hit_rate)}</div><div class="sub">判定 ${S.last_30d?.closed??0}件</div></div>
-    <div class="tile"><div class="lbl">進行中 / 判定済</div><div class="val">${open.length} / ${closed.length}</div><div class="sub">強気 ${f1(S.by_stance?.bull?.hit_rate)} · 弱気 ${f1(S.by_stance?.bear?.hit_rate)}</div></div>
+    ${TIERS.map(([t,l])=>{const v=S.by_tier?.[t];return`<div class="tile"><div class="lbl">${l}の的中率</div><div class="val ${v?.hit_rate==null?'':v.hit_rate>=50?'up':'down'}">${f1(v?.hit_rate)}</div><div class="sub">判定${v?.closed??0}件 · 市場超過 ${fmtPct(v?.avg_excess)}</div></div>`;}).join('')}
   </div>`;
-  const openHtml=open.length?open.map(c=>{
-    const cur=px[c.ticker]?.last,u=cur!=null?(cur/c.entry-1)*100:null,su=u==null?null:(c.stance==='bull'?u:-u);
-    const days=c.elapsed??elapsedDays(c);
-    return`<div class="call"><div class="top"><b>${esc(c.name)}</b><span class="badge">${esc(c.ticker)}</span><span class="stance ${c.stance}">${STANCE[c.stance]}</span><span class="badge">${c.horizon}営業日</span><span class="badge">確信度 ${'●'.repeat(c.confidence)}${'○'.repeat(3-c.confidence)}</span><span style="margin-left:auto" class="${cls(su)}">含み ${fmtPct(u)}</span></div>
-    <div class="bar"><i style="width:${Math.min(100,days/c.horizon*100)}%"></i></div><div class="meta">${c.date} 宣言 · ${days}/${c.horizon}日経過 · 基準 ${fmtPrice(c.entry,px[c.ticker]?.currency)}</div>
-    <div class="why">${esc(c.thesis)}</div><div class="inv">撤回条件: ${esc(c.invalidation)}</div></div>`;}).join(''):'<p class="empty">進行中の見解はありません。</p>';
-  const closedHtml=closed.length?`<div style="overflow-x:auto"><table class="closed"><thead><tr><th>宣言</th><th>銘柄</th><th>見解</th><th>期間</th><th>リターン</th><th>市場比</th><th>結果</th></tr></thead><tbody>${closed.slice(0,20).map(c=>`<tr><td>${c.date.slice(2)}</td><td style="text-align:left">${esc(c.name)}<small style="color:var(--muted)"> ${esc(c.ticker)}</small></td><td><span class="stance ${c.stance}">${STANCE[c.stance]}</span></td><td>${c.horizon}日</td><td class="${cls(c.ret_pct)}">${fmtPct(c.ret_pct)}</td><td class="${cls(c.excess_pct)}">${fmtPct(c.excess_pct)}</td><td><span class="res ${c.result}">${RES[c.result]}</span></td></tr>`).join('')}</tbody></table></div>
-    <details style="margin-top:6px"><summary>内訳（期間別・確信度別）</summary><table class="closed"><thead><tr><th style="text-align:left">区分</th><th>判定</th><th>的中率</th><th>市場超過</th></tr></thead><tbody>${[['10日',S.by_horizon?.['10']],['20日',S.by_horizon?.['20']],['60日',S.by_horizon?.['60']],['確信度●○○',S.by_confidence?.['1']],['確信度●●○',S.by_confidence?.['2']],['確信度●●●',S.by_confidence?.['3']]].map(([l,v])=>`<tr><td style="text-align:left">${l}</td><td>${v?.closed??0}</td><td>${f1(v?.hit_rate)}</td><td class="${cls(v?.avg_excess)}">${fmtPct(v?.avg_excess)}</td></tr>`).join('')}</tbody></table></details>`:'<p class="empty">判定済みの見解はまだありません。</p>';
+  const tiersHtml=`<div class="tiers">${TIERS.map(([t,l,d])=>{
+    const xs=open.filter(c=>tierOf(c)===t),bulls=xs.filter(c=>c.stance==='bull'),bears=xs.filter(c=>c.stance==='bear'),ps=latestPass(t);
+    const body=xs.length?`${bulls.length?`<div class="grp">買い候補</div>${bulls.map(c=>callCard(c,px)).join('')}`:''}${bears.length?`<div class="grp">売り・回避候補</div>${bears.map(c=>callCard(c,px)).join('')}`:''}`:'';
+    const pass=ps&&(!xs.length||ps.date===LATEST.generated_date)?`<div class="pass">${ps.date} 該当なし: ${esc(ps.reason)}</div>`:'';
+    return`<div class="tier"><h4>${l} <small>${d}</small><span class="badge" style="margin-left:auto">${xs.length}/3</span></h4>${body}${pass}${!xs.length&&!pass?'<p class="empty">候補なし</p>':''}</div>`;}).join('')}</div>`;
+  const closedHtml=closed.length?`<div style="overflow-x:auto"><table class="closed"><thead><tr><th>宣言</th><th>銘柄</th><th>段</th><th>見解</th><th>リターン</th><th>市場比</th><th>結果</th></tr></thead><tbody>${closed.slice(0,25).map(c=>`<tr><td>${c.date.slice(2)}</td><td style="text-align:left">${esc(c.name)}<small style="color:var(--muted)"> ${esc(c.ticker)}</small></td><td>${(TIERS.find(x=>x[0]===tierOf(c))||[])[1]||''}</td><td><span class="stance ${c.stance}">${c.stance==='bull'?'買い':'売り'}</span></td><td class="${cls(c.ret_pct)}">${fmtPct(c.ret_pct)}</td><td class="${cls(c.excess_pct)}">${fmtPct(c.excess_pct)}</td><td><span class="res ${c.result}">${RES[c.result]}</span>${c.withdrawn?`<span class="res wd" title="${esc(c.withdraw_reason||'')}">撤回</span>`:''}</td></tr>`).join('')}</tbody></table></div>
+    <details style="margin-top:6px"><summary>内訳（確信度別）</summary><table class="closed"><thead><tr><th style="text-align:left">区分</th><th>判定</th><th>的中率</th><th>市場超過</th></tr></thead><tbody>${[['確信度●○○',S.by_confidence?.['1']],['確信度●●○',S.by_confidence?.['2']],['確信度●●●',S.by_confidence?.['3']]].map(([l,v])=>`<tr><td style="text-align:left">${l}</td><td>${v?.closed??0}</td><td>${f1(v?.hit_rate)}</td><td class="${cls(v?.avg_excess)}">${fmtPct(v?.avg_excess)}</td></tr>`).join('')}</tbody></table></details>`:'<p class="empty">判定済みの提案はまだありません。</p>';
   el.className='';
-  el.innerHTML=tiles+`<div class="ai2"><div><h4>的中率の推移</h4>${trend(hist)}<h4>判定済み（新しい順）</h4>${closedHtml}</div><div><h4>進行中の見解（${open.length}）</h4>${openHtml}</div></div>
-  <p class="meta">採点ルール: 期限の終値が基準比 ±${SCORE?.rule?.hit_pct??1}% 以上なら方向で的中/外れ、それ未満は横ばい。市場比はウォッチリスト全銘柄の同期間平均との差。</p>`;
+  el.innerHTML=tiles+tiersHtml+`<div class="ai2"><div><h4>的中率の推移</h4>${trend(hist)}</div><div><h4>判定済み（新しい順）</h4>${closedHtml}</div></div>
+  <p class="meta">採点ルール: 期限または撤回日の終値が基準比 ±${SCORE?.rule?.hit_pct??1}% 以上なら方向で的中/外れ、それ未満は横ばい。撤回は撤回日の終値で採点。市場比はウォッチリスト全銘柄の同期間平均との差。</p>`;
 }
 function elapsedDays(c){
   // approximate trading days since entry using LATEST last_date (weekday count)
