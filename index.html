@@ -94,6 +94,27 @@ svg.trend{width:100%;height:120px;display:block}
 .res{font-size:11px;padding:1px 7px;border-radius:999px;font-weight:600}
 .res.hit{background:var(--up-bg);color:var(--up)}.res.miss{background:var(--down-bg);color:var(--down)}.res.flat{background:var(--chip);color:var(--muted)}
 table.closed th,table.closed td{padding:5px 8px;font-size:12px}
+
+/* sector index chart */
+section.idx{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:18px}
+section.idx h2{font-size:15px;margin:0 0 8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+svg.idx{width:100%;height:260px;display:block;touch-action:none}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:8px;font-size:12px}
+.legend span{display:inline-flex;align-items:center;gap:5px;cursor:pointer;padding:2px 6px;border-radius:6px;user-select:none}
+.legend span.off{opacity:.35}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.legend b{font-variant-numeric:tabular-nums}
+.hint{font-size:12px;color:var(--muted);min-height:18px;margin-top:4px;font-variant-numeric:tabular-nums}
+td.name{cursor:pointer}td.name:hover{color:var(--accent)}
+/* ticker modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.on{display:flex}
+.mbox{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;width:min(820px,100%);max-height:92vh;overflow:auto;padding:16px}
+.mbox h3{margin:0 0 4px;font-size:17px;display:flex;align-items:center;gap:8px}
+.mbox .x{margin-left:auto;border:0;background:var(--chip);color:var(--ink);border-radius:999px;width:28px;height:28px;cursor:pointer;font-size:16px}
+svg.big{width:100%;height:300px;display:block;touch-action:none}
+.kv{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:6px 0}
+.kv b{color:var(--ink);font-variant-numeric:tabular-nums}
 footer{color:var(--muted);font-size:12px;margin:24px 0 8px;text-align:center}
 footer a{color:var(--accent)}
 @media(max-width:640px){
@@ -120,6 +141,12 @@ footer a{color:var(--accent)}
 
 <div class="cards" id="cards"></div>
 
+<section class="idx" id="idx">
+  <h2><span>業界インデックス比較 <span class="disc">各業界を期間の初日=100に揃えた等加重指数</span></span>
+    <div class="seg" id="idxwin"><button data-w="63" class="on">3ヶ月</button><button data-w="126">6ヶ月</button><button data-w="252">1年</button></div></h2>
+  <div id="idxbody" class="empty">読み込み中…</div>
+</section>
+
 <section class="ai" id="ai">
   <h2>AIの見解と的中率 <span class="disc">毎朝AIが銘柄ごとに強気/弱気を宣言し、期限到来時にスクリプトが機械的に採点。投資助言ではなく、AIに売買提案を任せられるかの検証記録。</span></h2>
   <div id="aibody" class="empty">まだ見解はありません。</div>
@@ -138,6 +165,8 @@ footer a{color:var(--accent)}
     </div>
   </aside>
 </div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="mbox" id="mbox"></div></div>
 
 <footer>データ: Yahoo Finance（終値ベース・約15分遅延）／毎朝7時JSTに自動更新 · <a href="https://github.com/shimadness/stock-dashboard">GitHub</a></footer>
 </div>
@@ -186,7 +215,7 @@ function renderSectors(){
     return`<section class="sector" id="sec-${s.id}"><h2>${s.label}<span class="avg ${cls(a)}">${PERIODS[p]}平均 ${fmtPct(a)}</span></h2>
     <div style="overflow-x:auto"><table><thead><tr>${cols.map(([k,l])=>`<th data-k="${k}" class="${k===key?'sorted':''}">${l}${k===key?(dir<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead><tbody>
     ${xs.map(i=>`<tr class="${i.stale?'stale':''}" title="${i.stale?'取得失敗・前回値':''}">
-      <td class="name">${i.core?'<span class="star">★</span> ':''}${i.name}<span class="badge">${WL.markets[i.market]}</span><small>${i.ticker}${i.last_date?' · '+i.last_date.slice(5):''}</small></td>
+      <td class="name" onclick="openModal('${i.ticker}')">${i.core?'<span class="star">★</span> ':''}${i.name}<span class="badge">${WL.markets[i.market]}</span><small>${i.ticker}${i.last_date?' · '+i.last_date.slice(5):''}</small></td>
       <td>${fmtPrice(i.last,i.currency)}<span class="badge">${i.currency||''}</span></td>
       ${['chg_1d','chg_5d','chg_1m','chg_3m','chg_ytd'].map(k=>`<td class="pct ${cls(i[k])} ${k===p&&i[k]===hi?'hi':''} ${k===p&&i[k]===lo?'lo':''}">${fmtPct(i[k])}</td>`).join('')}
       <td class="pct ${cls(i.from_high)}">${fmtPct(i.from_high)}</td>
@@ -259,11 +288,97 @@ function elapsedDays(c){
   while(d<e){d.setUTCDate(d.getUTCDate()+1);const w=d.getUTCDay();if(w!==0&&w!==6)n++;}
   return n;
 }
+
+/* ---------- long-range charts (history.json, loaded once on demand) ---------- */
+let HIST=null,idxState={win:63,off:new Set()};
+const PAL=['#2563eb','#d97706','#0f9d58','#d93025','#7c3aed','#0891b2','#db2777','#65a30d','#f59e0b','#475569'];
+async function hist(){if(!HIST)HIST=await fetch('data/history.json?t='+Date.now()).then(r=>r.json());return HIST;}
+function lineChart(series,opts){
+  // series: [{name,color,pts:[[date,val],...]}] (same date axis assumed per series), opts:{w,h,fmt,base,hl}
+  const w=opts.w||800,h=opts.h||260,pl=44,pr=10,pt=10,pb=22,iw=w-pl-pr,ih=h-pt-pb;
+  const all=series.flatMap(s=>s.pts.map(p=>p[1])).filter(v=>v!=null);
+  if(!all.length)return'';
+  let lo=Math.min(...all),hi=Math.max(...all);if(opts.base!=null){lo=Math.min(lo,opts.base);hi=Math.max(hi,opts.base);}
+  const pad=(hi-lo||1)*.05;lo-=pad;hi+=pad;
+  const n=Math.max(...series.map(s=>s.pts.length));
+  const x=i=>pl+i/(n-1)*iw,y=v=>pt+ih-(v-lo)/(hi-lo)*ih;
+  const ticks=5,gl=[];for(let k=0;k<=ticks;k++){const v=lo+(hi-lo)*k/ticks;gl.push(`<line x1="${pl}" x2="${w-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${pl-5}" y="${y(v)+4}" font-size="10" text-anchor="end" fill="var(--muted)">${opts.fmt(v)}</text>`);}
+  const dates=series[0].pts.map(p=>p[0]);
+  const xl=[0,Math.floor((n-1)/2),n-1].map(i=>`<text x="${x(i)}" y="${h-6}" font-size="10" text-anchor="${i===0?'start':i===n-1?'end':'middle'}" fill="var(--muted)">${dates[i]||''}</text>`);
+  const basel=opts.base!=null?`<line x1="${pl}" x2="${w-pr}" y1="${y(opts.base)}" y2="${y(opts.base)}" stroke="var(--muted)" stroke-dasharray="3 3"/>`:'';
+  const hl=(opts.hl||[]).map(v=>`<line x1="${pl}" x2="${w-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--flat)" stroke-dasharray="2 4" opacity=".6"/>`).join('');
+  const paths=series.map(s=>`<path d="${s.pts.map((p,i)=>p[1]==null?'':(i&&s.pts[i-1][1]!=null?'L':'M')+x(i).toFixed(1)+','+y(p[1]).toFixed(1)).join(' ')}" fill="none" stroke="${s.color}" stroke-width="${s.width||1.8}" stroke-linejoin="round"/>`).join('');
+  return{svg:`${gl.join('')}${xl.join('')}${basel}${hl}${paths}<line id="${opts.id}-cur" x1="0" x2="0" y1="${pt}" y2="${pt+ih}" stroke="var(--muted)" opacity="0" />`,x,n,pl,iw};
+}
+function attachHover(svgEl,chart,dates,onIdx){
+  const cur=svgEl.querySelector('line[id$="-cur"]');
+  const move=e=>{const r=svgEl.getBoundingClientRect();const vb=svgEl.viewBox.baseVal;const px=(e.clientX-r.left)/r.width*vb.width;
+    let i=Math.round((px-chart.pl)/chart.iw*(chart.n-1));i=Math.max(0,Math.min(chart.n-1,i));cur.setAttribute('x1',chart.x(i));cur.setAttribute('x2',chart.x(i));cur.setAttribute('opacity','.7');onIdx(i);};
+  svgEl.addEventListener('pointermove',move);svgEl.addEventListener('pointerleave',()=>{cur.setAttribute('opacity','0');onIdx(null);});
+}
+function unionDates(tickers,H){const set=new Set();tickers.forEach(t=>(H[t]||[]).forEach(p=>set.add(p[0])));return[...set].sort();}
+function ffill(t,dates,H){const m=new Map(H[t]||[]);let last=null;return dates.map(d=>{if(m.has(d))last=m.get(d);return last;});}
+async function renderIdx(){
+  const H=await hist();const el=$('#idxbody');
+  const items=visible();
+  const tickers=items.map(i=>i.ticker).filter(t=>H[t]);
+  if(!tickers.length){el.innerHTML='<span class="empty">データがありません。</span>';return;}
+  const datesAll=unionDates(tickers,H);const dates=datesAll.slice(-idxState.win-1);
+  const series=[];
+  WL.sectors.forEach((sec,si)=>{
+    const ts=items.filter(i=>i.sector===sec.id).map(i=>i.ticker).filter(t=>H[t]);if(!ts.length)return;
+    const rows=ts.map(t=>ffill(t,dates,H));
+    // base = first date where every ticker has a value
+    let b=0;while(b<dates.length&&rows.some(r=>r[b]==null))b++;if(b>=dates.length-1)return;
+    const pts=dates.map((d,i)=>[d,i<b?null:rows.reduce((a,r)=>a+r[i]/r[b],0)/rows.length*100]);
+    series.push({id:sec.id,name:sec.label,color:PAL[si%PAL.length],pts,last:pts[pts.length-1][1],n:ts.length});
+  });
+  // equal-weight all-watchlist line
+  {const rows=tickers.map(t=>ffill(t,dates,H));let b=0;while(b<dates.length&&rows.some(r=>r[b]==null))b++;
+   if(b<dates.length-1)series.push({id:'ALL',name:'全体平均',color:'var(--muted)',width:2.4,pts:dates.map((d,i)=>[d,i<b?null:rows.reduce((a,r)=>a+r[i]/r[b],0)/rows.length*100]),last:null});}
+  series.forEach(s=>{s.last=s.pts[s.pts.length-1][1];});
+  const shown=series.filter(s=>!idxState.off.has(s.id));
+  const c=lineChart(shown.length?shown:series.slice(-1),{w:800,h:260,fmt:v=>v.toFixed(0),base:100,id:'idx'});
+  el.className='';
+  el.innerHTML=`<svg class="idx" viewBox="0 0 800 260" id="idxsvg">${c.svg}</svg><div class="hint" id="idxhint"></div>
+   <div class="legend">${series.map(s=>`<span data-id="${s.id}" class="${idxState.off.has(s.id)?'off':''}"><i style="background:${s.color}"></i>${s.name}${s.n?`<small style="color:var(--muted)">(${s.n})</small>`:''} <b class="${cls(s.last-100)}">${fmtPct(s.last-100)}</b></span>`).join('')}</div>`;
+  el.querySelectorAll('.legend span').forEach(sp=>sp.onclick=()=>{const id=sp.dataset.id;idxState.off.has(id)?idxState.off.delete(id):idxState.off.add(id);renderIdx();});
+  attachHover($('#idxsvg'),c,dates,i=>{$('#idxhint').textContent=i==null?'':dates[i]+'  '+shown.map(s=>s.pts[i][1]==null?'':`${s.name} ${fmtPct(s.pts[i][1]-100)}`).filter(Boolean).join(' · ');});
+}
+document.querySelectorAll('#idxwin button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#idxwin button').forEach(x=>x.classList.remove('on'));b.classList.add('on');idxState.win=+b.dataset.w;renderIdx();});
+
+let modalWin=252;
+async function openModal(ticker){
+  const H=await hist();const it=LATEST.items.find(i=>i.ticker===ticker);const pts=(H[ticker]||[]);
+  if(!it||pts.length<2)return;
+  const m=$('#modal'),box=$('#mbox');m.classList.add('on');
+  const draw=()=>{
+    const p=pts.slice(-modalWin-1);const vals=p.map(x=>x[1]);const hi=Math.max(...vals),lo=Math.min(...vals);
+    const first=vals[0],last=vals[vals.length-1];
+    const ma=k=>vals.map((_,i)=>i<k-1?null:vals.slice(i-k+1,i+1).reduce((a,b)=>a+b,0)/k);
+    const m50=ma(50),m200=ma(200);
+    box.innerHTML=`<h3>${it.core?'<span class="star">★</span>':''}${it.name}<span class="badge">${ticker}</span><span class="badge">${WL.markets[it.market]}</span>
+      <div class="seg" style="margin-left:8px"><button data-w="63" class="${modalWin===63?'on':''}">3ヶ月</button><button data-w="126" class="${modalWin===126?'on':''}">6ヶ月</button><button data-w="252" class="${modalWin===252?'on':''}">1年</button></div>
+      <button class="x" onclick="closeModal()">×</button></h3>
+      <div class="kv"><span>終値 <b>${fmtPrice(last,it.currency)} ${it.currency||''}</b></span><span>期間騰落 <b class="${cls(last/first*100-100)}">${fmtPct(last/first*100-100)}</b></span><span>期間高値 <b>${fmtPrice(hi,it.currency)}</b></span><span>期間安値 <b>${fmtPrice(lo,it.currency)}</b></span><span>52週高値比 <b class="${cls(it.from_high)}">${fmtPct(it.from_high)}</b></span></div>
+      <svg class="big" viewBox="0 0 800 300" id="bigsvg"></svg><div class="hint" id="bighint"></div>
+      <div class="legend"><span><i style="background:${last>=first?'var(--up)':'var(--down)'}"></i>終値</span><span><i style="background:#f59e0b"></i>50日移動平均</span><span><i style="background:#7c3aed"></i>200日移動平均</span><span><i style="background:var(--flat);height:1px"></i>52週高値・安値</span></div>
+      ${it.note?`<p class="meta" style="margin-top:8px">${esc(it.note)}</p>`:''}`;
+    const svg=$('#bigsvg');
+    const c2=lineChart([{name:it.name,color:last>=first?'var(--up)':'var(--down)',pts:p,width:2},{name:'50',color:'#f59e0b',pts:p.map((x,i)=>[x[0],m50[i]]),width:1},{name:'200',color:'#7c3aed',pts:p.map((x,i)=>[x[0],m200[i]]),width:1}],{w:800,h:300,fmt:v=>fmtPrice(v,it.currency),hl:[it.high_52w,it.low_52w].filter(v=>v!=null),id:'big'});
+    svg.innerHTML=c2.svg;
+    attachHover(svg,c2,p.map(x=>x[0]),i=>{$('#bighint').textContent=i==null?'':`${p[i][0]}  終値 ${fmtPrice(p[i][1],it.currency)}${m50[i]!=null?`  50日線 ${fmtPrice(m50[i],it.currency)}`:''}${m200[i]!=null?`  200日線 ${fmtPrice(m200[i],it.currency)}`:''}`;});
+    box.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{modalWin=+b.dataset.w;draw();});
+  };
+  draw();
+}
+function closeModal(){$('#modal').classList.remove('on');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 async function load(){
   const bust='?t='+Date.now();
   [WL,LATEST]=await Promise.all([fetch('watchlist.json'+bust).then(r=>r.json()),fetch('data/latest.json'+bust).then(r=>r.json())]);
   const coreMap=Object.fromEntries(WL.companies.map(c=>[c.ticker,c]));
-  LATEST.items.forEach(i=>{i.core=!!coreMap[i.ticker]?.core;});
+  LATEST.items.forEach(i=>{i.core=!!coreMap[i.ticker]?.core;i.note=coreMap[i.ticker]?.note;});
   $('#count').textContent=`${LATEST.items.length}社`;
   const stale=LATEST.items.filter(i=>i.stale).length;
   $('#meta').textContent=`更新 ${LATEST.generated_at.replace('T',' ').slice(0,16)} JST${stale?` · 取得失敗 ${stale}件`:''}`;
@@ -274,10 +389,10 @@ async function load(){
   try{[CALLS,SCORE]=await Promise.all([fetch('data/calls.json'+bust).then(r=>r.ok?r.json():null),fetch('data/scorecard.json'+bust).then(r=>r.ok?r.json():null)]);}catch(e){CALLS=null;}
   const sel=$('#rsel');sel.innerHTML=REPORTS.map(r=>`<option value="${r.date}">${r.date}</option>`).join('');
   sel.onchange=()=>renderReport(sel.value);
-  renderCards();renderSectors();renderReport(REPORTS[0]?.date);renderAI();
+  renderCards();renderSectors();renderReport(REPORTS[0]?.date);renderAI();renderIdx().catch(e=>{$('#idxbody').textContent='読み込みエラー: '+e.message;});
 }
 document.querySelectorAll('#period button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#period button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.period=b.dataset.p;state.sort={key:b.dataset.p,dir:-1};renderCards();renderSectors();});
-document.querySelectorAll('#market button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#market button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.market=b.dataset.m;renderCards();renderSectors();});
+document.querySelectorAll('#market button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#market button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.market=b.dataset.m;renderCards();renderSectors();renderIdx();});
 load().catch(e=>{$('#meta').textContent='読み込みエラー: '+e.message;});
 </script>
 </body>
