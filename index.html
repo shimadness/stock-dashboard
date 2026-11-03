@@ -126,8 +126,13 @@ svg.big{width:100%;height:300px;display:block;touch-action:none}
 .kv b{color:var(--ink);font-variant-numeric:tabular-nums}
 footer{color:var(--muted);font-size:12px;margin:24px 0 8px;text-align:center}
 footer a{color:var(--accent)}
+/* when the sector column is narrower than the full table, keep only the selected period column */
+#sectors.narrow th.per:not(.sel),#sectors.narrow td.per:not(.sel){display:none}
+#sectors.narrow svg.spark{width:110px}
+th.sel{color:var(--accent)}
 @media(max-width:640px){
-  th:nth-child(5),td:nth-child(5),th:nth-child(6),td:nth-child(6),th:nth-child(8),td:nth-child(8){display:none}
+  th.fh,td.fh{display:none}
+  #sectors.narrow svg.spark{width:84px}
   .card .val{font-size:18px}
 }
 </style>
@@ -212,7 +217,7 @@ function renderCards(){
 }
 function renderSectors(){
   const p=state.period,{key,dir}=state.sort,items=visible();
-  const cols=[['name','銘柄'],['last','株価'],['chg_1d','1日'],['chg_5d','5日'],['chg_1m','1ヶ月'],['chg_3m','3ヶ月'],['chg_ytd','年初来'],['from_high','52週高値比'],['spark','30日']];
+  const cols=[['name','銘柄'],['last','株価'],['chg_1d','1日'],['chg_5d','5日'],['chg_1m','1ヶ月'],['chg_3m','3ヶ月'],['chg_ytd','年初来'],['from_high','52週高値比'],['spark','30日推移']];
   $('#sectors').innerHTML=WL.sectors.map(s=>{
     let xs=items.filter(i=>i.sector===s.id);if(!xs.length)return'';
     xs=xs.slice().sort((a,b)=>{
@@ -222,12 +227,12 @@ function renderSectors(){
     const vals=xs.map(i=>i[p]).filter(v=>v!=null);
     const hi=vals.length>2?[...vals].sort((x,y)=>y-x)[0]:null,lo=vals.length>2?[...vals].sort((x,y)=>x-y)[0]:null;
     return`<section class="sector" id="sec-${s.id}"><h2>${s.label}<span class="avg ${cls(a)}">${PERIODS[p]}平均 ${fmtPct(a)}</span></h2>
-    <div style="overflow-x:auto"><table><thead><tr>${cols.map(([k,l])=>`<th data-k="${k}" class="${k===key?'sorted':''}">${l}${k===key?(dir<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead><tbody>
+    <div style="overflow-x:auto"><table><thead><tr>${cols.map(([k,l])=>`<th data-k="${k}" class="${k===key?'sorted':''} ${k.startsWith('chg_')?'per':''} ${k===p?'sel':''} ${k==='from_high'?'fh':''}">${l}${k===key?(dir<0?' ▼':' ▲'):''}</th>`).join('')}</tr></thead><tbody>
     ${xs.map(i=>`<tr class="${i.stale?'stale':''}" title="${i.stale?'取得失敗・前回値':''}">
       <td class="name" onclick="openModal('${i.ticker}')">${i.core?'<span class="star">★</span> ':''}${i.name}<span class="badge">${WL.markets[i.market]}</span><small>${i.ticker}${i.last_date?' · '+i.last_date.slice(5):''}</small></td>
       <td>${fmtPrice(i.last,i.currency)}<span class="badge">${i.currency||''}</span></td>
-      ${['chg_1d','chg_5d','chg_1m','chg_3m','chg_ytd'].map(k=>`<td class="pct ${cls(i[k])} ${k===p&&i[k]===hi?'hi':''} ${k===p&&i[k]===lo?'lo':''}">${fmtPct(i[k])}</td>`).join('')}
-      <td class="pct ${cls(i.from_high)}">${fmtPct(i.from_high)}</td>
+      ${['chg_1d','chg_5d','chg_1m','chg_3m','chg_ytd'].map(k=>`<td class="pct per ${k===p?'sel':''} ${cls(i[k])} ${k===p&&i[k]===hi?'hi':''} ${k===p&&i[k]===lo?'lo':''}">${fmtPct(i[k])}</td>`).join('')}
+      <td class="pct fh ${cls(i.from_high)}">${fmtPct(i.from_high)}</td>
       <td>${spark(i.spark)}</td></tr>`).join('')}
     </tbody></table></div></section>`;
   }).join('');
@@ -408,6 +413,7 @@ async function load(){
   sel.onchange=()=>renderReport(sel.value);
   renderCards();renderSectors();renderReport(REPORTS[0]?.date);renderAI();renderIdx().catch(e=>{$('#idxbody').textContent='読み込みエラー: '+e.message;});
 }
+new ResizeObserver(es=>{const w=es[0].contentRect.width;$('#sectors').classList.toggle('narrow',w<1000);}).observe($('#sectors'));
 document.querySelectorAll('#period button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#period button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.period=b.dataset.p;state.sort={key:b.dataset.p,dir:-1};renderCards();renderSectors();});
 document.querySelectorAll('#market button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#market button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state.market=b.dataset.m;renderCards();renderSectors();renderIdx();});
 load().catch(e=>{$('#meta').textContent='読み込みエラー: '+e.message;});
