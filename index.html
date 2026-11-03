@@ -28,7 +28,7 @@ header{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-con
 h1{font-size:20px;margin:0;letter-spacing:.02em}
 h1 small{font-weight:400;color:var(--muted);font-size:12px;margin-left:8px}
 .meta{color:var(--muted);font-size:12px}
-.controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 -16px 16px;padding:8px 16px;position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
 .seg button{border:0;background:transparent;color:var(--muted);padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
 .seg button.on{background:var(--accent);color:#fff}
