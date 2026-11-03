@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-04",
+  "kind": "daily",
+  "headline": "AI株が中間選挙前に反発、AMDは引け後の好決算で一段高",
+  "market_summary": "11/3の米国市場はナスダックが5営業日ぶりに反発し、ダウは小幅安だった。調整局面入りした直後で、売られ過ぎたAI半導体とAIインフラ株に買い戻しが入り、フィラデルフィア半導体指数も大きく上げた。前日まで最も売られたネオクラウド、電力、データセンター機器が反発を主導した一方、メモリ価格上昇を警告したAppleと、決算後のShopifyは下げた。core 3社ではNVIDIAが4日続落から反発し、Cloudflareも11/5の決算を前に買い戻された。Akamaiは横ばいにとどまった。日本市場は文化の日で休場。",
+  "movers": [
+    {"ticker": "AMD", "direction": "up", "comment": "決算前に買われ、引け後に発表した7-9月期はデータセンター売上がほぼ倍増し、10-12月期の売上見通しも市場予想を上回った。時間外ではさらに上昇したと報じられている。"},
+    {"ticker": "CRWV", "direction": "up", "comment": "Oracleの資金調達報道で売られた反動で買い戻された。AIインフラの債務懸念自体は解消していない。"},
+    {"ticker": "NBIS", "direction": "up", "comment": "ネオクラウド全体の買い戻しに連れて反発した。"},
+    {"ticker": "CRDO", "direction": "up", "comment": "光・銅の接続部品株が半導体の反発で買い戻され、直近の下げが大きかった分、戻りも大きかった。"},
+    {"ticker": "BE", "direction": "up", "comment": "データセンター向け電源の需要見通しが再び評価され、電力株の反発の先頭に立った。"},
+    {"ticker": "ETN", "direction": "up", "comment": "Vertivの好決算以降、データセンター向け電力機器の受注期待が続いており、AI株の反発で買いが戻った。"},
+    {"ticker": "SHOP", "direction": "down", "comment": "7-9月期は利益が予想を上回り流通総額も伸びたが、売上は予想並みで、目先の投資拡大とAI収益化の時期の不透明さが嫌気されたとの報道。"},
+    {"ticker": "000660.KS", "direction": "down", "comment": "前日の米ハイテク売りを受けた外国人売りが韓国の半導体2強に集中した。米国の反発はこの後で、翌日の戻りが焦点。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "米国はAIチップ中心に反発した一方、時差のある韓国は前日の米国安を受けて下げ、明暗が分かれた。"},
+    {"sector": "hyper", "note": "Oracleとネオクラウドが大きく買い戻されたが、資金調達懸念で売られた分の戻りにとどまる。"},
+    {"sector": "power", "note": "Bloom Energy、GE Vernova、Vistraなどデータセンター電力関連が揃って上昇した。"},
+    {"sector": "dcinfra", "note": "Vertiv、Eaton、Celestica、Dellが上げ、AIサーバー・電源機器の売られ過ぎが修正された。"},
+    {"sector": "apps", "note": "Appleがメモリ調達コストの上昇継続を警告して下げ、Shopifyも決算後に売られた。"}
+  ],
+  "suggestions": [
+    {"name": "キオクシアホールディングス", "ticker": "285A.T", "sector": "semi", "reason": "Appleがメモリコストの上昇継続を警告し、Sandiskが大きく上げた。NAND価格上昇の恩恵を受ける日本の純粋なメモリ銘柄として、5日の東京市場の反応を見る価値がある。"},
+    {"name": "Seagate Technology", "ticker": "STX", "sector": "dcinfra", "reason": "Western DigitalとSandiskが反発し、AIデータ保存需要によるストレージ価格の上昇が再評価されている。HDD側の需給と価格を確かめる比較対象になる。"}
+  ],
+  "watch_next": [
+    "AMDの決算翌日の値動きと、NVIDIA・Broadcomなど他のAI半導体への波及",
+    "米中間選挙の結果と、関税・半導体規制を巡る政策見通しへの市場の反応",
+    "CloudflareとAkamaiの決算（ともに11/5引け後）、Lumentumの決算（11/5引け後）",
+    "Oracleの資金調達の規模と株式発行の有無"
+  ],
+  "ai_review": "",
+  "data_quality": "ok（日本株は11/3が祝日休場のため11/2終値）"
+}

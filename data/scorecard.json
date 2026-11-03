@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T13:49:57+09:00",
+ "updated": "2026-11-04T07:03:50+09:00",
  "rule": {
   "hit_pct": 1.0,
   "benchmark": "watchlist equal-weight",
@@ -20,7 +20,7 @@
   "avg_signed_ret": null,
   "avg_excess": null,
   "beat_bench_rate": null,
-  "open": 1,
+  "open": 3,
   "by_stance": {
    "bull": {
     "closed": 0,
@@ -198,6 +198,15 @@
    "avg_excess": null,
    "beat_bench_rate": null,
    "open": 1
+  },
+  {
+   "date": "2026-11-04",
+   "closed": 0,
+   "hit_rate": null,
+   "strict_hit_rate": null,
+   "avg_excess": null,
+   "beat_bench_rate": null,
+   "open": 3
   }
  ]
 }
