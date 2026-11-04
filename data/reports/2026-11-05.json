@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "kind": "daily",
+  "headline": "中間選挙で民主党が議会制圧、大型テックは急騰もAI電力・DC機器は急落",
+  "market_summary": "11/4の米国市場は中間選挙で民主党が上下両院を制したことで政治の不確実性が後退したと受け止められ、ダウは年初来最大の上げとなりナスダックも大幅高だった。一方で、議会構成の変化とテキサス州次期知事の新規データセンター一時停止の公約が嫌気され、Vistra、GE Vernova、Vertiv、Eatonなどデータセンター向け電力・機器株とネオクラウドが急落し、指数と逆行した。MicrosoftとAppleは最高値を更新し、Amazonも急伸するなど、資金はAIインフラから大型テックへ移った。core 3社ではNVIDIAが寄り付きの上げを保てず続落し、CloudflareとAkamaiは今夜（11/5引け後）の決算を前に小幅安だった。",
+  "movers": [
+    {"ticker": "VST", "direction": "down", "comment": "テキサス州の次期知事が新規データセンターの一時停止を公約に掲げたと報じられ、同州が地盤の発電会社として最も売られた。11/6の決算を前にアナリストの目標株価引き下げも重なった。"},
+    {"ticker": "VRT", "direction": "down", "comment": "民主党の議会制圧でデータセンター建設への規制・反発が強まるとの懸念が広がった。受注残は議会と無関係で売られ過ぎとのアナリストの指摘もある。"},
+    {"ticker": "GEV", "direction": "down", "comment": "データセンター電力関連の一斉売りに巻き込まれ、約2年ぶりの下落率と報じられた。11/2にJefferiesが推奨リストから外したことも重しとの報道。"},
+    {"ticker": "ETN", "direction": "down", "comment": "7-9月期の売上は過去最高だったが、データセンター向け電力機器の需要見通しに政治リスクが意識され売られた。"},
+    {"ticker": "DDOG", "direction": "down", "comment": "7-9月期は予想を上回ったが、10-12月期の売上見通しが前四半期比ほぼ横ばいで成長減速を示し、大口顧客の利用減の可能性も指摘された。"},
+    {"ticker": "MRVL", "direction": "down", "comment": "全額株式によるLumentum買収で発行株数が約5割増えるとの懸念から、格下げと目標株価引き下げが続き下げ止まらない。"},
+    {"ticker": "ANET", "direction": "up", "comment": "7-9月期の売上が予想を大きく上回り、初めて示した2027年売上見通しが市場予想を大きく超えた。AIインフラ株が軒並み売られる中で逆行高となった。"},
+    {"ticker": "MSFT", "direction": "up", "comment": "選挙後の不確実性後退で大型テックに資金が集まり、最高値を更新した。Apple、Amazonも同様に急伸した。"}
+  ],
+  "sector_notes": [
+    {"sector": "power", "note": "民主党の議会制圧とテキサス州の規制方針でデータセンター電力需要の期待が割り引かれ、Vistra・GE Vernova・Constellationが急落した。データセンターREITのEquinix・Digital Realtyは逆に上げた。"},
+    {"sector": "dcinfra", "note": "Vertiv、Eaton、Dell、Celesticaが大幅安となる中、好決算のAristaだけが上げ、決算内容による選別が鮮明になった。"},
+    {"sector": "hyper", "note": "Microsoft・Amazon・Alphabetが買われた一方、CoreWeaveとNebiusは急落し、大型テックとネオクラウドで明暗が分かれた。"},
+    {"sector": "semi", "note": "AMD決算の追い風は続かず、Micron・Sandisk・Credoなどメモリ・接続部品が大きく下げた。Qualcommは引け後の決算を前に買われた。"},
+    {"sector": "saas", "note": "Datadogの見通しが利用量ベースのソフトウェアの成長減速懸念を再燃させた。"}
+  ],
+  "suggestions": [
+    {"name": "Talen Energy", "ticker": "TLN", "sector": "power", "reason": "データセンター向け電力株の急落は、テキサス州の規制方針が直撃するVistraが主因だった。テキサス州外（PJM管内）の原子力発電でデータセンターと契約する同社が、同じ売りを受けたかどうかで、市場が政治リスクを地域別に見分けているかを確かめられる。"},
+    {"name": "Dynatrace", "ticker": "DT", "sector": "saas", "reason": "Datadogの10-12月期見通しが大口顧客の利用減懸念で嫌気された。監視ソフトの競合として、同じ需要減速が業界全体のものかDatadog固有かを測る比較対象になる。"}
+  ],
+  "watch_next": [
+    "CloudflareとAkamaiの決算（11/5引け後）、Lumentumの決算（11/5引け後）",
+    "Qualcommの決算（11/4引け後）とVistraの決算（11/6寄り前）",
+    "CoreWeaveの決算（11/10引け後）とNVIDIAの決算（11/17）でAI設備投資の勢いが確認されるか",
+    "テキサス州のデータセンター規制案の具体化と、民主党議会のAI・電力政策の方針"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
