@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-06",
+  "kind": "daily",
+  "headline": "AI株が総崩れ、半導体指数はコロナ以来の急落　Cloudflareは引け後の好決算で反発",
+  "market_summary": "11/5の米国市場はAI関連株の投げ売りでダウが大幅安となり、ナスダックは調整局面入りしたと報じられた。民主党の議会制圧でデータセンター建設が鈍るとの懸念に、中国のNVIDIA H200輸入承認の遅れとQualcommの弱い見通しが重なり、半導体株ETFは2020年3月以来の下落率と報じられた。個別材料のない銘柄まで売られ、レバレッジをかけたポジションの解消が下げを増幅したとの見方が出ている。core 3社は通常取引で揃って急落したが、引け後の決算でCloudflareは予想を上回る売上と強い10-12月期見通しを示して時間外で急伸し、Akamaiは10-12月期見通しが市場予想に届かず時間外でも下げた。",
+  "movers": [
+    {"ticker": "SNDK", "direction": "down", "comment": "メモリ株の利益確定売りが加速し、ウォッチリスト内で最も下げた半導体株となった。前月からの上昇の反動が大きい。"},
+    {"ticker": "AMD", "direction": "down", "comment": "11/3の好決算後の上げを完全に失った。同社固有の悪材料は報じられておらず、AI半導体の一斉売りとポジション解消が主因との見方。"},
+    {"ticker": "MU", "direction": "down", "comment": "メモリ価格上昇を織り込んできた銘柄から資金が抜けた。SK hynix、Samsung、Western Digitalも同時に売られた。"},
+    {"ticker": "NVDA", "direction": "down", "comment": "中国によるH200の輸入承認の遅れが重しとなり、年初の水準を下回ったと報じられた。11/17の決算でデータセンター需要の確認が焦点になる。"},
+    {"ticker": "FSLY", "direction": "down", "comment": "11/4引け後の決算を受けた売りにAI・エッジ株の一斉安が重なった。5月の決算後と同様に、設備投資の増加と高い期待が売りを招いた。"},
+    {"ticker": "BE", "direction": "down", "comment": "NTT DATA向けの900MW供給契約を発表したが、大規模データセンターの新設が減るとの懸念と内部者の売りが勝った。テキサス州の次期知事による承認停止の公約も重しとの報道。"},
+    {"ticker": "LITE", "direction": "down", "comment": "Marvellが1株あたり4.5株を渡す全額株式の買収が決まっており、株価はほぼMarvellの値動きに連動して下げた。"},
+    {"ticker": "NET", "direction": "down", "comment": "通常取引では他のエッジ株と同時に売られたが、引け後に売上が予想を上回り10-12月期見通しも強く、時間外で急伸した。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "メモリ・接続部品・GPUが揃って急落し、選挙後のAI株からの資金流出が半導体全体に広がった。Qualcommは決算は予想を上回ったが見通しが弱く売られた。"},
+    {"sector": "equip", "note": "Lam Research、Applied Materials、アドバンテストが大きく下げ、AI設備投資の鈍化懸念が製造装置まで及んだ。信越化学は下げが小さかった。"},
+    {"sector": "dcinfra", "note": "前日に逆行高だったAristaも売られ、好決算による選別が効かない一斉売りになった。"},
+    {"sector": "edge", "note": "セキュリティ・エッジ株が全面安。引け後はCloudflareが急伸、Akamaiが続落と、決算で明暗が分かれた。"},
+    {"sector": "hyper", "note": "ネオクラウドのNebius・CoreWeaveが大きく下げた一方、TencentとAlibabaは上げ、米国AI株からの資金移動が目立った。"}
+  ],
+  "suggestions": [
+    {"name": "Ciena", "ticker": "CIEN", "sector": "dcinfra", "reason": "Lumentumの下げはMarvellとの株式交換比率に縛られている。買収の影響を受けない光通信機器大手の同社と比べることで、光部品の下げが合併要因かAIネットワーク需要への懸念かを切り分けられる。"},
+    {"name": "FuelCell Energy", "ticker": "FCEL", "sector": "power", "reason": "Bloom Energyと同時に急落し、燃料電池全体がデータセンター新設減速の懸念で売られた。大型契約を発表したBloomとの下げ幅の違いで、市場が受注をどこまで評価しているかを測れる。"}
+  ],
+  "watch_next": [
+    "11/6寄り前のVistra決算で、データセンター向け長期電力契約とテキサス州規制への説明があるか",
+    "Cloudflareの時間外の急伸が通常取引で維持されるか、Akamaiの見通し未達でエッジ株の評価がどう分かれるか",
+    "中国のNVIDIA H200輸入承認の行方と、11/10のCoreWeave決算、11/17のNVIDIA決算",
+    "投げ売り後にレバレッジ解消が一巡するか（半導体指数の下げ止まり）"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
