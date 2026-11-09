@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-10",
+  "kind": "daily",
+  "headline": "AIインフラ株が先週の急落から一斉反発、NVIDIAだけがCEO調査で逆行安",
+  "market_summary": "先週の中間選挙後のAI株売りから一転し、ナスダック100は8月以来の大幅高となり、半導体・製造装置・データセンター機器・電力の各業界がそろって大きく買い戻された。電力ではConstellation Energyの好決算と見通し引き上げがデータセンター規制懸念を和らげ、Vertiv・GE Vernova・Bloom Energyなど設備株にも買いが広がったと報じられた。半導体ではAMDがOppenheimerの格上げとGoogle Cloudとの提携拡大で急伸し、装置株も連れ高した。core 3社は明暗が分かれ、NVIDIAは取締役会がCEOのジェンスン・フアン氏と中国のスパイとされる人物との関係を調べる独立調査を始めたとの報道で逆行安、Cloudflareは格上げを受けて続伸、Akamaiは22億ドルの転換社債発行による希薄化懸念で下げた。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "down", "comment": "取締役会がCEOと米情報機関に中国のスパイと名指しされた人物との関係について、独立取締役と外部弁護士による調査を始めたとNYTやFTが報じた。取締役会は安全保障や企業秘密の流出を疑う理由はないとしたが、11/17の決算と11/18の下院での非公開聴取を控えて経営リスクを嫌う売りが出た。"},
+    {"ticker": "AMD", "direction": "up", "comment": "Oppenheimerが投資判断をアウトパフォームへ引き上げ、Google Cloudとの提携拡大も伝わった。NVIDIAに個別の悪材料が出た日に、AI向けGPUの代替先として買いが集まった。"},
+    {"ticker": "NET", "direction": "up", "comment": "Wolfe Researchが投資判断をアウトパフォームへ引き上げ、Piper Sandlerも目標株価を上げたと報じられた。決算で通期見通しを引き上げた後の評価見直しが続いている。"},
+    {"ticker": "AKAM", "direction": "down", "comment": "22億ドルの転換社債の発行を発表し、将来の株式への転換による希薄化が嫌われた。Bairdなどが決算後に目標株価を引き下げたことも重なり、反発相場の中で逆行した。"},
+    {"ticker": "CEG", "direction": "up", "comment": "7-9月期の利益が予想を上回り2026年の見通しを引き上げ、年初来で約8500MWの長期電力契約を結んだと示した。中間選挙後のデータセンター規制懸念で売られていた電力株全体の買い戻しのきっかけになった。"},
+    {"ticker": "BE", "direction": "up", "comment": "Constellationの決算を受けたデータセンター電力株の買い戻しに乗った。RBCは中間選挙でデータセンターへの反発が強まったとしつつ、送電網に頼らない自家発電の同社は有利な位置にあると評価した。"},
+    {"ticker": "AMAT", "direction": "up", "comment": "11/12の決算を前に、先週大きく売られた製造装置株がAMDの急伸と半導体全体の反発に連れて買い戻された。Lam Researchも同様に大きく戻した。"},
+    {"ticker": "9984.T", "direction": "down", "comment": "東京市場では米国の反発前に取引を終え、先週のAI株急落の流れが続いた。今日15:30の中間決算で、AI投資の資金調達とArm株安の影響の説明が焦点になる。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "NVIDIAを除く半導体株がそろって急反発し、AMD・Astera Labs・Credo・Marvellなど先週大きく下げた銘柄ほど戻りが大きかった。NVIDIAだけがCEO調査で取り残され、決算前に業界の中での資金の振り向け先が分かれた。"},
+    {"sector": "equip", "note": "米国の装置株はApplied MaterialsとLam Researchを中心に大きく戻した。東京エレクトロン・アドバンテストは米国の反発前の東京市場の動きで、今日の東京での追随と11/12のApplied Materials決算が次の材料になる。"},
+    {"sector": "dcinfra", "note": "Vertiv・Lumentum・Western Digital・Celesticaが大きく戻り、Aristaは先週の好決算に続いて底堅い。11/12のCisco決算でAI向けネットワーク受注が確認できるかが戻りの持続を左右する。"},
+    {"sector": "power", "note": "Constellationの見通し引き上げで、中間選挙後のデータセンター規制懸念で売られた電力株が一斉に買い戻され、GE Vernova・Vistra・Bloom Energyも大きく上げた。規制懸念は消えておらず、追加の長期電力契約が続くかが評価を決める。"},
+    {"sector": "edge", "note": "CrowdStrike・Palo Alto・Oktaなどセキュリティ株が反発し、Cloudflareは格上げで突出した。Akamaiは転換社債の発行で業界の中で逆行した。"}
+  ],
+  "suggestions": [
+    {"name": "Cameco", "ticker": "CCJ", "sector": "power", "reason": "Constellationが原発を中心に約8500MWの長期電力契約を積み上げ、見通しを引き上げた。原発の稼働延長や出力増強が進むほどウラン燃料の長期調達が増えるため、データセンター需要が原子力に向かう流れを燃料の側から確かめる手掛かりになる。"}
+  ],
+  "watch_next": [
+    "11/10の米10月CPI（市場予想は前月比0.3%、コア0.2%）と、約8割とされる12月利上げ観測の変化",
+    "11/10のソフトバンクグループ中間決算（東京15:30）とCoreWeave決算（米国引け後）での受注残と資金調達の説明",
+    "11/12のApplied Materials・Cisco決算で、反発した装置株・ネットワーク株の戻りが続くか",
+    "NVIDIA取締役会の調査の進展と、11/17の決算・11/18の下院での非公開聴取"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
