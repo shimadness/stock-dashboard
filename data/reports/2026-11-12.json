@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-12",
+  "kind": "daily",
+  "headline": "CoreWeaveの好決算でAIインフラ株が一斉急反発、半導体指数は大幅高　NVIDIAも決算前に反発",
+  "market_summary": "CoreWeaveが7-9月期決算で売上・利益とも予想を上回り、受注残を1325億ドルへ積み増して通期見通しを引き上げたことで、AI設備投資の減速懸念が和らぎ、フィラデルフィア半導体指数が大きく上げてナスダックを押し上げた。メモリ・ストレージ、光通信、サーバー、データセンター電力など、先週の売りで最も下げていた業界ほど大きく買い戻され、Oracle・Nebiusなど負債で設備を増やすAIクラウドにも資金が戻った。一方でMicrosoft・Meta・Amazonは逆行安となり、資金は大型テックからAIインフラ銘柄へ向かった。core 3社はそろって上昇し、NVIDIAはCEO調査が続く中でも半導体全体の反発に乗り、AkamaiとCloudflareも続伸した。",
+  "movers": [
+    {"ticker": "CRWV", "direction": "up", "comment": "受注残が前四半期から大きく増え、調整後営業利益が会社計画を大幅に上回り通期の売上・利益見通しを引き上げた。約470億ドルの負債と370〜390億ドルの設備投資計画は残るが、アナリストからは『安堵のため息が聞こえる』内容との評価が出た。"},
+    {"ticker": "MU", "direction": "up", "comment": "CoreWeaveが高水準の設備投資を維持したことで、GPU増設に伴うHBM・DRAMの需要が続くと見られ、メモリ株の中心として買われた。Sandisk・SK hynixも連れ高した。"},
+    {"ticker": "SNDK", "direction": "up", "comment": "1ヶ月で大きく売られた後、CoreWeaveの決算をきっかけにストレージ需要への見方が改善し、Micron・Western Digitalとともに急反発した。"},
+    {"ticker": "BE", "direction": "up", "comment": "CoreWeaveの決算でデータセンター建設が続くとの見方が戻り、前日にソフトバンクグループの発電設備損失で売られた分を取り戻して電力株の中で最も上げたと報じられた。"},
+    {"ticker": "ORCL", "direction": "up", "comment": "CoreWeaveの決算でAIクラウドの需要減速懸念が和らぎ、負債による設備投資の重さで売られていた同社も買い戻された。公益事業向けソフトOpowerの実績を材料視する報道もあった。"},
+    {"ticker": "DELL", "direction": "up", "comment": "AIサーバーの需要懸念が後退し、Super Micro・Celesticaとともにサーバー関連が急伸した。Celesticaは11/10の決算で10-12月期の売上見通しを示したことも支えになった。"},
+    {"ticker": "ARM", "direction": "up", "comment": "半導体全体の買い戻しの中で、1ヶ月で大きく下げていた同社も大幅に反発した。個別の材料は報じられておらず、半導体指数の上昇に連動した動き。"},
+    {"ticker": "MSFT", "direction": "down", "comment": "AIインフラ株に資金が向かう中で、Meta・Amazonとともに逆行安となった。前日にはネオクラウドとの契約を更新しない可能性が取り沙汰されており、AIクラウド大手からの発注先の分散が論点になっている。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "メモリ・ネットワーク・カスタムチップが大きく戻した。SK hynix・Samsungはソウルの取引時間前に出たCoreWeaveの決算を先に織り込んで急伸した。"},
+    {"sector": "equip", "note": "Lam Research・Applied Materialsが大幅高。Applied Materialsは今日引け後の決算で、HBM向けを含む来期の装置需要の説明が焦点になる。"},
+    {"sector": "dcinfra", "note": "Dell・Super Micro・Celestica・Lumentum・Vertivがそろって急伸し、先週売られた業界ほど戻りが大きかった。"},
+    {"sector": "hyper", "note": "CoreWeave・Nebius・OracleのAIクラウドが急伸した一方、Microsoft・Meta・Amazonは下げ、明暗が分かれた。"},
+    {"sector": "power", "note": "Bloom Energy・Constellationが反発し、ソフトバンクグループの発電設備損失による前日の売りの多くを取り戻した。NTT・KDDIは東京で下げた。"}
+  ],
+  "suggestions": [
+    {"name": "Applied Digital", "ticker": "APLD", "sector": "dcinfra", "reason": "CoreWeaveにデータセンターを長期で貸し出している会社で、CoreWeaveの受注残の拡大と高水準の設備投資計画が賃貸需要の継続に直結する。CoreWeaveの資金繰りが論点になる局面では逆に打撃を受けやすく、両面で連動を確かめたい。"},
+    {"name": "Amphenol", "ticker": "APH", "sector": "dcinfra", "reason": "AIサーバー・ラック内の高速コネクタとケーブルの大手で、Dell・Celestica・光通信株が急反発した今日の動きの裏側にある部品需要を測る指標になる。"}
+  ],
+  "watch_next": [
+    "今日引け後のApplied Materials・Cisco・Nebiusの決算で、来期のAI向け装置・ネットワーク需要とネオクラウドの資金調達の説明",
+    "CoreWeaveの決算を受けた急反発が翌日以降も続くか、先週の急落分をどこまで戻すか",
+    "11/17のNVIDIA決算と11/18の下院での非公開聴取、CEO調査の続報",
+    "12月FOMCでの利上げ観測と長期金利の動き"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
