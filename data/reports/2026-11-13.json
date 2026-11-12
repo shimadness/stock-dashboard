@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-13",
+  "kind": "daily",
+  "headline": "NVIDIAのHuang CEOが辞任、AMD・Broadcomに資金が移る　Nebiusは設備投資上振れで急落、米10年債利回りは5%超え",
+  "market_summary": "NVIDIAがJensen Huang氏のCEO辞任を発表し、CFOのColette Kress氏が暫定CEOに就いた。私生活をめぐる一連の報道を受けて取締役会が前夜に協議したと報じられており、半導体の資金はNVIDIAから競合のAMD・Broadcomへ移った。トランプ大統領がイランとの戦争の早期終結に否定的な姿勢を示したことで米10年債利回りが5%を超え、サンフランシスコ連銀総裁の追加引き締め発言もあって12月利上げ観測が強まり、主要指数は小幅安で終えた。前日に急反発したAIクラウドはNebiusの設備投資計画の上振れをきっかけにCoreWeaveとともに売られ、NVIDIA問題は中国の計算資源調達への懸念としてAlibabaにも波及した。core 3社ではNVIDIAが大きく下げた一方、AkamaiとCloudflareは小動きで踏みとどまった。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "down", "comment": "Huang氏が社長・CEO・取締役を即日辞任し、CFOのKress氏が暫定CEOに就任した。取引時間中には一時大きく下げたが、11/17の決算は予定どおり実施するとしており下げ幅を縮めた。後任は社内外から選ぶ。"},
+    {"ticker": "NBIS", "direction": "down", "comment": "7-9月期の売上は予想を上回ったが、2026年の設備投資見通しを従来の200〜250億ドルから270億ドルへ引き上げ、通期の売上見通しを下げ、年率70億ドルの売上目標の達成時期を12月から2月へ後ろ倒しした。"},
+    {"ticker": "SMCI", "direction": "down", "comment": "NVIDIAのCEOとの関係を報じられたデータ会社Megaspeedの幹部が同社製品の密輸に関与したかを米司法省が調べているとBloombergが報じ、輸出管理リスクが改めて意識された。"},
+    {"ticker": "BABA", "direction": "down", "comment": "NVIDIAのサーバーをマレーシアのデータセンターに置き計算資源を提供してきたMegaspeedの主要顧客で、米商務省が中国AI企業による国外データセンター経由の先端チップ利用を禁じる規則の最終化を準備していると報じられたことも重なり、香港でも大きく売られた。"},
+    {"ticker": "CRWV", "direction": "down", "comment": "好決算で急反発した前日の上げの一部を吐き出した。Nebiusが設備投資の上振れと売上目標の後ろ倒しを示したことで、負債で設備を増やすAIクラウドへの警戒が戻った。"},
+    {"ticker": "AMD", "direction": "up", "comment": "William BlairがInstinctのAIアクセラレータがNVIDIAとIntelの混乱の中でシェアを伸ばせるとして投資判断を引き上げた。NVIDIAの経営混乱で受注が競合に流れるとの見方から買われた。"},
+    {"ticker": "AVGO", "direction": "up", "comment": "NVIDIAの混乱でカスタムAIチップへの発注が増えるとの見方から、AMDとともに半導体の中で逆行高となった。"}
+  ],
+  "sector_notes": [
+    {"sector": "edge", "note": "Palo Altoが目標株価の引き下げで下げたほかは小動き。Cloudflare・Akamaiは決算後の上昇分を維持した。"},
+    {"sector": "semi", "note": "NVIDIAの経営混乱を受けてAMD・Broadcomが買われ、メモリ・ストレージ・ネットワークは前日の急反発の後で利益確定に押された。"},
+    {"sector": "hyper", "note": "Nebius・CoreWeaveのAIクラウドが大きく下げ、Alibaba・Tencentは中国の先端チップ調達への懸念で売られた。Microsoft・Amazonは小幅高で、前日とは明暗が逆転した。"},
+    {"sector": "dcinfra", "note": "Super Microが司法省の調査報道で急落した一方、Arista・Celesticaは上げ、サーバーとネットワーク機器で明暗が分かれた。"},
+    {"sector": "equip", "note": "Applied Materialsは引け後の決算で過去最高の四半期売上と市場予想を上回る利益を示したが、決算前の4日間で大きく上げていたため時間外の反応は限られた。東京ではアドバンテストが大きく下げた。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "小動き", "source": ""},
+    {"ticker": "NET", "note": "個別の材料は報じられていない", "source": ""},
+    {"ticker": "PANW", "note": "11/12、Jefferiesが買い推奨を維持しつつ目標株価を引き下げたことで売られた。11/18引け後に8-10月期決算を控える。", "source": "https://www.marketbeat.com/instant-alerts/price-palo-alto-networks-nasdaq-panw-shares-down-35-following-analyst-downgrade-2026-11-12/"}
+  ],
+  "suggestions": [
+    {"name": "Cerebras Systems", "ticker": "CBRS", "sector": "semi", "reason": "NVIDIAのCEO辞任で代替のAI計算基盤に資金が向かう中、引け後の7-9月期決算で売上が予想を上回り、10月に結んだMicrosoftとの新たな取引も公表して時間外で急伸した。AMD・Broadcomに続くNVIDIA以外の受け皿として、受注の広がりを確かめたい。"}
+  ],
+  "watch_next": [
+    "11/17のNVIDIA決算で、暫定CEO体制での見通しの示し方と後任CEO選びの進捗、Anthropicへの出資計画への影響",
+    "米商務省による中国AI企業の国外データセンター経由のチップ利用規制の最終化と、11/18のPalo Alto・11/19のAlibabaの決算",
+    "米10年債利回りが5%台で定着するか、12月FOMCの利上げ観測とイラン情勢",
+    "Cisco・Applied Materialsの決算を受けた今日のネットワーク・製造装置株の反応"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
