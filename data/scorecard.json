@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T07:02:26+09:00",
+ "updated": "2026-11-14T07:06:11+09:00",
  "rule": {
   "hit_pct": 1.0,
   "benchmark": "watchlist equal-weight",
@@ -10,28 +10,28 @@
   }
  },
  "summary": {
-  "closed": 3,
+  "closed": 4,
   "hit": 0,
-  "miss": 3,
+  "miss": 4,
   "flat": 0,
-  "withdrawn": 3,
+  "withdrawn": 4,
   "hit_rate": 0.0,
   "strict_hit_rate": 0.0,
-  "avg_signed_ret": -16.19,
-  "avg_excess": -10.21,
+  "avg_signed_ret": -17.44,
+  "avg_excess": -11.8,
   "beat_bench_rate": 0.0,
   "open": 8,
   "by_stance": {
    "bull": {
-    "closed": 2,
+    "closed": 3,
     "hit": 0,
-    "miss": 2,
+    "miss": 3,
     "flat": 0,
-    "withdrawn": 2,
+    "withdrawn": 3,
     "hit_rate": 0.0,
     "strict_hit_rate": 0.0,
-    "avg_signed_ret": -8.79,
-    "avg_excess": -4.23,
+    "avg_signed_ret": -12.93,
+    "avg_excess": -8.34,
     "beat_bench_rate": 0.0
    },
    "bear": {
@@ -59,7 +59,7 @@
     "avg_signed_ret": -20.89,
     "avg_excess": -12.34,
     "beat_bench_rate": 0.0,
-    "open": 1
+    "open": 2
    },
    "mid": {
     "closed": 1,
@@ -75,17 +75,17 @@
     "open": 3
    },
    "long": {
-    "closed": 0,
+    "closed": 1,
     "hit": 0,
-    "miss": 0,
+    "miss": 1,
     "flat": 0,
-    "withdrawn": 0,
-    "hit_rate": null,
-    "strict_hit_rate": null,
-    "avg_signed_ret": null,
-    "avg_excess": null,
-    "beat_bench_rate": null,
-    "open": 3
+    "withdrawn": 1,
+    "hit_rate": 0.0,
+    "strict_hit_rate": 0.0,
+    "avg_signed_ret": -21.21,
+    "avg_excess": -16.55,
+    "beat_bench_rate": 0.0,
+    "open": 2
    }
   },
   "by_horizon": {
@@ -126,16 +126,16 @@
     "beat_bench_rate": null
    },
    "120": {
-    "closed": 0,
+    "closed": 1,
     "hit": 0,
-    "miss": 0,
+    "miss": 1,
     "flat": 0,
-    "withdrawn": 0,
-    "hit_rate": null,
-    "strict_hit_rate": null,
-    "avg_signed_ret": null,
-    "avg_excess": null,
-    "beat_bench_rate": null
+    "withdrawn": 1,
+    "hit_rate": 0.0,
+    "strict_hit_rate": 0.0,
+    "avg_signed_ret": -21.21,
+    "avg_excess": -16.55,
+    "beat_bench_rate": 0.0
    }
   },
   "by_confidence": {
@@ -152,16 +152,16 @@
     "beat_bench_rate": 0.0
    },
    "2": {
-    "closed": 0,
+    "closed": 1,
     "hit": 0,
-    "miss": 0,
+    "miss": 1,
     "flat": 0,
-    "withdrawn": 0,
-    "hit_rate": null,
-    "strict_hit_rate": null,
-    "avg_signed_ret": null,
-    "avg_excess": null,
-    "beat_bench_rate": null
+    "withdrawn": 1,
+    "hit_rate": 0.0,
+    "strict_hit_rate": 0.0,
+    "avg_signed_ret": -21.21,
+    "avg_excess": -16.55,
+    "beat_bench_rate": 0.0
    },
    "3": {
     "closed": 0,
@@ -177,15 +177,15 @@
    }
   },
   "last_30d": {
-   "closed": 3,
+   "closed": 4,
    "hit": 0,
-   "miss": 3,
+   "miss": 4,
    "flat": 0,
-   "withdrawn": 3,
+   "withdrawn": 4,
    "hit_rate": 0.0,
    "strict_hit_rate": 0.0,
-   "avg_signed_ret": -16.19,
-   "avg_excess": -10.21,
+   "avg_signed_ret": -17.44,
+   "avg_excess": -11.8,
    "beat_bench_rate": 0.0
   }
  },
@@ -286,6 +286,15 @@
    "hit_rate": 0.0,
    "strict_hit_rate": 0.0,
    "avg_excess": -10.21,
+   "beat_bench_rate": 0.0,
+   "open": 8
+  },
+  {
+   "date": "2026-11-14",
+   "closed": 4,
+   "hit_rate": 0.0,
+   "strict_hit_rate": 0.0,
+   "avg_excess": -11.8,
    "beat_bench_rate": 0.0,
    "open": 8
   }

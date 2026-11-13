@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-14",
+  "kind": "daily",
+  "headline": "NVIDIA離れの資金移動が一日で逆回転、AMD・Broadcomが急落　Dellは中国へのサーバー流出報道で大幅安",
+  "market_summary": "10月の米PPIは前月比で予想を下回ったが前年比の伸びが2022年11月以来の大きさとなり、Bowman FRB理事が利上げの必要性に言及したことで12月利上げ観測が残った。米10年債利回りは一時10月以来の高水準まで上がり、ナスダックは下げた一方でダウは小幅高と、ハイテクに売りが集中した。前日にNVIDIAから資金が移ったAMD・Broadcomは急速な上げの反動で大きく売られ、メモリ・光通信・サーバーなどAIハードウェア全般に売りが広がった。ただし週間では主要指数がそろって上昇し、ナスダックは8月以来の大きな週間上昇となった。core 3社では、NVIDIAがHSBCの格下げも重なり続落して52週安値を更新し、Cloudflareはハイテク株安に連れて下げ、Akamaiは小動きだった。",
+  "movers": [
+    {"ticker": "AMD", "direction": "down", "comment": "Huang氏の辞任を受けてNVIDIAからの受注流出を見込んだ買いで5営業日で急伸していたため、利益確定の売りが一気に出た。NVIDIAが寄り付きで持ち直したことで乗り換えの思惑が巻き戻された。"},
+    {"ticker": "AVGO", "direction": "down", "comment": "AMDと同じくNVIDIAからの資金移動の受け皿として買われていた分が巻き戻され、ハイテク全体の売りにも押された。"},
+    {"ticker": "DELL", "direction": "down", "comment": "制限対象のNVIDIA H800を積んだDell製サーバー22台がシンガポールの顧客経由で上海のデータセンターに流れたとBloombergが報じ、輸出管理リスクが意識された。Dellは同顧客への販売と保守を2025年2月に停止したと説明している。前日のUBSの格下げも重しとなった。"},
+    {"ticker": "NVDA", "direction": "down", "comment": "HSBCが投資判断を引き下げ、目標株価を大幅に下げた。投資家の信頼が揺らいだことと輸出規制の強化を理由に挙げた。半導体安とインフレ指標も重なり、週間でも大きく下げて52週安値を更新した。"},
+    {"ticker": "NBIS", "direction": "down", "comment": "前日の設備投資計画の上振れと売上目標の後ろ倒しを嫌気した売りが続き、AIハードウェア株安と金利上昇が追い打ちとなった。"},
+    {"ticker": "7011.T", "direction": "down", "comment": "財務省が防衛費の5年間の規模として50兆円台の基準を防衛省に示したとロイターが報じ、高市首相が大幅増税に慎重との毎日新聞の報道も重なった。政府・与党の一部で浮上していた70兆〜80兆円を大きく下回り、川崎重工業・IHIとともに防衛関連株が売られた。"},
+    {"ticker": "SNDK", "direction": "down", "comment": "メモリ株が半導体の中でも大きく売られ、Micron・SK hynixとともに先週の反発分を削った。"},
+    {"ticker": "META", "direction": "up", "comment": "ハイテク株安の中で小幅に逆行高となった。個別の材料は確認できていない。"}
+  ],
+  "sector_notes": [
+    {"sector": "edge", "note": "Cloudflare・Fastlyがハイテク株安に連れて下げたほかは小動き。セキュリティ各社は半導体・ハードウェアからの売りの波及が限られた。"},
+    {"sector": "semi", "note": "NVIDIAからAMD・Broadcomへの資金移動が一日で逆回転し、メモリ・ネットワーク半導体まで幅広く売られた。週間では前週の急落からの反発を保った銘柄が多い。"},
+    {"sector": "dcinfra", "note": "Dellのサーバー流出報道で輸出管理リスクが再燃し、Celestica・Lumentum・Western Digital・AristaなどAIハードウェアが軒並み下げた。"},
+    {"sector": "power", "note": "三菱重工が防衛費の規模をめぐる報道で急落し、Bloom Energyなど米国のAI電力株も金利上昇で売られた。NTT・KDDIの通信は底堅い。"},
+    {"sector": "hyper", "note": "NebiusとCoreWeaveが続落し、負債で設備を増やすAIクラウドへの警戒が続いた。Microsoft・Amazon・Metaの大手は底堅く、前日に続いて明暗が分かれた。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "小動き", "source": ""},
+    {"ticker": "NET", "note": "11/13、ハイテク株安に連れて下げた。同日にGartnerのエッジ配信基盤の評価でリーダーに選ばれたと公表したが下支えにならず、個別の売り材料は報じられていない。", "source": "https://blockonomi.com/cloudflare-inc-net-stock-drops-4-despite-major-gartner-recognition"},
+    {"ticker": "FSLY", "note": "個別の材料は報じられていない", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "Hewlett Packard Enterprise", "ticker": "HPE", "sector": "dcinfra", "reason": "DellがNVIDIA搭載サーバーの中国への流出報道とUBSの格下げで急落し、AIサーバーの粗利率と販売経路の管理が問われている。同じAIサーバーを手がける競合として、Dellの11/24の決算前後に受注と粗利率の比較材料を確かめたい。"}
+  ],
+  "watch_next": [
+    "11/17のNVIDIA決算で、暫定CEO体制での見通しの示し方と、HSBCが挙げた輸出規制強化への説明",
+    "11/18のPalo Alto決算、11/19のAlibaba決算、11/24のDell決算と、来週予定とされるAnthropicの新規上場がAI株の需給に与える影響",
+    "米10年債利回りの高止まりと12月FOMCの利上げ観測、来週のFRB高官発言",
+    "週明けの東京市場で防衛関連株の売りが続くかと、年末に向けた防衛費の規模の続報"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
