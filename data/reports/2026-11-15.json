@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-15",
+  "kind": "weekly",
+  "headline": "今週の振り返り：CoreWeave決算でAIインフラ株が反発、NVIDIAはCEO辞任で独り負けし資金はAMD・Broadcomへ　週末は10年債5%超で失速",
+  "market_summary": "先週の中間選挙後の急落から一転し、今週はCoreWeaveが受注残の積み増しと通期見通しの引き上げを示したことでAI設備投資の減速懸念が和らぎ、ナスダックは8月以来の大きな週間上昇となった。業界別では製造装置・半導体・データセンター機器が最も戻し、先週売られた光通信・サーバー・メモリほど買い戻された一方、ハイパースケーラーとAI応用は小幅高にとどまった。週後半は強い10月CPIとPPI、FRB高官の利上げ示唆で米10年債利回りが5%を超え、AMD・Broadcomなど急伸した銘柄から利益確定の売りが出た。core 3社では、NVIDIAがCEO調査の報道からHuang氏の辞任に至り週間で最も大きく下げた一方、Cloudflareは決算後の買いが続いて大きく上げ、Akamaiは小幅高だった。",
+  "movers": [
+    {"ticker": "AMD", "direction": "up", "comment": "Oppenheimerの格上げとGoogle Cloudとの提携拡大に続き、NVIDIAのCEO辞任で競合への資金移動の受け皿となった。週末は急伸の反動で大きく売られた。"},
+    {"ticker": "AVGO", "direction": "up", "comment": "NVIDIA離れの資金がカスタムAIチップを手がける同社にも向かった。AMDと同じく金曜は反動安となった。"},
+    {"ticker": "NET", "direction": "up", "comment": "11/5の決算で売上の伸びが加速したことを受けた格上げや目標株価の引き上げが続き、エッジ業界で最も上げた。"},
+    {"ticker": "CLS", "direction": "up", "comment": "CoreWeave決算でAIクラウドの増設が続くとの見方が戻り、先週売られたサーバー製造受託株として買い戻された。"},
+    {"ticker": "NVDA", "direction": "down", "comment": "CEOと中国のスパイとされる人物との関係をめぐる独立調査、FBI・議会の調査拡大の報道を経てHuang氏が辞任し、週末にはHSBCの格下げも重なって52週安値を更新した。"},
+    {"ticker": "NBIS", "direction": "down", "comment": "CoreWeave決算で一時急伸したが、自社決算で設備投資計画を上振れさせたことで資金負担への懸念が強まり、週間で反落した。"},
+    {"ticker": "BABA", "direction": "down", "comment": "米商務省が中国AI企業による国外データセンター経由の先端半導体の利用を禁じる規則の最終化を準備していると報じられ、NVIDIA問題とあわせて計算資源の調達に懸念が向いた。"},
+    {"ticker": "SMCI", "direction": "down", "comment": "サーバー株の多くが買い戻される中で戻りが鈍く、Dellの製品が中国へ流出したとの報道でAIサーバーの販売経路への警戒も重なった。"}
+  ],
+  "sector_notes": [
+    {"sector": "equip", "note": "Applied Materialsの決算を通過し、東京エレクトロン・アドバンテストなど日本の装置株も米国の反発を遅れて織り込み、業界別で最も上げた。"},
+    {"sector": "semi", "note": "NVIDIAの経営混乱で資金がAMD・Broadcom・Astera Labsへ移り、同じ業界の中で明暗が最も大きく分かれた週となった。"},
+    {"sector": "dcinfra", "note": "CoreWeave決算を受けてArista・Celestica・Lumentumなど先週の急落組が大きく戻したが、Dellは中国への流出報道とUBSの格下げで週末に崩れた。"},
+    {"sector": "edge", "note": "Cloudflareが決算後の上方修正の流れで大きく上げ、OktaとFortinetも続いたが、Zscalerだけは週間で下げた。Palo Altoは11/18の決算待ちとなっている。"},
+    {"sector": "hyper", "note": "Metaは上げたが、Nebius・CoreWeaveの資金負担への懸念とAlibaba・Tencentへの規制懸念で、業界全体では最も戻りが鈍かった。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "今週は個別の材料は報じられていない。", "source": ""},
+    {"ticker": "NET", "note": "今週は11/5発表の7-9月期決算で売上の伸びが加速し調整後営業利益率が過去最高となったことを評価する買いが続いた。一方で粗利率の低下とフリーキャッシュフロー比率の悪化が残る論点だとTrefisは11/11に指摘している。", "source": "https://www.trefis.com/stock/net/articles/624233/how-big-could-cloudflare-stocks-next-fall-be/2026-11-11"}
+  ],
+  "suggestions": [
+    {"name": "Anthropic", "ticker": "ANT", "sector": "AIモデル開発（上場予定）", "reason": "WSJの報道によると今週中にティッカーANTでナスダック上場を目指しており、巨額の新規株式がAI関連株の需給に影響しうる。Akamaiは同社と大型クラウド契約を結び約5%分のワラントを付与しているため、上場時の評価はAkamaiの見え方にも直結する。"}
+  ],
+  "watch_next": [
+    "11/17のNVIDIA決算（引け後）で、暫定CEO体制での見通しの示し方と後任CEO選び、中国向け輸出規制の説明",
+    "今週予定と報じられたAnthropicのナスダック上場の公開価格と初値、AI株からの資金移動の有無",
+    "11/18のPalo Alto決算と11/19のAlibaba決算、11/24のDell決算に向けた中国向け流出問題の続報",
+    "米10年債利回りが5%台で定着するかと、FRB高官発言による12月利上げ観測の変化"
+  ],
+  "ai_review": "今週はCoreWeaveの短期弱気とNVIDIAの長期強気がいずれも撤回条件に触れて外れとなり、累計の的中はまだない。CoreWeaveは資金繰りへの懸念に賭けたが、決算で受注残と見通しの引き上げが示される可能性を軽く見ており、決算直前に方向を賭けたこと自体が読みの甘さだった。NVIDIAはCEO調査の報道が出た時点で経営リスクを撤回条件に入れておらず、価格の撤回条件に達するまで見解を持ち続けた結果、損失を大きくした。2件とも外れ方は対極で、先週の反省を踏まえ、決算やガバナンスのような二択の材料が保有期間内にある見解は確信度を下げるか宣言を見送る。",
+  "data_quality": "ok"
+}
