@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-16",
+  "kind": "week_ahead",
+  "headline": "今週の注目：17日のNVIDIA決算はHuang氏辞任後初、19日にAnthropicが上場　AI相場は二つの試練に",
+  "market_summary": "先週はCoreWeave決算でAIインフラ株が戻したが、週後半は強い物価統計で米金利が高止まりし、急伸した銘柄から利益確定が出て失速した。今週はNVIDIAの決算とAnthropicの上場がAI相場の二つの試練になるとロイターは伝えている。経済指標では11/17の米小売売上高と11/18のFOMC議事要旨が、追加利上げ観測を強めるかどうかの材料になる。決算はNVIDIAに加え、11/18にPalo Alto、11/19にIntuitが控え、小売ではWalmart・Target・Home Depot・Lowe'sが個人消費の強さを示す。core 3社では、NVIDIAが暫定CEO体制で初の決算に臨み、AkamaiはAnthropicとの大型契約とワラントを通じて上場の評価に連動しやすく、Cloudflareは決算後の上昇分をNVIDIA決算で試される。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "down", "comment": "11/17引け後に8-10月期決算を発表する。Huang氏が11/12に辞任しCFOのKress氏が暫定CEOを兼ねる中、創業以来初めてHuang氏不在で臨む決算で、来期見通しと粗利率、後任CEO選びの説明が焦点になる。オプション市場は上下約9%の変動を織り込んでいるとBenzingaは伝えている。"},
+    {"ticker": "AKAM", "direction": "up", "comment": "Anthropicと7年総額116億ドルのクラウド契約を結び、行使価格111.33ドルで普通株770万株相当のワラントを付与している。11/18の公開価格決定と11/19の初値が、同社のクラウドインフラ事業の見え方に直結する。"},
+    {"ticker": "PANW", "direction": "up", "comment": "11/18引け後に8-10月期決算を発表する。CyberArkとChronosphereの買収で見かけの増収率は高く、次世代セキュリティARRと通期見通しの据え置きで買収統合が順調かが試される。市場の期待は会社計画の上限近くにあり、計画並みでは物足りないとEarnings Whispersは指摘している。"},
+    {"ticker": "AMD", "direction": "up", "comment": "NVIDIAの経営混乱で資金の受け皿となり先週大きく上げたが、週末は反動で急落した。NVIDIA決算が無難なら資金が戻る逆回転が起きやすく、今週最も振れやすい。"},
+    {"ticker": "NET", "direction": "up", "comment": "11/5の決算後の上方修正の流れでエッジ業界の中で最も上げたが、週末は金利上昇で売られた。NVIDIA決算でAI推論需要の強さが確認されるかが、高い評価を維持できるかの分かれ目になる。"},
+    {"ticker": "BABA", "direction": "down", "comment": "米商務省が中国AI企業による国外データセンター経由の先端半導体の利用を禁じる規則を準備していると報じられ、週内に予定される決算でAI計算資源の確保の説明が求められる。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "NVIDIA決算が業界全体の方向を決める週。先週のNVIDIAからAMD・Broadcomへの資金移動が続くか巻き戻るかは、データセンター売上の見通しと新経営陣の説明次第となる。"},
+    {"sector": "edge", "note": "11/18のPalo Alto決算がセキュリティ株の地合いを決める。AkamaiはAnthropic上場、CloudflareはNVIDIA決算と、エッジ株もAI関連の材料に連動しやすい週となる。"},
+    {"sector": "hyper", "note": "Anthropicは8億2500万株を1株70〜78ドルで売り出し最大644億ドルを調達する計画で、この規模の新規株式がAI関連株から資金を吸収するかが注目される。"},
+    {"sector": "saas", "note": "11/19のIntuit決算がAIによるソフトウェアの置き換え懸念で売られた業界の試金石となる。Workdayは翌週、Snowflakeは12月初めの決算と予定されている。"}
+  ],
+  "focus_notes": [],
+  "suggestions": [
+    {"name": "Intuit", "ticker": "INTU", "sector": "saas", "reason": "11/19引け後に決算を発表し、オプション市場は上下約9%の変動を織り込んでいる。税務・会計ソフトのAIエージェント化が収益を伸ばすのか侵食するのかを示し、ウォッチリストのWorkday・Salesforceなど業務ソフト株の見方に波及する。"}
+  ],
+  "watch_next": [
+    "11/17のNVIDIA決算（引け後）で、来期売上見通しと粗利率、Kress暫定CEOによる後任選びと取引先への出資方針の説明",
+    "11/18のAnthropic公開価格決定と11/19の初値、AI関連株からの資金移動の有無とAkamaiへの波及",
+    "11/17の米10月小売売上高と11/18のFOMC議事要旨で、12月の追加利上げ観測が強まるか",
+    "11/18のPalo Alto決算で次世代セキュリティARRと通期見通し、11/19のIntuit決算"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
