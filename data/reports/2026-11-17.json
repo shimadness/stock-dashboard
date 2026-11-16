@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-17",
+  "kind": "daily",
+  "headline": "NVIDIA決算前日にAI株が総崩れ、半導体指数は急落　米国が中国の遠隔利用と東南アジア向け出荷を規制",
+  "market_summary": "11/16の米国市場はナスダックが大幅に下げ、AI半導体を中心に売りが広がった。米商務省は同日、国外データセンター経由で中国企業が先端AIチップを利用することを許可制とし、マレーシア・シンガポールなど5カ国向けの出荷にも許可を義務づける暫定最終規則を出し、NVIDIAの経営混乱と翌日の決算を前にした持ち高調整に拍車をかけた。業界別では半導体・製造装置・データセンター機器が最も売られ、メモリ・光通信・ネットワーク半導体の下げが大きかった一方、AI応用とDC REIT・通信は底堅かった。東京市場も前週末の米半導体安を受けてアドバンテストと東京エレクトロンの2銘柄が日経平均を大きく押し下げた。core 3社では、NVIDIAが続落して52週安値を更新し、Cloudflareはハイテク株安に連れて下げ、Akamaiは小幅安にとどまった。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "down", "comment": "Huang氏辞任後の経営の不透明さに、中国企業による国外データセンター経由の利用を許可制とする新規則が重なった。11/17引け後の決算を前に持ち高を落とす売りが続いた。"},
+    {"ticker": "MU", "direction": "down", "comment": "Intelとともに半導体の中でも大きく売られたとロイターは伝えている。前週に戻した分を削り、メモリ株全体に売りが広がった。"},
+    {"ticker": "6857.T", "direction": "down", "comment": "前週末の米半導体株安を受けて東京市場で売りが集中し、1銘柄で日経平均を大きく押し下げた。東京エレクトロンも続いた。"},
+    {"ticker": "ALAB", "direction": "down", "comment": "先週NVIDIAからの資金の受け皿として買われた分が、半導体指数の急落で巻き戻された。個別の材料は確認できていない。"},
+    {"ticker": "LITE", "direction": "down", "comment": "AI設備投資に連動しやすい光通信株として、半導体安に連れて大きく売られた。個別の材料は確認できていない。"},
+    {"ticker": "SMCI", "direction": "down", "comment": "マレーシア・シンガポールなど5カ国向けの先端チップ出荷に許可が必要となり、東南アジアに拠点を持つサーバー会社への影響が意識された。Dellの流出報道以降の販売経路への警戒も続いている。"},
+    {"ticker": "NBIS", "direction": "down", "comment": "設備投資の上振れで売られた流れが続き、AI株安で週明けも下げた。"},
+    {"ticker": "9433.T", "direction": "up", "comment": "東京市場で半導体から資金が抜ける中、内需の通信株として逆行高となった。個別の材料は確認できていない。"}
+  ],
+  "sector_notes": [
+    {"sector": "edge", "note": "Cloudflare・Fastlyが高評価のハイテク株売りに連れて下げ、Fortinetも続いた。Zscaler・CrowdStrikeなどセキュリティ大手の下げは小さく、11/18のPalo Alto決算待ちとなっている。"},
+    {"sector": "semi", "note": "フィラデルフィア半導体指数が急落した。遠隔利用規制とNVIDIAの経営混乱が重なり、メモリ・ARM・Credo・Astera Labsなど先週戻した銘柄ほど大きく売られた。"},
+    {"sector": "equip", "note": "米国の装置株に加え、アドバンテスト・東京エレクトロンが前週末の米半導体安を遅れて織り込み急落した。信越化学の下げは限られた。"},
+    {"sector": "dcinfra", "note": "東南アジア向け出荷の許可制で、サーバー・光通信・電源機器が軒並み下げた。Celesticaだけは小幅安にとどまった。"},
+    {"sector": "power", "note": "古河電工とBloom Energy、GE VernovaなどAI設備投資に連動する銘柄が売られた一方、Equinix・Digital Realty・Constellationと日本の通信株は底堅かった。"},
+    {"sector": "hyper", "note": "CoreWeave・Nebiusなど借り入れで設備を増やすAIクラウドが大きく下げ、Oracle・Alphabetも売られた。Microsoftの下げは小さかった。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "個別の材料は報じられていない", "source": ""},
+    {"ticker": "NET", "note": "個別の材料は報じられていない", "source": ""},
+    {"ticker": "FSLY", "note": "個別の材料は報じられていない", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "YTL Power International", "ticker": "6742.KL", "sector": "dcinfra", "reason": "11/16の米商務省の規則でマレーシア向けの先端AIチップ出荷に許可が必要となり、ジョホール州でNVIDIA製GPUを使うAIデータセンターを進める同社は規則の影響を直接受ける。東南アジアのAIデータセンター投資が許可制でどこまで遅れるかを測る指標として見ておきたい。"}
+  ],
+  "watch_next": [
+    "11/17引け後のNVIDIA決算で、来期売上見通しと粗利率、遠隔利用規制と東南アジア向け許可制の影響の説明",
+    "11/18のAnthropic公開価格決定と11/19の初値、AI株からの資金移動とAkamaiへの波及",
+    "11/18のPalo Alto決算と11/19のAlibaba決算で、中国企業の計算資源の確保の説明",
+    "11/17の米10月小売売上高と11/18のFOMC議事要旨による12月利上げ観測の変化"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
