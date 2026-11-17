@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T07:02:46+09:00",
+ "updated": "2026-11-18T07:02:44+09:00",
  "rule": {
   "hit_pct": 1.0,
   "benchmark": "watchlist equal-weight",
@@ -85,7 +85,7 @@
     "avg_signed_ret": -21.21,
     "avg_excess": -16.55,
     "beat_bench_rate": 0.0,
-    "open": 2
+    "open": 3
    }
   },
   "by_horizon": {
@@ -318,6 +318,15 @@
   },
   {
    "date": "2026-11-17",
+   "closed": 4,
+   "hit_rate": 0.0,
+   "strict_hit_rate": 0.0,
+   "avg_excess": -11.8,
+   "beat_bench_rate": 0.0,
+   "open": 9
+  },
+  {
+   "date": "2026-11-18",
    "closed": 4,
    "hit_rate": 0.0,
    "strict_hit_rate": 0.0,

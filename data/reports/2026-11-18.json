@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-18",
+  "kind": "daily",
+  "headline": "NVIDIAはHuang氏辞任後初の決算で予想超え・見通し上振れ　ソフトウェア株はAnthropic上場前に急落しSalesforceが大幅安",
+  "market_summary": "11/17の米国市場は、Anthropicの公開価格決定を翌日に控えてソフトウェア株に売りが集中し、AIエージェントが席数課金の収益を削るとの懸念と上場に向けた換金売りが重なったと報じられた。業界別ではSaaSが最も大きく下げ、ハイパースケーラーとセキュリティも軟調だった一方、半導体はArm・Astera Labs・Broadcomが買われ平均では小幅高にとどまった。アジアは米国の東南アジア向け先端チップ出荷の許可制を受けて半導体株が売られ、韓国総合株価指数は約9ヶ月ぶりの安値で引けた。core 3社では、NVIDIAが引け後の決算で売上・来期見通しとも市場予想を上回り時間外で上昇したと報じられ、Cloudflareはハイテク株安に連れて続落、Akamaiは小動きだった。",
+  "movers": [
+    {"ticker": "CRM", "direction": "down", "comment": "Anthropic上場を前に、AIエージェントが席数課金のソフトウェア収益を侵食するとの懸念が再燃し、ダウ構成銘柄で最も売られたと報じられた。ソフトウェア株売りの中心となった。"},
+    {"ticker": "NOW", "direction": "down", "comment": "Salesforceとともにソフトウェア株売りの主役となった。個別の悪材料ではなく業界全体の持ち高調整との報道。"},
+    {"ticker": "WDAY", "direction": "down", "comment": "席数課金モデルへのAI代替懸念で、人事・財務ソフトにも売りが波及した。Intuit・Atlassianも同様に下げた。"},
+    {"ticker": "MDB", "direction": "down", "comment": "高評価のソフトウェア株として、Anthropic上場前の換金売りの対象となった。個別の材料は確認できていない。"},
+    {"ticker": "005930.KS", "direction": "down", "comment": "米商務省の暫定最終規則で、受託製造先が設計元と制限対象国の関係を否定しにくくなり、Samsungのファウンドリ事業に追加の顧客審査と許可負担が生じるとロイターが報じた。韓国総合株価指数は4日続落した。"},
+    {"ticker": "6857.T", "direction": "down", "comment": "米国の東南アジア向け先端チップ出荷の許可制と、NVIDIA決算を前にした手控えで、東京市場の半導体株の下げを主導した。"},
+    {"ticker": "ARM", "direction": "up", "comment": "ソフトウェア株から抜けた資金の一部が半導体設計・接続チップに向かい、前日急落からの買い戻しが入った。個別の材料は確認できていない。"},
+    {"ticker": "ALAB", "direction": "up", "comment": "前日の急落の巻き戻しで、NVIDIA決算を前に接続チップ株が買い戻された。個別の材料は確認できていない。"}
+  ],
+  "sector_notes": [
+    {"sector": "edge", "note": "Cloudflare・Zscaler・Palo Alto・Oktaがソフトウェア株安に連れて下げた一方、Akamai・Fortinet・Fastlyは底堅かった。11/18のPalo Alto決算待ちが続いている。"},
+    {"sector": "saas", "note": "Anthropic上場前日にAIエージェントによる席数課金の侵食懸念と換金売りが重なり、業界全体が大きく売られた。Salesforceが最大の下げとなった。"},
+    {"sector": "semi", "note": "米国ではArm・Astera Labs・Broadcom・Credoが前日の急落から戻した一方、TSMCやメモリは軟調だった。韓国ではSamsungがファウンドリ向け規則の影響を嫌気して売られた。"},
+    {"sector": "equip", "note": "東京市場でアドバンテストと東京エレクトロンが東南アジア向け出荷の許可制を受けて続落し、ASMLも下げた。米国の装置株は小動きだった。"},
+    {"sector": "hyper", "note": "Oracle・Microsoftが下げ、AlibabaとTencentは米国の遠隔利用規制と11/19のAlibaba決算を前に売られた。Amazonは小動きだった。"},
+    {"sector": "power", "note": "Constellation・Vistra・古河電工など電力・電線株が売られた一方、GE Vernovaは上昇し、日本の通信株は小動きだった。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "小動き", "source": ""},
+    {"ticker": "NET", "note": "個別の材料は報じられていない", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "Atlassian", "ticker": "TEAM", "sector": "saas", "reason": "11/17のソフトウェア株売りでSalesforce・ServiceNowとともに下げた席数課金型の開発者向けソフト会社。11/19のAnthropic上場後にAIエージェントによる席数侵食の懸念が強まるか和らぐかを、ウォッチリスト外の純粋な席数課金銘柄で測る指標になる。"}
+  ],
+  "watch_next": [
+    "11/18のNVIDIA株の反応と、来期見通しが中国向けデータセンター売上を含まない前提でも上振れたことをAI株全体が好感するか",
+    "11/18のAnthropic公開価格決定（応募超過で仮条件上限超えとの報道）と11/19の初値、ソフトウェア株からの資金移動が続くか",
+    "11/18のPalo Alto決算とFOMC議事要旨、11/19のAlibaba決算と米商務省の暫定最終規則の官報掲載",
+    "11/24のDell決算で、AIサーバーの粗利率と販売経路の輸出管理への説明"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
