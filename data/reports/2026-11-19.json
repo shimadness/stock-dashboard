@@ -4,35 +4,124 @@
   "headline": "NVIDIAは好決算でも売られ「材料出尽くし」　セキュリティ株は国土安全保障長官の警告とPalo Alto決算を前に一斉高",
   "market_summary": "11/18の米国市場は、NVIDIAが予想を上回る決算と来期見通しを示したにもかかわらず失速し、ダウとS&P 500が下げた一方、ナスダック100は小幅高で引けた。10月FOMC議事要旨でほぼ全員が今後数ヶ月の利上げが必要との認識を示した一方、原油安で10年債利回りは低下した。業界別ではCDN・エッジ・セキュリティが、国土安全保障長官による米国インフラへのサイバー攻撃の議会証言と引け後のPalo Alto決算への期待で全面高となり、半導体はAMD・Broadcomが買い戻された。core 3社では、NVIDIAはCEO交代後の先行き不透明感が残り続落、AkamaiとCloudflareはセキュリティ株高に連れて大きく上げた。夜にはAnthropicが仮条件上限を超える価格で公開価格を決め、11/19に取引を始める。",
   "movers": [
-    {"ticker": "PANW", "direction": "up", "comment": "決算前からセキュリティ株高を主導し、引け後の8-10月期決算は売上・利益とも市場予想を上回り通期見通しを引き上げた。AIモデル基盤のApplied Computeを株式交換で買収すると発表した。"},
-    {"ticker": "OKTA", "direction": "up", "comment": "国土安全保障長官がイラン系の攻撃者による米国の金融・エネルギー・交通網への攻撃を議会で証言し、MicrosoftやFAAの障害も重なって防御投資への関心が高まった。"},
-    {"ticker": "FSLY", "direction": "up", "comment": "セキュリティ・エッジ株の一斉高に連れて上げた。個別の材料は報じられていない。"},
-    {"ticker": "CRWD", "direction": "up", "comment": "Oktaと同じく国土安全保障長官の証言とPalo Alto決算への期待で買われた。"},
-    {"ticker": "AMD", "direction": "up", "comment": "NVIDIA決算を前にした2日間の急落から買い戻された。NVIDIAの好決算でAI設備投資の減速懸念がいったん和らいだ。"},
-    {"ticker": "NVDA", "direction": "down", "comment": "売上・来期見通し・自社株買い拡大とも市場予想を上回ったが、寄り付き後に上昇分を失った。Huang氏の退任後に1年後の姿が見えないとの声が出ており、好材料で売る動きが続いた。"},
-    {"ticker": "CRWV", "direction": "down", "comment": "NVIDIA決算を受けて寄り前は買われたが、重い負債と継続的な資金調達の必要性に関心が戻り反落した。"},
-    {"ticker": "QCOM", "direction": "down", "comment": "半導体内でAMD・Broadcomに資金が向かう中で売られた。個別の材料は確認できていない。"}
+    {
+      "ticker": "PANW",
+      "direction": "up",
+      "comment": "決算前からセキュリティ株高を主導し、引け後の8-10月期決算は売上・利益とも市場予想を上回り通期見通しを引き上げた。AIモデル基盤のApplied Computeを株式交換で買収すると発表した。"
+    },
+    {
+      "ticker": "OKTA",
+      "direction": "up",
+      "comment": "国土安全保障長官がイラン系の攻撃者による米国の金融・エネルギー・交通網への攻撃を議会で証言し、MicrosoftやFAAの障害も重なって防御投資への関心が高まった。"
+    },
+    {
+      "ticker": "FSLY",
+      "direction": "up",
+      "comment": "セキュリティ・エッジ株の一斉高に連れて上げた。個別の材料は報じられていない。"
+    },
+    {
+      "ticker": "CRWD",
+      "direction": "up",
+      "comment": "Oktaと同じく国土安全保障長官の証言とPalo Alto決算への期待で買われた。"
+    },
+    {
+      "ticker": "AMD",
+      "direction": "up",
+      "comment": "NVIDIA決算を前にした2日間の急落から買い戻された。NVIDIAの好決算でAI設備投資の減速懸念がいったん和らいだ。"
+    },
+    {
+      "ticker": "NVDA",
+      "direction": "down",
+      "comment": "売上・来期見通し・自社株買い拡大とも市場予想を上回ったが、寄り付き後に上昇分を失った。Huang氏の退任後に1年後の姿が見えないとの声が出ており、好材料で売る動きが続いた。"
+    },
+    {
+      "ticker": "CRWV",
+      "direction": "down",
+      "comment": "NVIDIA決算を受けて寄り前は買われたが、重い負債と継続的な資金調達の必要性に関心が戻り反落した。"
+    },
+    {
+      "ticker": "QCOM",
+      "direction": "down",
+      "comment": "半導体内でAMD・Broadcomに資金が向かう中で売られた。個別の材料は確認できていない。"
+    }
   ],
   "sector_notes": [
-    {"sector": "edge", "note": "国土安全保障長官による米国インフラへのサイバー攻撃の議会証言と、引け後のPalo Alto決算への期待で8社すべてが大きく上げた。Palo Altoが予想超えと通期見通し引き上げを示したことで、11/19も業界の評価見直しが続くかが焦点になる。"},
-    {"sector": "semi", "note": "NVIDIAが好決算でも売られた一方、AMD・Broadcomが買い戻され、アジアではSK hynixとSamsungが決算を受けて上げた。QualcommとMarvellは軟調で、業界内の選別が続いた。"},
-    {"sector": "equip", "note": "東京市場でアドバンテストがNVIDIA決算を受けて反発した。米国の装置株は小幅高にとどまった。"},
-    {"sector": "saas", "note": "NVIDIA決算後に売られすぎたソフトウェア株の買い戻しが入り、Snowflake・MongoDBが上げた一方、Adobe・Workday・ServiceNow・Salesforceは11/19のAnthropic上場を前に続落した。"},
-    {"sector": "hyper", "note": "Amazonが上げた一方、CoreWeaveは負債への懸念で反落し、Alibabaは11/19の決算を前に売られた。"}
+    {
+      "sector": "edge",
+      "note": "国土安全保障長官による米国インフラへのサイバー攻撃の議会証言と、引け後のPalo Alto決算への期待で8社すべてが大きく上げた。Palo Altoが予想超えと通期見通し引き上げを示したことで、11/19も業界の評価見直しが続くかが焦点になる。"
+    },
+    {
+      "sector": "semi",
+      "note": "NVIDIAが好決算でも売られた一方、AMD・Broadcomが買い戻され、アジアではSK hynixとSamsungが上げた。QualcommとMarvellは軟調で、業界内の選別が続いた。"
+    },
+    {
+      "sector": "equip",
+      "note": "東京市場でアドバンテストがNVIDIA決算を受けて反発した。米国の装置株は小幅高にとどまった。"
+    },
+    {
+      "sector": "saas",
+      "note": "NVIDIA決算後に売られすぎたソフトウェア株の買い戻しが入り、Snowflake・MongoDBが上げた一方、Adobe・Workday・ServiceNow・Salesforceは11/19のAnthropic上場を前に続落した。"
+    },
+    {
+      "sector": "hyper",
+      "note": "Amazonが上げた一方、CoreWeaveは負債への懸念で反落し、Alibabaは11/19の決算を前に売られた。"
+    }
   ],
   "focus_notes": [
-    {"ticker": "AKAM", "note": "個別の材料は報じられていない", "source": ""},
-    {"ticker": "NET", "note": "個別の材料は報じられていない", "source": ""},
-    {"ticker": "PANW", "note": "11/18引け後に8-10月期決算を発表し、売上・調整後利益とも市場予想を上回り、次世代セキュリティのARRが大きく伸び、通期の売上・利益見通しを引き上げた。株式交換でApplied Computeを買収すると発表した。", "source": "https://www.cnbc.com/2026/11/18/palo-alto-networks-panw-q1-2027-earnings-.html"},
-    {"ticker": "OKTA", "note": "11/18、国土安全保障長官がイラン系の攻撃者による米国の重要インフラへの攻撃を議会で証言し、今週のMicrosoftやFAAの障害も重なってセキュリティ株が一斉に買われた。", "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"},
-    {"ticker": "CRWD", "note": "11/18、国土安全保障長官の議会証言とPalo Alto決算への期待でセキュリティ株高に加わった。", "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"},
-    {"ticker": "ZS", "note": "11/18、国土安全保障長官の議会証言とPalo Alto決算への期待でセキュリティ株高に加わった。", "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"},
-    {"ticker": "FSLY", "note": "個別の材料は報じられていない", "source": ""},
-    {"ticker": "FTNT", "note": "個別の材料は報じられていない", "source": ""}
+    {
+      "ticker": "AKAM",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    },
+    {
+      "ticker": "NET",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    },
+    {
+      "ticker": "PANW",
+      "note": "11/18引け後に8-10月期決算を発表し、売上・調整後利益とも市場予想を上回り、次世代セキュリティのARRが大きく伸び、通期の売上・利益見通しを引き上げた。株式交換でApplied Computeを買収すると発表した。",
+      "source": "https://www.cnbc.com/2026/11/18/palo-alto-networks-panw-q1-2027-earnings-.html"
+    },
+    {
+      "ticker": "OKTA",
+      "note": "11/18、国土安全保障長官がイラン系の攻撃者による米国の重要インフラへの攻撃を議会で証言し、今週のMicrosoftやFAAの障害も重なってセキュリティ株が一斉に買われた。",
+      "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"
+    },
+    {
+      "ticker": "CRWD",
+      "note": "11/18、国土安全保障長官の議会証言とPalo Alto決算への期待でセキュリティ株高に加わった。",
+      "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"
+    },
+    {
+      "ticker": "ZS",
+      "note": "11/18、国土安全保障長官の議会証言とPalo Alto決算への期待でセキュリティ株高に加わった。",
+      "source": "https://stockstory.org/us/stocks/nasdaq/ntsk/news/why-up-down/netskope-sentinelone-crowdstrike-okta-and-zscaler-shares-are-soaring-what-you-need-to-know"
+    },
+    {
+      "ticker": "FSLY",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    },
+    {
+      "ticker": "FTNT",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    }
   ],
   "suggestions": [
-    {"name": "Netskope", "ticker": "NTSK", "sector": "edge", "reason": "11/18のセキュリティ株高で上昇率が最も大きかった銘柄の一つ。ZscalerやCloudflareと競合するクラウド型ネットワークセキュリティの新興上場企業で、Palo Altoの好決算を受けて業界の評価見直しが中小型株にまで広がるかを測る指標になる。"},
-    {"name": "SentinelOne", "ticker": "S", "sector": "edge", "reason": "11/18の国土安全保障長官の証言を受けたセキュリティ株高でCrowdStrikeを上回って買われた。端末防御でCrowdStrikeと直接競合し、12月上旬の決算で業界の需要の強さが中堅企業にも及んでいるかを確認できる。"}
+    {
+      "name": "Netskope",
+      "ticker": "NTSK",
+      "sector": "edge",
+      "reason": "11/18のセキュリティ株高で上昇率が最も大きかった銘柄の一つ。ZscalerやCloudflareと競合するクラウド型ネットワークセキュリティの新興上場企業で、Palo Altoの好決算を受けて業界の評価見直しが中小型株にまで広がるかを測る指標になる。"
+    },
+    {
+      "name": "SentinelOne",
+      "ticker": "S",
+      "sector": "edge",
+      "reason": "11/18の国土安全保障長官の証言を受けたセキュリティ株高でCrowdStrikeを上回って買われた。端末防御でCrowdStrikeと直接競合し、Palo Altoの好決算が示した業界の需要の強さが中堅企業にも及ぶかを測る指標になる。"
+    }
   ],
   "watch_next": [
     "11/19のAnthropic初値と、ソフトウェア株から上場株への資金移動が続くか",
