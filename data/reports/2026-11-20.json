@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-20",
+  "kind": "daily",
+  "headline": "Anthropicは公開価格を上回って初日を終えたがAI株は総崩れ、主要3指数が2%超安　セキュリティ株だけがPalo Alto決算で逆行高",
+  "market_summary": "11/19の米国市場は、過去最大の新規上場となったAnthropicが公開価格を上回って初日を終えた一方、AI関連株の売りは止まらず、主要3指数がそろって2%超下げ、S&P 500は6日続落となった。NVIDIAの決算後の失速とHuang氏退任後の先行き不透明感、AI設備投資への疑問が重しとなり、半導体指数も下げ、AIクラウドのNebius・CoreWeaveが大きく売られた。業界別ではCDN・エッジ・セキュリティだけが、Palo Altoの好決算と通期見通し引き上げを受けて逆行高となった。core 3社では、NVIDIAが6日続落、Cloudflareは寄り付きの大幅高から上げ幅を縮め、Akamaiは横ばいだった。",
+  "movers": [
+    {
+      "ticker": "PANW",
+      "direction": "up",
+      "comment": "8-10月期決算が売上・調整後利益とも市場予想を上回り、通期見通しを引き上げた。オープンウェイトのAIモデルを扱うApplied Computeの株式交換による買収も好感された。"
+    },
+    {
+      "ticker": "OKTA",
+      "direction": "up",
+      "comment": "Palo Altoの好決算を受けたセキュリティ株高に加わった。個別の材料は報じられていない。"
+    },
+    {
+      "ticker": "NBIS",
+      "direction": "down",
+      "comment": "Anthropic上場でもAI株への買いが戻らず、AI設備投資への疑問からAIクラウド株の中で最も大きく売られた。"
+    },
+    {
+      "ticker": "AMD",
+      "direction": "down",
+      "comment": "半導体株で最大の下げ。調査報道のHunterbrook Mediaが空売りを公表し、同社のチップが米国の取引制限対象の中国サーバー会社に渡っていると指摘したと報じられた。"
+    },
+    {
+      "ticker": "0700.HK",
+      "direction": "down",
+      "comment": "7-9月期決算が市場予想に届かずAI投資の負担が意識されたうえ、米国による国外データセンター経由の先端チップ遠隔利用規制も重しとなったとロイターが報じた。"
+    },
+    {
+      "ticker": "CRWV",
+      "direction": "down",
+      "comment": "NVIDIAの決算後の失速とAI設備投資への疑問からAIクラウド株の売りが続いた。"
+    },
+    {
+      "ticker": "FSLY",
+      "direction": "down",
+      "comment": "セキュリティ株が買われる中で逆行安となった。個別の材料は報じられていない。"
+    },
+    {
+      "ticker": "9984.T",
+      "direction": "up",
+      "comment": "米国のAI株安の前に引けた東京市場で上げた。個別の材料は確認できていない。"
+    }
+  ],
+  "sector_notes": [
+    {
+      "sector": "edge",
+      "note": "Palo Altoの好決算と通期見通し引き上げで、CrowdStrike・Cloudflare・Zscalerが寄り付きから大きく買われた。ただ相場全体の下げで多くが上げ幅を縮め、Cloudflare・Akamaiは小幅な動きにとどまり、Fastlyは逆行安となった。"
+    },
+    {
+      "sector": "semi",
+      "note": "NVIDIAの決算後の失速が続き、AMD・Marvell・Credoなど米国のAI半導体が軒並み売られた。一方、SK hynix・Samsung・Intelは上げ、業界内で選別が続いた。"
+    },
+    {
+      "sector": "hyper",
+      "note": "AnthropicがAI株からの資金の受け皿となる形で、AIクラウドのNebius・CoreWeaveと大手クラウドがそろって売られた。Alibabaは決算でAIクラウド売上が大きく伸びたが、利益が市場予想に届かず、設備投資によるフリーキャッシュフローの流出が膨らんだことで買いが続かなかった。"
+    },
+    {
+      "sector": "saas",
+      "note": "Anthropic上場当日も、AIによる代替懸念からSalesforce・Snowflake・MongoDBなどの売りが続いた。"
+    },
+    {
+      "sector": "dcinfra",
+      "note": "AI設備投資への疑問からVertivなど電源・冷却機器株が売られた。"
+    }
+  ],
+  "focus_notes": [
+    {
+      "ticker": "AKAM",
+      "note": "小動き",
+      "source": ""
+    },
+    {
+      "ticker": "NET",
+      "note": "小動き。11/19はPalo Altoの好決算を受けて寄り付きから大きく買われたが、相場全体の下げで上げ幅を大きく縮めて引けた。",
+      "source": "https://finance.yahoo.com/markets/stocks/article/palo-alto-networks-soars-on-q1-earnings-and-applied-compute-deal-150705343.html"
+    },
+    {
+      "ticker": "PANW",
+      "note": "11/18引け後の8-10月期決算で売上・調整後利益が市場予想を上回り通期見通しを引き上げ、Applied Computeの株式交換による買収も発表した。11/19は寄り付きから大きく上げた。",
+      "source": "https://finance.yahoo.com/markets/stocks/article/palo-alto-networks-soars-on-q1-earnings-and-applied-compute-deal-150705343.html"
+    },
+    {
+      "ticker": "ZS",
+      "note": "11/19、Palo Altoの好決算を受けてCrowdStrike・Cloudflareとともに寄り付きから大きく買われた。",
+      "source": "https://finance.yahoo.com/markets/stocks/article/palo-alto-networks-soars-on-q1-earnings-and-applied-compute-deal-150705343.html"
+    },
+    {
+      "ticker": "OKTA",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    },
+    {
+      "ticker": "FSLY",
+      "note": "個別の材料は報じられていない",
+      "source": ""
+    }
+  ],
+  "suggestions": [
+    {
+      "name": "Check Point Software Technologies",
+      "ticker": "CHKP",
+      "sector": "edge",
+      "reason": "Palo Altoが予想を上回り通期見通しを引き上げたことで、同じ企業向けネットワークセキュリティを主力とする同社にも需要の強さが及んでいるかを測る比較対象になる。"
+    },
+    {
+      "name": "Kingsoft Cloud",
+      "ticker": "KC",
+      "sector": "hyper",
+      "reason": "AlibabaがAIクラウド売上の大幅増を示した一方、Tencentは米国の先端チップ遠隔利用規制が重しとなったと報じられた。中国の独立系AIクラウドとして、計算資源の調達制約がどこまで業績に表れるかを見る指標になる。"
+    }
+  ],
+  "watch_next": [
+    "Anthropicの2日目以降の値動きと、AI半導体・AIクラウド株からの資金移動が続くか",
+    "11/19引け後のIntuit決算へのソフトウェア株の反応",
+    "AMDへの空売り報道に対する会社側の説明と、米国の中国向け輸出管理の続報",
+    "11/24のDell決算でAIサーバーの粗利率と販売経路の輸出管理への説明、S&P 500の続落が止まるか"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
