@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-21",
+  "kind": "daily",
+  "headline": "NVIDIA会計へのSEC調査報道でAI株が総崩れ、S&P 500とダウが調整局面入り　セキュリティ株も逆行高から一転安",
+  "market_summary": "11/20の米国市場は、AI株の売りが加速し、S&P 500とダウが10月の高値から1割超下げて調整局面に入り、ナスダック総合は年初来の上げを失った。午後にロイターがSECの執行部門によるNVIDIAの会計調査を報じ、決算で開示された最大1180億ドルの債務保証に市場の目が向いたことで、半導体・メモリー・光通信・AIクラウドが一斉に売られ、VIXは今年最高水準まで上げた。安全資産への買いで10年債利回りは低下したが、12月の利上げ観測は残った。core 3社では、NVIDIAが7日続落で上場来高値から半値近くまで下げ、CloudflareとAkamaiは前日のセキュリティ株高から一転して相場全体の下げに巻き込まれた。アジアは前日の米国AI株安を受けて東京の半導体関連とソフトバンクグループが大きく売られた。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "down", "comment": "朝から売られていたところに、SECの執行部門が会計を調べているとのロイター報道が出て下げ幅を広げた。SECはコメントせず、会社側も即座には応じなかった。調査の開始時期や対象は報じられておらず、市場はOpenAI向けオハイオのデータセンター群への最大1050億ドルの債務保証を含む保証の会計処理を焦点と見ている。"},
+    {"ticker": "SNDK", "direction": "down", "comment": "NVIDIAの急落を受け、Micronとともにメモリー株が大きく売られた。AI向けの需要が設備投資の見直しで鈍るとの懸念が重なった。"},
+    {"ticker": "NBIS", "direction": "down", "comment": "CoreWeave・Applied Digital・IRENとともにAIクラウド株が続落した。NVIDIAの債務保証に支えられた資金調達の構図に疑問が向いたと市場は見ている。"},
+    {"ticker": "CLS", "direction": "down", "comment": "AIサーバー・ネットワーク機器の受託製造として、AI設備投資の先行き懸念で売られた。個別の材料は報じられていない。"},
+    {"ticker": "BE", "direction": "down", "comment": "データセンター向けの燃料電池需要への期待で買われてきた分、AI株の総崩れで大きく売られた。個別の材料は報じられていない。"},
+    {"ticker": "9984.T", "direction": "down", "comment": "11/20の東京市場で、前日の米国AI株安を受けて東京エレクトロン・アドバンテストとともに大きく売られた。OpenAIへの出資とオハイオのデータセンター事業を抱えることが意識された。"},
+    {"ticker": "FSLY", "direction": "down", "comment": "エッジ業界で最も大きく下げた。個別の材料は報じられていない。"},
+    {"ticker": "WDAY", "direction": "up", "comment": "全面安の中でほぼ唯一小幅高で引けた。来週予定の決算を前に、AI関連から距離のあるソフトウェアへ資金が逃げたと市場は見ている。"}
+  ],
+  "sector_notes": [
+    {"sector": "edge", "note": "前日のPalo Alto決算による上げから一転し、業界全体が相場全体の下げに巻き込まれた。Fastly・Cloudflareの下げが大きく、Palo Alto・Zscalerは比較的小さかった。個別の材料は報じられていない。"},
+    {"sector": "semi", "note": "NVIDIAの会計調査報道で、AI半導体・メモリー・光通信が軒並み大きく売られた。Astera Labs・Credoなど高い評価を受けてきた銘柄ほど下げが大きかった。"},
+    {"sector": "dcinfra", "note": "Arista・Dell・Vertiv・Lumentumなどデータセンター機器も、AI設備投資の資金の出し手としてのNVIDIAの役割に疑問が向いて大きく下げた。"},
+    {"sector": "hyper", "note": "AIクラウドのNebius・CoreWeaveが続落し、OracleとMetaも売られた。MicrosoftとAlphabetの下げは相対的に小さかった。"},
+    {"sector": "saas", "note": "AI株の総崩れの中で下げが最も小さい業界となり、Salesforce・ServiceNow・Adobeは小幅安にとどまった。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "個別の材料は報じられていない。", "source": ""},
+    {"ticker": "NET", "note": "個別の材料は報じられていない。", "source": ""},
+    {"ticker": "FSLY", "note": "個別の材料は報じられていない。", "source": ""},
+    {"ticker": "OKTA", "note": "個別の材料は報じられていない。", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "Disco", "ticker": "6146.T", "sector": "equip", "reason": "HBMの薄化・切断に使う装置の大手。Micron・Sandiskの急落で東京の半導体装置株が売られる中、メモリー投資の減速懸念がどこまで受注に表れるかを確かめる対象になる。"},
+    {"name": "Coherent", "ticker": "COHR", "sector": "dcinfra", "reason": "Lumentum・Credoと同じAIデータセンター向け光通信部品を手がける。NVIDIAの会計調査報道で光通信株が一斉に売られており、ハイパースケーラー向けの受注がNVIDIAの資金支援から独立しているかを見極める材料になる。"}
+  ],
+  "watch_next": [
+    "NVIDIAがSECの会計調査報道にどう説明するか、債務保証の会計処理への追加開示が出るか",
+    "11/24のDell決算でAIサーバーの粗利率と受注残、販売経路の輸出管理への説明",
+    "感謝祭週に予定されるWorkday・Zscalerなどの決算と、セキュリティ株が再びAI株と切り離されて買われるか",
+    "VIXの高止まりとAnthropicが公開価格を維持できるか、12月FOMCの利上げ観測"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
