@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-23",
+  "kind": "week_ahead",
+  "headline": "今週の注目：感謝祭の短縮週、24日のDell決算と25日のPCEがAI株急落の歯止めになるか　NVIDIAのSEC調査は続報待ち",
+  "market_summary": "先週はNVIDIAの会計をSECが調べているとの報道でAI株が総崩れとなり、ナスダック総合が週で1割安と大きく崩れて感謝祭週を迎える。今週は11/26が感謝祭で休場、11/27は短縮取引で、取引日数が少ない中で11/24引け後のDell・Workday・HP決算と、12月8〜9日のFOMC前で最後の物価統計となる11/25の10月PCEが相場の方向を決める。決算は11/23引け後にZoom・Hewlett Packard Enterprise・Semtech、11/24寄り前にAnalog Devices、引け後にAutodesk・Nutanixが続き、AI設備投資の需要が実際の受注で確かめられるかが焦点となる。core 3社では、NVIDIAはSEC調査の範囲と会社側の説明待ち、Akamaiは次の材料が2月の決算まで乏しく、Cloudflareは決算後の上げ分を守れるかをAI株の地合いに試される。",
+  "movers": [
+    {
+      "ticker": "NVDA",
+      "direction": "down",
+      "comment": "週末にニューヨーク・タイムズもSECの会計調査を報じた。調査は初期段階で焦点は定まっておらず、2025年の地域別売上の開示変更でシンガポールが内訳から消えた点や、米当局が調べるシンガポールのMegaspeedとの取引が注目されている。会社側はまだ説明しておらず、続報と暫定CEO体制の説明が株価を左右する。"
+    },
+    {
+      "ticker": "DELL",
+      "direction": "down",
+      "comment": "11/24引け後に8-10月期決算を発表する。AIサーバーの受注残、ストレージ価格と粗利率、11-1月期見通しが焦点となる。シンガポール経由のサーバー流出報道を受けた販売経路の説明も求められる。"
+    },
+    {
+      "ticker": "WDAY",
+      "direction": "up",
+      "comment": "11/24引け後に決算を発表する。先週末の全面安でもほぼ下げなかったが週間では業務ソフト株とともに売られており、AIエージェント製品が増収を押し上げているかで、AIによる置き換え懸念で売られたソフトウェア株全体の見方が変わる。"
+    },
+    {
+      "ticker": "CRWV",
+      "direction": "down",
+      "comment": "NVIDIAの債務保証と取引先への資金の流れに疑問が向き、AIクラウドは先週最も大きく売られた業界の一つとなった。今週は個別の予定材料が乏しく、NVIDIA調査の続報に最も振らされやすい。"
+    },
+    {
+      "ticker": "MRVL",
+      "direction": "down",
+      "comment": "11/23引け後のSemtechと11/24寄り前のAnalog Devicesの決算で、光通信・データセンター向けアナログ需要の強さが確かめられるかが、光通信株の下げ止まりの試金石となる。"
+    },
+    {
+      "ticker": "NET",
+      "direction": "down",
+      "comment": "11/5の決算後の上昇分の多くを先週末の全面安で失った。今週は個別の予定材料がなく、AI株の地合いとセキュリティ株への資金の戻りに連動する。"
+    }
+  ],
+  "sector_notes": [
+    {
+      "sector": "semi",
+      "note": "NVIDIAのSEC調査の続報が業界全体の方向を決める。11/24寄り前のAnalog Devicesは通信向けの大半をデータセンターが占めており、AI設備投資の需要が実需として続いているかの手がかりになる。"
+    },
+    {
+      "sector": "dcinfra",
+      "note": "11/23引け後のHewlett Packard Enterpriseと11/24引け後のDell・HP・Nutanixの決算が重なり、AIサーバーの受注残と粗利率が先週の急落を正当化するかが試される。"
+    },
+    {
+      "sector": "edge",
+      "note": "先週は業界の中で最も下げが小さかったが、金曜の全面安で逆行高の分を失った。今週は業界内の決算がなく、Zscalerの決算日も会社から確認できておらず、AI株とセキュリティ株が再び切り離されるかが焦点となる。"
+    },
+    {
+      "sector": "saas",
+      "note": "11/24引け後のWorkdayとAutodesk、11/23引け後のZoomの決算で、AI製品が増収に結びついているかが示され、AIによる置き換え懸念で売られた業界の下げが止まるかが決まる。"
+    }
+  ],
+  "focus_notes": [
+    {
+      "ticker": "AKAM",
+      "note": "個別の材料は報じられていない。次の決算は2月の予定。",
+      "source": ""
+    },
+    {
+      "ticker": "NET",
+      "note": "個別の材料は報じられていない。次の決算は2月の予定。",
+      "source": ""
+    }
+  ],
+  "suggestions": [
+    {
+      "name": "Semtech",
+      "ticker": "SMTC",
+      "sector": "dcinfra",
+      "reason": "11/23引け後に決算を発表し、会社はデータセンター売上が前四半期比で約45%伸びる見通しを示している。800G製品と1.6T向けCopperEdge・FiberEdgeの立ち上がりが確認されれば、先週急落したCredo・Astera Labsなど光・銅配線株の需要の裏づけになる。"
+    },
+    {
+      "name": "Analog Devices",
+      "ticker": "ADI",
+      "sector": "semi",
+      "reason": "11/24寄り前に決算を発表し、通信向け売上の大半を占めるデータセンター向けが前年比で倍以上に伸びている。市場の期待は会社見通しの上限近くにあるとEarnings Whispersは指摘しており、AI設備投資の需要が汎用アナログ半導体まで広がっているかを示す。"
+    }
+  ],
+  "watch_next": [
+    "NVIDIAがSEC調査報道に説明するか、Megaspeedとの取引や地域別売上の開示についての続報",
+    "11/24引け後のDell・Workday・HP・Autodesk決算で、AIサーバーの受注残と粗利率、ソフトウェアのAI製品の寄与",
+    "11/25の10月PCE物価とGDP改定値、ベージュブックで12月8〜9日のFOMCの利上げ観測が強まるか",
+    "11/23引け後のSemtech・Hewlett Packard Enterpriseと11/24寄り前のAnalog Devicesで、光通信・データセンター向け需要の強さ"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
