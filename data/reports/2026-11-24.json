@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-24",
+  "kind": "daily",
+  "headline": "NVIDIAがHuang氏のCEO復帰で過去最大級の急騰、AI株が総反発　CrowdStrikeはZscaler買収発表で逆行安",
+  "market_summary": "11/23の米国市場は、NVIDIA取締役会がJensen Huang氏のCEO復帰を発表し、トランプ大統領が自ら取締役会を説得したと表明したことで、S&P 500とナスダックが2025年4月以来の大幅高となり、7日続落の流れを断ち切った。半導体・メモリー・光通信・AIクラウド・AIサーバーなど先週売られた業界ほど大きく買い戻されたが、NomuraのCharlie McElligott氏は売り方の買い戻しと機械的な買いが中心だと指摘しており、12/9のFOMCでの利上げはほぼ織り込まれたままである。CDN・エッジ・セキュリティでは、CrowdStrikeが好決算と同時に全株式交換でのZscaler買収を発表し、Zscalerが急騰、CrowdStrikeは逆行安となった。core 3社では、NVIDIAが株価を大きく戻し、AkamaiとCloudflareはAI株の地合い改善に連れて上げた。日本市場は勤労感謝の日で休場で、今日は米国の急反発を受けて先週売られた半導体装置・電線株がどこまで戻すかが焦点となる。",
+  "movers": [
+    {"ticker": "NVDA", "direction": "up", "comment": "取締役会が全会一致でHuang氏をCEOに復帰させ、米政府の上層部からの意見も踏まえて国家安全保障上の懸念はないと説明した。Megaspeed幹部との関係をめぐる社内調査は続き、輸出管理を扱う委員会を新設した。SECの会計調査の行方は未決着のままである。"},
+    {"ticker": "CRWV", "direction": "up", "comment": "NVIDIAの経営の空白が埋まったことで、NVIDIAの債務保証と出資に支えられたAIクラウドの資金調達への不安が和らぎ、Nebiusとともに大きく買い戻された。"},
+    {"ticker": "MU", "direction": "up", "comment": "SK hynix、SanDisk、Western Digitalとともにメモリー・ストレージ株が急反発した。AI設備投資の見直し懸念で先週売られた分の買い戻しで、個別の材料は報じられていない。"},
+    {"ticker": "DELL", "direction": "up", "comment": "11/24引け後の決算を前にAIサーバー株とともに買い戻された。Earnings Whispersは前四半期末で950億ドルに達したAI受注残を、メモリー不足の中で利益を伴って出荷に変えられるかが焦点としている。"},
+    {"ticker": "INTC", "direction": "up", "comment": "半導体株の総反発の中でも上げが目立った。個別の材料は報じられていない。"},
+    {"ticker": "ZS", "direction": "up", "comment": "CrowdStrikeが1株あたりCrowdStrike株1.135株の全株式交換で、約439億ドルでの買収を発表した。今後は規制当局の承認と株主総会が手続きの焦点となり、株価はCrowdStrike株価に連動しやすくなる。"},
+    {"ticker": "CRWD", "direction": "down", "comment": "8-10月期は純新規ARRが過去最高となり通期見通しを引き上げたが、Zscaler買収による株式の大幅な希薄化と統合負担が嫌われ、AI株の総反発に逆行した。"},
+    {"ticker": "9984.T", "direction": "down", "comment": "前営業日の11/20にAI株の総崩れとNVIDIAの会計調査報道を受けて大きく売られた。日本は11/23が休場で、今日の取引で米国の反発をどこまで取り込むかが焦点となる。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "NVIDIAのCEO復帰を受けてTSMC、Marvell、Astera Labs、Credoなど先週大きく売られた銘柄ほど急反発した。Armは同社CEOがNVIDIAの後任候補と報じられていたが、契約を2033年まで延長したことも伝わった。"},
+    {"sector": "edge", "note": "CrowdStrikeのZscaler買収発表で業界の再編が意識され、Zscalerが急騰、Okta・Fastlyも買われた一方、買い手のCrowdStrikeは逆行安となった。AkamaiとCloudflareはAI株の地合い改善に連れて上げた。"},
+    {"sector": "hyper", "note": "CoreWeaveとNebiusがNVIDIAの経営正常化への期待で急反発し、Oracleも買い戻された。上場直後に売られたAnthropicはほぼ横ばいで、反発に加わらなかった。"},
+    {"sector": "dcinfra", "note": "11/23引け後のHewlett Packard Enterpriseと11/24引け後のDellの決算を控え、AIサーバー・光通信株が大きく買い戻された。決算で受注残の出荷と粗利率が確かめられるかで、反発が続くかが決まる。"},
+    {"sector": "equip", "note": "米国のApplied Materials・Lam Research・ASMLが急反発した。日本の装置株は11/20に大きく下げた後で休場を挟んでおり、今日の取引で戻りが試される。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "個別の材料は報じられていない。11/23のAI株の総反発に連れて上げた。次の決算は2027年2月18日の予定。", "source": ""},
+    {"ticker": "NET", "note": "個別の材料は報じられていない。11/23のAI株の総反発に連れて上げた。", "source": ""},
+    {"ticker": "CRWD", "note": "11/23発表の8-10月期決算で純新規ARRが過去最高となり通期見通しを引き上げたが、同時に発表した全株式交換でのZscaler買収が嫌われて下げた。", "source": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000035/crwd-20261123xex991.htm"},
+    {"ticker": "ZS", "note": "11/23にCrowdStrikeが1株あたりCrowdStrike株1.135株、総額約439億ドルでの買収で最終合意したと発表し、急騰した。", "source": "https://www.sec.gov/Archives/edgar/data/0001535527/000153552726000035/crwd-20261123xex991.htm"},
+    {"ticker": "FSLY", "note": "個別の材料は報じられていない。", "source": ""},
+    {"ticker": "OKTA", "note": "個別の材料は報じられていない。", "source": ""},
+    {"ticker": "FTNT", "note": "個別の材料は報じられていない。", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "Seagate Technology", "ticker": "STX", "sector": "dcinfra", "reason": "11/23のAI株の総反発でSanDisk・Western Digitalとともに買い戻された。11/24引け後のDell決算ではメモリー・ストレージ不足がAIサーバー出荷の制約とされており、データセンター向けHDDの需給と価格の手がかりになる。"}
+  ],
+  "watch_next": [
+    "11/24引け後のDell決算で、950億ドルのAI受注残の出荷ペースと粗利率、販売経路の輸出管理への説明",
+    "11/25の10月PCE物価とGDP改定値で、12/9のFOMCでの利上げ観測が変わるか",
+    "NVIDIAのSEC会計調査の続報と、Huang氏の復帰後の議会・米政府との対話",
+    "CrowdStrikeのZscaler買収で、交換比率から見た両社株価の差と規制当局の審査の行方"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
