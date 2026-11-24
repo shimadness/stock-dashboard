@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T07:04:16+09:00",
+ "updated": "2026-11-25T07:02:35+09:00",
  "rule": {
   "hit_pct": 1.0,
   "benchmark": "watchlist equal-weight",
@@ -381,6 +381,15 @@
   },
   {
    "date": "2026-11-24",
+   "closed": 8,
+   "hit_rate": 12.5,
+   "strict_hit_rate": 12.5,
+   "avg_excess": -9.06,
+   "beat_bench_rate": 12.5,
+   "open": 7
+  },
+  {
+   "date": "2026-11-25",
    "closed": 8,
    "hit_rate": 12.5,
    "strict_hit_rate": 12.5,
