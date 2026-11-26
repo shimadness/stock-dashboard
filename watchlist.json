@@ -31,6 +31,10 @@
     {
       "id": "apps",
       "label": "AI応用・端末・コンテンツ"
+    },
+    {
+      "id": "space",
+      "label": "宇宙・衛星"
     }
   ],
   "markets": {
@@ -494,6 +498,76 @@
       "sector": "saas",
       "market": "US",
       "note": "ドキュメントDB。AIアプリの基盤需要"
+    },
+    {
+      "ticker": "RKLB",
+      "name": "Rocket Lab",
+      "sector": "space",
+      "market": "US",
+      "note": "小型ロケット＋衛星製造。衛星コンステ（通信・観測データ網）構築の打ち上げ需要"
+    },
+    {
+      "ticker": "ASTS",
+      "name": "AST SpaceMobile",
+      "sector": "space",
+      "market": "US",
+      "note": "スマホ直結の衛星ブロードバンド。地上網の外まで広げる通信インフラ"
+    },
+    {
+      "ticker": "PL",
+      "name": "Planet Labs",
+      "sector": "space",
+      "market": "US",
+      "note": "地球を毎日撮る観測衛星群。画像データをAI解析して販売"
+    },
+    {
+      "ticker": "BKSY",
+      "name": "BlackSky",
+      "sector": "space",
+      "market": "US",
+      "note": "高頻度観測衛星＋AI画像解析。防衛・政府向けの即時データ"
+    },
+    {
+      "ticker": "LUNR",
+      "name": "Intuitive Machines",
+      "sector": "space",
+      "market": "US",
+      "note": "月面着陸・月周回の通信中継（NASA案件）。AIとの連動は薄い宇宙探査枠"
+    },
+    {
+      "ticker": "9412.T",
+      "name": "スカパーJSAT",
+      "sector": "space",
+      "market": "JP",
+      "note": "国内最大の衛星通信事業者。衛星データ事業と防衛通信"
+    },
+    {
+      "ticker": "186A.T",
+      "name": "アストロスケール",
+      "sector": "space",
+      "market": "JP",
+      "note": "デブリ除去・軌道上サービス。衛星コンステ拡大の後片付け需要"
+    },
+    {
+      "ticker": "464A.T",
+      "name": "QPS研究所",
+      "sector": "space",
+      "market": "JP",
+      "note": "小型SAR衛星。夜間・悪天候でも撮れる観測データ（持株会社 QPS Holdings）"
+    },
+    {
+      "ticker": "290A.T",
+      "name": "Synspective",
+      "sector": "space",
+      "market": "JP",
+      "note": "小型SAR衛星＋解析ソリューション。インフラ監視・防災データ"
+    },
+    {
+      "ticker": "9348.T",
+      "name": "ispace",
+      "sector": "space",
+      "market": "JP",
+      "note": "月面輸送。AIとの連動は薄い宇宙探査枠"
     }
   ]
 }
