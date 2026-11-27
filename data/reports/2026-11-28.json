@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-28",
+  "kind": "daily",
+  "headline": "感謝祭明けの短縮取引でAI株が反発、SanDisk・Micron・Marvellが主導　S&P 500は2025年4月以来の週間上昇　NVIDIAは小幅高どまり",
+  "market_summary": "11/27の米国市場は午後1時までの短縮取引で、11月に大きく売られたAI関連株に買い戻しが入り、ダウ・S&P 500・ナスダック総合がそろって上げ、S&P 500は週間で2025年4月以来の上昇幅となった。市場は売られすぎからの反発と見ており、12月のFOMCでの利上げはほぼ完全に織り込まれたまま、AI投資の採算と負債負担への警戒も残る。業界別ではメモリー・ストレージ、データセンター向け接続・光通信、宇宙関連の上げが大きく、半導体装置・AIクラウドも続いた一方、電力・業務ソフトは上げが小さかった。core 3社では、NVIDIAは日中の大半を下げて過ごして小幅高で引け、Cloudflareはセキュリティ株とともに大きく上げ、Akamaiも連れ高となった。東京は11/27に半導体装置と宇宙関連が買われ、韓国ではSK hynix・Samsungが続伸した。",
+  "movers": [
+    {"ticker": "SNDK", "direction": "up", "comment": "感謝祭明けに大きく売られていたメモリー・ストレージ株への押し目買いが入り、Western Digital・Seagateとともに急伸したとBenzingaは伝えた。中国の半導体株指数が政府系ファンドの支援表明で過去最大の上昇となったことも追い風となった。"},
+    {"ticker": "MU", "direction": "up", "comment": "SanDiskとともにメモリー株の買い戻しを主導した。11/24〜25の急反落分を取り戻す動きで、個別の新しい材料は報じられていない。"},
+    {"ticker": "MRVL", "direction": "up", "comment": "11月に大きく売られた半導体株の買い戻しで上げた。個別の材料は報じられておらず、決算日の確定とデータセンター向けカスタムチップの受注見通しが次の焦点となる。"},
+    {"ticker": "LITE", "direction": "up", "comment": "AI投資の恩恵を受ける銘柄として寄り前から買われ、Dellなどデータセンター関連とともに大きく上げた。個別の材料は報じられていない。"},
+    {"ticker": "QCOM", "direction": "up", "comment": "CEOの報酬制度で株価500ドルを条件とする目標が示されたとの見出しが報じられ、週を通じた逆行高を延ばした。"},
+    {"ticker": "NBIS", "direction": "up", "comment": "NVIDIAのチップ販売会社が、中国企業に計算能力を貸すネオクラウドにはチップ供給を止めうると警告したとの報道を受け、CoreWeave・IRENとともに反発したとSeeking Alphaは伝えた。"},
+    {"ticker": "186A.T", "direction": "up", "comment": "11/27の東京で国内の宇宙関連株とともに大きく買い戻された。米国の宇宙株も同日に上げたが、個別の材料は報じられていない。"},
+    {"ticker": "NVDA", "direction": "up", "comment": "半導体株が総じて上げる中で日中の大半を下げて過ごし、引けにかけて小幅高に戻した。Huang氏のCEO復帰とAnthropic株の一時的な公開価格割れで振れが大きく、SECの会計調査と格付け見直しの続報待ちが続く。"}
+  ],
+  "sector_notes": [
+    {"sector": "semi", "note": "メモリーと接続チップを中心に買い戻され、半導体指数は大きく上げた。NVIDIAとBroadcomは上げが小さく、先週の下げが大きかった銘柄ほど戻した。"},
+    {"sector": "dcinfra", "note": "Lumentum・Western Digital・Dell・Arista・Celesticaが大きく上げた。AI受注の強さを示したDell決算後も伸び悩んでいた分の買い戻しとなった。"},
+    {"sector": "hyper", "note": "Amazon・Meta・Oracleが上げ、NebiusとCoreWeaveは中国向け計算能力の貸し出しをめぐるチップ供給の警告報道で反発した。"},
+    {"sector": "space", "note": "米国のIntuitive Machines・BlackSky・Rocket Lab、東京のアストロスケール・QPS研究所がそろって上げ、業界で最も上昇が大きかった。個別の材料は報じられていない。"},
+    {"sector": "edge", "note": "Fastly・Cloudflare・CrowdStrike・Zscalerが上げ、相場全体の反発に連れた。12/1引け後のCrowdStrikeとOktaの決算を前に、個別の材料は報じられていない。"}
+  ],
+  "focus_notes": [
+    {"ticker": "AKAM", "note": "11/27は相場全体の反発に連れて上げた。個別の材料は報じられていない。", "source": ""},
+    {"ticker": "NET", "note": "11/27はAI関連株とセキュリティ株の反発に連れて上げた。個別の材料は報じられていない。", "source": ""},
+    {"ticker": "FSLY", "note": "個別の材料は報じられていない", "source": ""},
+    {"ticker": "CRWD", "note": "11/27は相場全体の反発で上げた。12/1引け後の決算発表を控え、個別の材料は報じられていない。", "source": ""}
+  ],
+  "suggestions": [
+    {"name": "IREN", "ticker": "IREN", "sector": "hyper", "reason": "NVIDIAのチップ販売会社が中国企業に計算能力を貸すネオクラウドへの供給停止を警告したとの報道で、11/27にNebius・CoreWeaveとともに反発した。借入に頼るAIクラウドの選別が進む中、顧客構成と資金調達の開示を比べる対象になる。"},
+    {"name": "SMIC（中芯国際集成電路製造）", "ticker": "0981.HK", "sector": "semi", "reason": "中国の半導体株指数が政府系ファンドの支援表明で過去最大の上昇を記録し、11/27の米国メモリー株の反発の地合いを作ったと報じられた。米国の輸出規制が強まる中で、中国国内の半導体内製化に流れる資金の受け皿として動きを確かめたい。"}
+  ],
+  "watch_next": [
+    "12/1引け後のCrowdStrikeとOktaの決算で、ARRの伸びと通期見通しの引き上げがあるか、Zscaler買収の審査の進み具合",
+    "11/30〜12/4のAWS re:Inventで、自社AIチップとAI基盤への投資方針がNVIDIA・接続チップ株の需要見通しにどう響くか",
+    "12/2引け後のSnowflake決算と、来週と見込まれるMarvell・MongoDB・Credoの決算日の確定",
+    "12/9のFOMCでの利上げ幅と先行きの示唆、NVIDIAのSEC会計調査とS&P Globalの格付け判断の続報"
+  ],
+  "ai_review": "",
+  "data_quality": "ok"
+}
